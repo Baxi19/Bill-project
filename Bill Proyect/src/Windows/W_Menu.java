@@ -52,6 +52,9 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jScrollClients = new javax.swing.JScrollPane();
         jListClients = new javax.swing.JList<>();
+        jLabel42 = new javax.swing.JLabel();
+        jScrollClients1 = new javax.swing.JScrollPane();
+        jListNotify = new javax.swing.JList<>();
         jLabel21 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -332,30 +335,31 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Número de Factura");
         jPanelBill.add(jLabel19);
-        jLabel19.setBounds(130, 200, 220, 28);
+        jLabel19.setBounds(150, 220, 220, 28);
 
         jTextFieldBillNumber.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBillNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jTextFieldBillNumber.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBillNumber.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        jTextFieldBillNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanelBill.add(jTextFieldBillNumber);
-        jTextFieldBillNumber.setBounds(450, 200, 160, 30);
+        jTextFieldBillNumber.setBounds(470, 220, 160, 30);
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Seleccione la Fecha ");
         jPanelBill.add(jLabel20);
-        jLabel20.setBounds(130, 300, 210, 28);
+        jLabel20.setBounds(150, 290, 210, 28);
         jPanelBill.add(jDateChooser);
-        jDateChooser.setBounds(450, 300, 160, 30);
+        jDateChooser.setBounds(470, 290, 160, 30);
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Seleccione el Cliente");
+        jLabel22.setText("Notificar a");
         jPanelBill.add(jLabel22);
-        jLabel22.setBounds(130, 450, 230, 28);
+        jLabel22.setBounds(150, 480, 220, 28);
 
         jListClients.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -365,28 +369,45 @@ public class W_Menu extends javax.swing.JFrame {
         jScrollClients.setViewportView(jListClients);
 
         jPanelBill.add(jScrollClients);
-        jScrollClients.setBounds(130, 510, 310, 100);
+        jScrollClients.setBounds(150, 410, 230, 60);
+
+        jLabel42.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel42.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setText("Seleccione el Cliente");
+        jPanelBill.add(jLabel42);
+        jLabel42.setBounds(150, 370, 230, 28);
+
+        jListNotify.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollClients1.setViewportView(jListNotify);
+
+        jPanelBill.add(jScrollClients1);
+        jScrollClients1.setBounds(150, 520, 230, 60);
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Configuración de Clientes");
         jPanelBill.add(jLabel21);
-        jLabel21.setBounds(480, 490, 170, 17);
+        jLabel21.setBounds(460, 390, 170, 17);
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Nuevo");
         jPanelBill.add(jLabel35);
-        jLabel35.setBounds(500, 520, 70, 30);
+        jLabel35.setBounds(520, 480, 70, 30);
 
         jLabel36.setBackground(new java.awt.Color(255, 255, 255));
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Eliminar");
         jPanelBill.add(jLabel36);
-        jLabel36.setBounds(500, 580, 70, 30);
+        jLabel36.setBounds(520, 540, 70, 30);
 
         jButtonConfirmBill4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete1.png"))); // NOI18N
         jButtonConfirmBill4.setBorder(null);
@@ -408,7 +429,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill4);
-        jButtonConfirmBill4.setBounds(580, 570, 40, 40);
+        jButtonConfirmBill4.setBounds(600, 530, 40, 40);
 
         jButtonConfirmBill5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add1.png"))); // NOI18N
         jButtonConfirmBill5.setBorder(null);
@@ -430,15 +451,15 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill5);
-        jButtonConfirmBill5.setBounds(580, 520, 40, 40);
+        jButtonConfirmBill5.setBounds(600, 480, 40, 40);
 
         CD_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
         jPanelBill.add(CD_Cliente);
-        CD_Cliente.setBounds(470, 480, 180, 140);
+        CD_Cliente.setBounds(430, 380, 220, 200);
 
         Border.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanelBill.add(Border);
-        Border.setBounds(108, 440, 580, 220);
+        Border.setBounds(110, 170, 580, 440);
 
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1295,11 +1316,27 @@ public class W_Menu extends javax.swing.JFrame {
             if (!jTextFieldBillNumber.getText().isEmpty()){
                 int num = Integer.parseInt(jTextFieldBillNumber.getText());
                 if (jDateChooser.getDate() != null) {
-                    System.out.println(jDateChooser.getDate().getDate());
-                    System.out.println(jDateChooser.getDate().getMonth() + 1);
-                    System.out.println(jDateChooser.getDate().getYear() + 1900);
-                    JOptionPane.showMessageDialog(this, "Entro!");
-
+                    if(!jListClients.isSelectionEmpty()){
+                        if(!jListNotify.isSelectionEmpty()){
+                            /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
+                            Methods.getInstance().date = 
+                                            (jDateChooser.getDate().getDate()+"/"+
+                                            (jDateChooser.getDate().getMonth() + 1)+"/"+
+                                            (jDateChooser.getDate().getYear() + 1900));
+                            Methods.getInstance().clientName = jListClients.getSelectedValue();
+                            Methods.getInstance().nameNotify = jListNotify.getSelectedValue();
+                            System.out.println("Fecha = " + Methods.getInstance().date);
+                            System.out.println("Cliente = " + Methods.getInstance().clientName);
+                            System.out.println("Notificar a = " + Methods.getInstance().nameNotify);
+                            /*Mostramos el siguiente formulario*/
+                            closePanels();
+                            changeSize(jPanelProducts);
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Por favor seleccione a quien notificar");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Por favor seleccione un cliente");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Por favor seleccione la fecha de la factura!");
                 }
@@ -1309,7 +1346,7 @@ public class W_Menu extends javax.swing.JFrame {
         /*closePanels();
         changeSize(jPanelProducts);*/
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Por favor verifique si los datos estan correctos!");
+            JOptionPane.showMessageDialog(this, "La factura solo acepta números!");
         }
         
     }//GEN-LAST:event_jButtonConfirmBillMouseClicked
@@ -1382,7 +1419,11 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
 
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
-        // TODO add your handling code here:
+        /*if(!jTextFieldBox.getText().isEmpty()){
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor verifique los datos de la cantidad de cajas");
+        }*/
     }//GEN-LAST:event_jButtonConfirmBill6MouseClicked
 
     private void jButtonConfirmBill6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6ActionPerformed
@@ -1547,6 +1588,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel47;
@@ -1568,6 +1610,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JList<String> jListCountryOrigin;
     private javax.swing.JList<String> jListDinamic;
     private javax.swing.JList<String> jListInputPort;
+    private javax.swing.JList<String> jListNotify;
     private javax.swing.JList<String> jListPlant;
     private javax.swing.JList<String> jListPortDeparture;
     private javax.swing.JList<String> jListPriceUnit;
@@ -1580,6 +1623,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioInPort;
     private javax.swing.JRadioButton jRadioOutPort;
     private javax.swing.JScrollPane jScrollClients;
+    private javax.swing.JScrollPane jScrollClients1;
     private javax.swing.JScrollPane jScrollSize;
     private javax.swing.JScrollPane jScrollUnityPrice;
     private javax.swing.JScrollPane jScrollUnityPrice1;

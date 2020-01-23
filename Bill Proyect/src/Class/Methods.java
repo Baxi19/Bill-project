@@ -7,6 +7,7 @@ package Class;
 
 import com.itextpdf.text.Document;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,12 @@ public class Methods {
     /*------------------------------------------------------------------------*/
     /*VARS*/
     public static Methods instance = null;
+    public ArrayList<Item> cart = new ArrayList<Item>();
+    public int idBill;
+    public String date;
+    public String clientName;
+    public String nameNotify;
+    
     
     /*------------------------------------------------------------------------*/
     //Singleton

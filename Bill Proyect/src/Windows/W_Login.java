@@ -7,7 +7,6 @@ package Windows;
 
 import Class.Methods;
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +23,7 @@ public class W_Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jPanelLogin.setBackground(new Color(0, 0, 0 , 240));
         jButtonLogin.setBackground(new Color(0, 0, 0 , 240));
+        Methods.getInstance().cart.clear();
     }
 
     /**
