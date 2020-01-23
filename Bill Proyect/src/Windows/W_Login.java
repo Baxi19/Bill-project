@@ -22,8 +22,8 @@ public class W_Login extends javax.swing.JFrame {
         initComponents();
         this.setSize(1200,800);
         setLocationRelativeTo(null);
-        jPanelLogin.setBackground(new Color(0, 0, 0 , 200));
-        jButtonLogin.setBackground(new Color(0, 0, 0 , 200));
+        jPanelLogin.setBackground(new Color(0, 0, 0 , 240));
+        jButtonLogin.setBackground(new Color(0, 0, 0 , 240));
     }
 
     /**
@@ -37,8 +37,8 @@ public class W_Login extends javax.swing.JFrame {
 
         jPanelLogin = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButtonLogin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jButtonLogin = new javax.swing.JButton();
         jButtonOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -52,10 +52,10 @@ public class W_Login extends javax.swing.JFrame {
         jPanelLogin.setToolTipText("");
         jPanelLogin.setAlignmentX(0.0F);
         jPanelLogin.setAlignmentY(0.0F);
-        jPanelLogin.setMaximumSize(new java.awt.Dimension(400, 500));
-        jPanelLogin.setMinimumSize(new java.awt.Dimension(400, 500));
+        jPanelLogin.setMaximumSize(new java.awt.Dimension(500, 400));
+        jPanelLogin.setMinimumSize(new java.awt.Dimension(500, 400));
         jPanelLogin.setName("panelLogin"); // NOI18N
-        jPanelLogin.setPreferredSize(new java.awt.Dimension(400, 500));
+        jPanelLogin.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanelLogin.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -63,7 +63,12 @@ public class W_Login extends javax.swing.JFrame {
         jLabel3.setText("Plantas Hermanos Araya");
         jLabel3.setToolTipText("");
         jPanelLogin.add(jLabel3);
-        jLabel3.setBounds(10, 70, 390, 42);
+        jLabel3.setBounds(50, 40, 390, 42);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.jpg"))); // NOI18N
+        jLabel6.setToolTipText("");
+        jPanelLogin.add(jLabel6);
+        jLabel6.setBounds(60, 130, 360, 160);
 
         jButtonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonLogin.setBorder(null);
@@ -85,15 +90,10 @@ public class W_Login extends javax.swing.JFrame {
             }
         });
         jPanelLogin.add(jButtonLogin);
-        jButtonLogin.setBounds(180, 400, 50, 50);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.jpg"))); // NOI18N
-        jLabel6.setToolTipText("");
-        jPanelLogin.add(jLabel6);
-        jLabel6.setBounds(20, 180, 360, 160);
+        jButtonLogin.setBounds(230, 330, 50, 50);
 
         getContentPane().add(jPanelLogin);
-        jPanelLogin.setBounds(400, 100, 400, 500);
+        jPanelLogin.setBounds(350, 150, 500, 400);
 
         jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/off1.png"))); // NOI18N
         jButtonOff.setBorder(null);
