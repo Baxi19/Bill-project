@@ -44,6 +44,7 @@ public class W_Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(1200, 800));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
