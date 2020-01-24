@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 
@@ -28,22 +29,32 @@ public class SQLLiteMethods {
         return instance;
     }
     
-    public DefaultListModel getUnitPrice(String height, String description){
-        DefaultListModel modelo = new DefaultListModel();
-        try {
+    public DefaultListModel getUnitPrice(String plantName, int height){
+        DefaultListModel model = new DefaultListModel();
+        String query = " SELECT Precio FROM Plantas INNER JOIN Precios " +
+                        " on Plantas.ID = Precios.Planta_id " +
+                        " WHERE Plantas.Descripcion = '" + plantName + "' AND Plantas.Altura = " + height;
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
             
-        } catch (Exception e) {
-        
-        }
-        return modelo;
+            while (rs.next()) {
+                //model.addElement(rs.getDouble("Precio"));
+                model.addElement(rs.getString("Precio"));
+            }
+            return model;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //return null;
+        }  
+        return model;
     }
     
     private Connection connect() {
         // SQLite connection string
         String filePath = new File("").getAbsolutePath();
-        System.out.println(filePath);
         String url = "jdbc:sqlite:" + filePath+"\\Database\\PlantasHermanosArayaBD.db";
-        System.out.println(url);
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -101,6 +112,53 @@ public class SQLLiteMethods {
         }
     }
     
+    public void getClient(int idBuscado){
+        String query = "SELECT * FROM Clientes";
+        try (
+            
+            Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            while (rs.next()) {
+                int clientId = rs.getInt("ID");
+                if(clientId == idBuscado){
+                    Methods.getInstance().client.setClient(rs.getString("Cliente"));
+                    Methods.getInstance().client.setExporte(rs.getString("Exporte"));
+                    Methods.getInstance().client.setDireccion(rs.getString("Direccion"));
+                    Methods.getInstance().client.setExporte(rs.getString("Telefono"));
+                    Methods.getInstance().client.setExporte(rs.getString("Email"));
+                }
+ 
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void getNotifyTo(int idClient){
+        String query = "select Notificar_a.ID,Notificar_a.Nombre, Notificar_a.Direccion, Notificar_a.Telefono, Notificar_a.Email " +
+                       "from Clientes inner join Notificar_a "+ "on Clientes.ID = Notificar_a.Notifica_a where Clientes.ID = " + idClient;
+        try (
+            
+            Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            while (rs.next()) {
+                int clientId = rs.getInt("ID");
+                if(clientId == idClient){
+                    Methods.getInstance().clientNotify.setClient(rs.getString("Cliente"));
+                    Methods.getInstance().clientNotify.setExporte(rs.getString("Exporte"));
+                    Methods.getInstance().clientNotify.setDireccion(rs.getString("Direccion"));
+                    Methods.getInstance().clientNotify.setExporte(rs.getString("Telefono"));
+                    Methods.getInstance().clientNotify.setExporte(rs.getString("Email"));
+                }
+ 
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
     public DefaultListModel getNotificationList(int client){
         String query = "select Notificar_a.ID,Notificar_a.Nombre, Notificar_a.Direccion, Notificar_a.Telefono, Notificar_a.Email " +
                        "from Clientes inner join Notificar_a "+ "on Clientes.ID = Notificar_a.Notifica_a where Clientes.ID = " + client;
@@ -121,4 +179,37 @@ public class SQLLiteMethods {
         }
     }
     
+    public DefaultListModel getPlantsList(){
+        String query = "SELECT DISTINCT descripcion FROM Plantas";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            DefaultListModel model = new DefaultListModel();
+            while (rs.next()) {
+                model.addElement(rs.getString("Descripcion"));
+            }
+            return model;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } 
+    }
+    public ArrayList<Double> getPrice(int height){
+        String query = "SELECT DISTINCT precio FROM Plantas INNER JOIN Precios " +
+                       "on Plantas.ID = Precios.Planta_id WHERE Altura = " + height;
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            ArrayList<Double> priceList = new ArrayList<>();
+            while (rs.next()) {
+                priceList.add(rs.getDouble("Precio"));
+            }
+            return priceList;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } 
+    }
 }

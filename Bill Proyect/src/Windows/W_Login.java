@@ -24,6 +24,7 @@ public class W_Login extends javax.swing.JFrame {
         jPanelLogin.setBackground(new Color(0, 0, 0 , 240));
         jButtonLogin.setBackground(new Color(0, 0, 0 , 240));
         Methods.getInstance().cart.clear();
+        
     }
 
     /**

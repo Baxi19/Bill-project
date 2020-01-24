@@ -8,6 +8,7 @@ package Windows;
 import Class.Item;
 import Class.Methods;
 import Class.SQLLiteMethods;
+import com.itextpdf.text.Document;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -25,8 +26,8 @@ public class W_Menu extends javax.swing.JFrame {
         this.setSize(1200,800);
         setLocationRelativeTo(null);
         loadClients();
-        closePanels();
-        
+        jListDescription.setModel(SQLLiteMethods.getInstance().getPlantsList());
+        closePanels();  
     }
 
     /**
@@ -74,6 +75,8 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanelProducts = new javax.swing.JPanel();
         jButtonClose4 = new javax.swing.JButton();
+        jLabel43 = new javax.swing.JLabel();
+        jLabelQuantityItems = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextFieldBox = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -566,6 +569,20 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jButtonClose4);
         jButtonClose4.setBounds(710, 40, 50, 50);
 
+        jLabel43.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("Items Agregados:");
+        jPanelProducts.add(jLabel43);
+        jLabel43.setBounds(220, 60, 180, 28);
+
+        jLabelQuantityItems.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelQuantityItems.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabelQuantityItems.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelQuantityItems.setText("0");
+        jPanelProducts.add(jLabelQuantityItems);
+        jLabelQuantityItems.setBounds(410, 60, 110, 28);
+
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -638,6 +655,11 @@ public class W_Menu extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListDescription.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListDescriptionValueChanged(evt);
+            }
+        });
         jScrollSize.setViewportView(jListDescription);
 
         jPanelProducts.add(jScrollSize);
@@ -650,7 +672,7 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel31);
         jLabel31.setBounds(450, 290, 130, 28);
 
-        jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4”", "6”", "9”", "12”", "18”", "24”", "30”", "36”", "48”" }));
+        jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4", "6", "9", "12", "18", "24", "30", "36", "48" }));
         jComboBoxSize.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxSizeItemStateChanged(evt);
@@ -671,7 +693,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel30.setBounds(130, 470, 220, 28);
 
         jListPriceUnit.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "1", "2", "3", "4", "5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -704,7 +726,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTotal.setText("00000000000");
         jPanelProducts.add(jLabelTotal);
-        jLabelTotal.setBounds(160, 630, 190, 28);
+        jLabelTotal.setBounds(170, 630, 180, 28);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1296,6 +1318,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoginMouseClicked
         closePanels();
         /*Generar el PDF*/
+        Document pdf = Methods.getInstance().generatePDF();
     }//GEN-LAST:event_jButtonLoginMouseClicked
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
@@ -1353,7 +1376,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClose1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonClose1ActionPerformed
-
+    
     private void jButtonConfirmBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBillMouseClicked
         try {
             if (!jTextFieldBillNumber.getText().isEmpty()){
@@ -1362,27 +1385,19 @@ public class W_Menu extends javax.swing.JFrame {
                     if(!jListClients.isSelectionEmpty()){
                         if(!jListNotify.isSelectionEmpty()){
                             /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
+                            Methods.getInstance().idBill = num;
                             Methods.getInstance().date = (
                                             (jDateChooser.getDate().getYear() + 1900) + "-"+
-                                            (jDateChooser.getDate().getMonth() + 1)+"-"+
-                                            (jDateChooser.getDate().getDate()));
-                            System.out.println("Dia = " + (String.format("%02d",(jDateChooser.getDate().getDate()))));
-                            System.out.println("Mes = " + (String.format("%02d",(jDateChooser.getDate().getMonth() + 1))));
-                            /*
-                            String client = jListClients.getSelectedValue();
-                            String[] dataClient = client.split(") ");
-                            
-                            String clientNotify = jListClients.getSelectedValue();
-                            String[] dataClientNotify = clientNotify.split(") ");
+                                            (String.format("%02d",(jDateChooser.getDate().getMonth() + 1)))+"-"+
+                                            (String.format("%02d",(jDateChooser.getDate().getDate()))));
                             
                             
-                            Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
-                            Methods.getInstance().nameNotify = Integer.parseInt(dataClientNotify[0]);
-                            */
-                            System.out.println("Factura #= " + jTextFieldBillNumber.getText());
+                            System.out.println("************************************");
+                            System.out.println("Numero Factura = " + jTextFieldBillNumber.getText());
                             System.out.println("Fecha = " + Methods.getInstance().date);
-                            //System.out.println("Cliente = " + Methods.getInstance().clientName);
-                            System.out.println("Notificar a = " + Methods.getInstance().nameNotify);
+                            System.out.println("Id Cliente = " + Methods.getInstance().clientId);
+                            System.out.println("Id Notificar a = " + Methods.getInstance().idNotify);
+                            
                             /*Mostramos el siguiente formulario*/
                             closePanels();
                             changeSize(jPanelProducts);
@@ -1436,19 +1451,12 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBoxActionPerformed
 
     private void jComboBoxSizeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSizeItemStateChanged
-        
-        System.out.println("Changed to "  + jComboBoxSize.getSelectedItem());
-        try {
-            if(jComboBoxSize.getSelectedIndex() != 0){
-                DefaultListModel modelo = SQLLiteMethods.getInstance().getUnitPrice(jListDescription.getSelectedValue(), jComboBoxSize.getSelectedItem().toString());
-                jListPriceUnit.setModel(modelo);
-                System.out.println("Lista de precios actualizada");
-            }
-            
-        } catch (Exception e) {
-        }
-        
-        /*Calcular el precio uniario de acuerdo con el dato, verificar que no sea cero, ni que hay mas de uno seleccionado en el jlist*/
+        if(jComboBoxSize.getSelectedIndex() != 0){
+            DefaultListModel modelo = SQLLiteMethods.getInstance().getUnitPrice(
+                            jListDescription.getSelectedValue(), 
+                            Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
+            jListPriceUnit.setModel(modelo);
+        }  
     }//GEN-LAST:event_jComboBoxSizeItemStateChanged
 
     private void jButtonConfirmBill2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill2MouseClicked
@@ -1468,37 +1476,62 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill3ActionPerformed
 
     private void jButtonConfirmBill4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonConfirmBill4MouseClicked
 
     private void jButtonConfirmBill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonConfirmBill4ActionPerformed
-
+    public boolean checkFirtsRadioB(){
+        if( jRadioButtonClient.isSelected() || jRadioButtonNotify.isSelected()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     private void jButtonConfirmBill5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5MouseClicked
-        // TODO add your handling code here:
+        /*Agregar nuevo cliente*/
+        /*Si es un cliente*/
+        if (checkFirtsRadioB()) {
+            if (jRadioButtonClient.isSelected()) {
+                System.out.println("Agregar nuevo cliente");
+            } else if (jRadioButtonNotify.isSelected()) {
+                System.out.println("Agregar nueva persona para notificar");
+            }
+        }
+        
     }//GEN-LAST:event_jButtonConfirmBill5MouseClicked
 
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
+    
     public double calculateTotal(){
         double total = -1;
-        try {
-            total = (Integer.parseInt(jTextFieldQuantity.getText()) * (Integer.parseInt(jListPriceUnit.getSelectedValue())));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione el precio unitario y verifique la cantidad");
+        if(!jListPriceUnit.isSelectionEmpty()){
+            double price = (Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
+            double quant = Double.parseDouble(jTextFieldQuantity.getText().toString());
+            total = (price) * (quant);
+            System.out.println("Total calculado = "+total);
         }
-        return total;
+       
+       return total;
     }
-            
+    public void cleanSpaces(){
+        jTextFieldBox.setText("");
+        jTextFieldQuantity.setText("");
+        jComboBoxSize.setSelectedIndex(0);
+        jListPriceUnit.setModel(new DefaultListModel<>());
+        jLabelTotal.setText("0.0");
+        
+    }        
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
 
         if (!jTextFieldBox.getText().isEmpty()) {
-            if(jTextFieldQuantity.getText().isEmpty()){
+            if(!jTextFieldQuantity.getText().isEmpty()){
                 try {
-                int num = Integer.parseInt(jTextFieldBox.getText());
-                int num2 = Integer.parseInt(jTextFieldQuantity.getText());
+                    int num = Integer.parseInt(jTextFieldBox.getText());
+                    int num2 = Integer.parseInt(jTextFieldQuantity.getText());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Los valores de los cajones y unidades deben de ser números!");
                 }
@@ -1507,6 +1540,17 @@ public class W_Menu extends javax.swing.JFrame {
                         if(!jListPriceUnit.isSelectionEmpty()){
                             Item i = new Item();
                             /*Agregar y guardar los datos*/
+                            i.setBox(Integer.parseInt(jTextFieldBox.getText()));
+                            i.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
+                            i.setDescription(jListDescription.getSelectedValue());
+                            i.setSpec(jTextFieldSpec.getText());
+                            i.setSize(Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
+                            i.setPriceUnit(Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
+                            i.setTotal(calculateTotal());
+                            Methods.getInstance().cart.add(i);
+                            JOptionPane.showMessageDialog(this, "Datos agregados correctamente!");
+                            cleanSpaces();
+                            jLabelQuantityItems.setText(Methods.getInstance().cart.size()+"");
                         }else{
                             JOptionPane.showMessageDialog(this, "Por favor seleccione el precio unitario");
                         }
@@ -1519,9 +1563,7 @@ public class W_Menu extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Por favor digite la cantidad de unidades");
             }
-            
-            
-
+ 
         } else {
             JOptionPane.showMessageDialog(this, "Por favor verifique los datos de la cantidad de cajas");
         }
@@ -1599,11 +1641,8 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
 
     private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
-        try {
-            jLabelTotal.setText(calculateTotal()+"");
-        } catch (Exception e) {
+        jLabelTotal.setText(calculateTotal()+"");
         
-        }
     }//GEN-LAST:event_jListPriceUnitValueChanged
     public void loadClientNotifiers(int id){
         jListNotify.setModel(SQLLiteMethods.getInstance().getNotificationList(id));
@@ -1614,9 +1653,7 @@ public class W_Menu extends javax.swing.JFrame {
             String client = jListClients.getSelectedValue();
             String[] dataClient = client.split("\\) ");
             Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
-            System.out.println("id cliente = " +Methods.getInstance().clientId  );
             loadClientNotifiers(Methods.getInstance().clientId);
-            
         } catch (Exception e) {
             
         }
@@ -1626,9 +1663,12 @@ public class W_Menu extends javax.swing.JFrame {
     private void jListNotifyValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNotifyValueChanged
         String clientNotify = jListNotify.getSelectedValue();
         String[] dataClientNotify = clientNotify.split("\\) ");
-        Methods.getInstance().nameNotify = Integer.parseInt(dataClientNotify[0]);
-        System.out.println("id notificado = "  + Methods.getInstance().nameNotify); 
+        Methods.getInstance().idNotify = Integer.parseInt(dataClientNotify[0]);  
     }//GEN-LAST:event_jListNotifyValueChanged
+
+    private void jListDescriptionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDescriptionValueChanged
+        
+    }//GEN-LAST:event_jListDescriptionValueChanged
     
     /**
      * @param args the command line arguments
@@ -1736,6 +1776,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel47;
@@ -1751,6 +1792,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelQuantityItems;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JList<String> jListClients;
     private javax.swing.JList<String> jListCountryDestination1;
