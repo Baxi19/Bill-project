@@ -5,7 +5,10 @@
  */
 package Windows;
 
+import Class.Item;
 import Class.Methods;
+import Class.SQLLiteMethods;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +24,9 @@ public class W_Menu extends javax.swing.JFrame {
         initComponents();
         this.setSize(1200,800);
         setLocationRelativeTo(null);
+        loadClients();
         closePanels();
+        
     }
 
     /**
@@ -56,6 +61,8 @@ public class W_Menu extends javax.swing.JFrame {
         jScrollClients1 = new javax.swing.JScrollPane();
         jListNotify = new javax.swing.JList<>();
         jLabel21 = new javax.swing.JLabel();
+        jRadioButtonClient = new javax.swing.JRadioButton();
+        jRadioButtonNotify = new javax.swing.JRadioButton();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jButtonConfirmBill4 = new javax.swing.JButton();
@@ -76,9 +83,9 @@ public class W_Menu extends javax.swing.JFrame {
         Entry1 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jScrollSize = new javax.swing.JScrollPane();
-        jListPlant = new javax.swing.JList<>();
+        jListDescription = new javax.swing.JList<>();
         jLabel31 = new javax.swing.JLabel();
-        jComboBoxAltura = new javax.swing.JComboBox<>();
+        jComboBoxSize = new javax.swing.JComboBox<>();
         Entry2 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jScrollUnityPrice = new javax.swing.JScrollPane();
@@ -366,6 +373,11 @@ public class W_Menu extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListClients.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListClientsValueChanged(evt);
+            }
+        });
         jScrollClients.setViewportView(jListClients);
 
         jPanelBill.add(jScrollClients);
@@ -383,6 +395,11 @@ public class W_Menu extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListNotify.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListNotifyValueChanged(evt);
+            }
+        });
         jScrollClients1.setViewportView(jListNotify);
 
         jPanelBill.add(jScrollClients1);
@@ -395,19 +412,37 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelBill.add(jLabel21);
         jLabel21.setBounds(460, 390, 170, 17);
 
+        jRadioButtonClient.setText("Cliente");
+        jRadioButtonClient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonClientMouseClicked(evt);
+            }
+        });
+        jPanelBill.add(jRadioButtonClient);
+        jRadioButtonClient.setBounds(460, 420, 80, 28);
+
+        jRadioButtonNotify.setText("Notificado");
+        jRadioButtonNotify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonNotifyMouseClicked(evt);
+            }
+        });
+        jPanelBill.add(jRadioButtonNotify);
+        jRadioButtonNotify.setBounds(540, 420, 89, 28);
+
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Nuevo");
         jPanelBill.add(jLabel35);
-        jLabel35.setBounds(520, 480, 70, 30);
+        jLabel35.setBounds(480, 460, 70, 30);
 
         jLabel36.setBackground(new java.awt.Color(255, 255, 255));
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Eliminar");
         jPanelBill.add(jLabel36);
-        jLabel36.setBounds(520, 540, 70, 30);
+        jLabel36.setBounds(480, 520, 70, 30);
 
         jButtonConfirmBill4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete1.png"))); // NOI18N
         jButtonConfirmBill4.setBorder(null);
@@ -429,7 +464,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill4);
-        jButtonConfirmBill4.setBounds(600, 530, 40, 40);
+        jButtonConfirmBill4.setBounds(560, 510, 40, 40);
 
         jButtonConfirmBill5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add1.png"))); // NOI18N
         jButtonConfirmBill5.setBorder(null);
@@ -451,11 +486,11 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill5);
-        jButtonConfirmBill5.setBounds(600, 480, 40, 40);
+        jButtonConfirmBill5.setBounds(560, 460, 40, 40);
 
         CD_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
         jPanelBill.add(CD_Cliente);
-        CD_Cliente.setBounds(430, 380, 220, 200);
+        CD_Cliente.setBounds(440, 380, 200, 200);
 
         Border.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanelBill.add(Border);
@@ -598,12 +633,12 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel27);
         jLabel27.setBounds(130, 290, 220, 28);
 
-        jListPlant.setModel(new javax.swing.AbstractListModel<String>() {
+        jListDescription.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollSize.setViewportView(jListPlant);
+        jScrollSize.setViewportView(jListDescription);
 
         jPanelProducts.add(jScrollSize);
         jScrollSize.setBounds(130, 320, 220, 100);
@@ -615,14 +650,14 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel31);
         jLabel31.setBounds(450, 290, 130, 28);
 
-        jComboBoxAltura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4”", "6”", "9”", "12”", "18”", "24”", "30”", "36”", "48”" }));
-        jComboBoxAltura.addItemListener(new java.awt.event.ItemListener() {
+        jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4”", "6”", "9”", "12”", "18”", "24”", "30”", "36”", "48”" }));
+        jComboBoxSize.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxAlturaItemStateChanged(evt);
+                jComboBoxSizeItemStateChanged(evt);
             }
         });
-        jPanelProducts.add(jComboBoxAltura);
-        jComboBoxAltura.setBounds(450, 320, 160, 26);
+        jPanelProducts.add(jComboBoxSize);
+        jComboBoxSize.setBounds(450, 320, 160, 26);
 
         Entry2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jPanelProducts.add(Entry2);
@@ -639,6 +674,11 @@ public class W_Menu extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jListPriceUnit.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListPriceUnitValueChanged(evt);
+            }
         });
         jScrollUnityPrice.setViewportView(jListPriceUnit);
 
@@ -1297,7 +1337,10 @@ public class W_Menu extends javax.swing.JFrame {
         panel.setVisible(true);
        
     }
-    
+    public void loadClients(){
+        
+        jListClients.setModel(SQLLiteMethods.getInstance().getClientList());
+    }
     public void closePanels(){
         jPanelBill.setVisible(false);
         jPanelProducts.setVisible(false);
@@ -1319,14 +1362,26 @@ public class W_Menu extends javax.swing.JFrame {
                     if(!jListClients.isSelectionEmpty()){
                         if(!jListNotify.isSelectionEmpty()){
                             /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
-                            Methods.getInstance().date = 
-                                            (jDateChooser.getDate().getDate()+"/"+
-                                            (jDateChooser.getDate().getMonth() + 1)+"/"+
-                                            (jDateChooser.getDate().getYear() + 1900));
-                            Methods.getInstance().clientName = jListClients.getSelectedValue();
-                            Methods.getInstance().nameNotify = jListNotify.getSelectedValue();
+                            Methods.getInstance().date = (
+                                            (jDateChooser.getDate().getYear() + 1900) + "-"+
+                                            (jDateChooser.getDate().getMonth() + 1)+"-"+
+                                            (jDateChooser.getDate().getDate()));
+                            System.out.println("Dia = " + (String.format("%02d",(jDateChooser.getDate().getDate()))));
+                            System.out.println("Mes = " + (String.format("%02d",(jDateChooser.getDate().getMonth() + 1))));
+                            /*
+                            String client = jListClients.getSelectedValue();
+                            String[] dataClient = client.split(") ");
+                            
+                            String clientNotify = jListClients.getSelectedValue();
+                            String[] dataClientNotify = clientNotify.split(") ");
+                            
+                            
+                            Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
+                            Methods.getInstance().nameNotify = Integer.parseInt(dataClientNotify[0]);
+                            */
+                            System.out.println("Factura #= " + jTextFieldBillNumber.getText());
                             System.out.println("Fecha = " + Methods.getInstance().date);
-                            System.out.println("Cliente = " + Methods.getInstance().clientName);
+                            //System.out.println("Cliente = " + Methods.getInstance().clientName);
                             System.out.println("Notificar a = " + Methods.getInstance().nameNotify);
                             /*Mostramos el siguiente formulario*/
                             closePanels();
@@ -1380,11 +1435,21 @@ public class W_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBoxActionPerformed
 
-    private void jComboBoxAlturaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAlturaItemStateChanged
+    private void jComboBoxSizeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSizeItemStateChanged
         
-        System.out.println("Changed to "  + jComboBoxAltura.getSelectedItem());
+        System.out.println("Changed to "  + jComboBoxSize.getSelectedItem());
+        try {
+            if(jComboBoxSize.getSelectedIndex() != 0){
+                DefaultListModel modelo = SQLLiteMethods.getInstance().getUnitPrice(jListDescription.getSelectedValue(), jComboBoxSize.getSelectedItem().toString());
+                jListPriceUnit.setModel(modelo);
+                System.out.println("Lista de precios actualizada");
+            }
+            
+        } catch (Exception e) {
+        }
+        
         /*Calcular el precio uniario de acuerdo con el dato, verificar que no sea cero, ni que hay mas de uno seleccionado en el jlist*/
-    }//GEN-LAST:event_jComboBoxAlturaItemStateChanged
+    }//GEN-LAST:event_jComboBoxSizeItemStateChanged
 
     private void jButtonConfirmBill2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill2MouseClicked
         // TODO add your handling code here:
@@ -1417,13 +1482,51 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
-
-    private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
-        /*if(!jTextFieldBox.getText().isEmpty()){
+    public double calculateTotal(){
+        double total = -1;
+        try {
+            total = (Integer.parseInt(jTextFieldQuantity.getText()) * (Integer.parseInt(jListPriceUnit.getSelectedValue())));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione el precio unitario y verifique la cantidad");
+        }
+        return total;
+    }
             
-        }else{
+    private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
+
+        if (!jTextFieldBox.getText().isEmpty()) {
+            if(jTextFieldQuantity.getText().isEmpty()){
+                try {
+                int num = Integer.parseInt(jTextFieldBox.getText());
+                int num2 = Integer.parseInt(jTextFieldQuantity.getText());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Los valores de los cajones y unidades deben de ser números!");
+                }
+                if(!jListDescription.isSelectionEmpty()){
+                    if(jComboBoxSize.getSelectedIndex() != 0){
+                        if(!jListPriceUnit.isSelectionEmpty()){
+                            Item i = new Item();
+                            /*Agregar y guardar los datos*/
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Por favor seleccione el precio unitario");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Por favor seleccione el tamaño de la planta");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "Por favor seleccione una descripción");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Por favor digite la cantidad de unidades");
+            }
+            
+            
+
+        } else {
             JOptionPane.showMessageDialog(this, "Por favor verifique los datos de la cantidad de cajas");
-        }*/
+        }
+
+
     }//GEN-LAST:event_jButtonConfirmBill6MouseClicked
 
     private void jButtonConfirmBill6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6ActionPerformed
@@ -1482,6 +1585,50 @@ public class W_Menu extends javax.swing.JFrame {
     private void jRadioCountryOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCountryOrigenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioCountryOrigenActionPerformed
+
+    private void jRadioButtonClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonClientMouseClicked
+        if(jRadioButtonNotify.isSelected()){
+            jRadioButtonNotify.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonClientMouseClicked
+
+    private void jRadioButtonNotifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonNotifyMouseClicked
+        if(jRadioButtonClient.isSelected()){
+            jRadioButtonClient.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
+
+    private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
+        try {
+            jLabelTotal.setText(calculateTotal()+"");
+        } catch (Exception e) {
+        
+        }
+    }//GEN-LAST:event_jListPriceUnitValueChanged
+    public void loadClientNotifiers(int id){
+        jListNotify.setModel(SQLLiteMethods.getInstance().getNotificationList(id));
+        
+    }
+    private void jListClientsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClientsValueChanged
+        try {
+            String client = jListClients.getSelectedValue();
+            String[] dataClient = client.split("\\) ");
+            Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
+            System.out.println("id cliente = " +Methods.getInstance().clientId  );
+            loadClientNotifiers(Methods.getInstance().clientId);
+            
+        } catch (Exception e) {
+            
+        }
+        
+    }//GEN-LAST:event_jListClientsValueChanged
+
+    private void jListNotifyValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNotifyValueChanged
+        String clientNotify = jListNotify.getSelectedValue();
+        String[] dataClientNotify = clientNotify.split("\\) ");
+        Methods.getInstance().nameNotify = Integer.parseInt(dataClientNotify[0]);
+        System.out.println("id notificado = "  + Methods.getInstance().nameNotify); 
+    }//GEN-LAST:event_jListNotifyValueChanged
     
     /**
      * @param args the command line arguments
@@ -1556,7 +1703,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogin2;
     private javax.swing.JButton jButtonLogin3;
     private javax.swing.JButton jButtonLogout;
-    private javax.swing.JComboBox<String> jComboBoxAltura;
+    private javax.swing.JComboBox<String> jComboBoxSize;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -1608,16 +1755,18 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JList<String> jListClients;
     private javax.swing.JList<String> jListCountryDestination1;
     private javax.swing.JList<String> jListCountryOrigin;
+    private javax.swing.JList<String> jListDescription;
     private javax.swing.JList<String> jListDinamic;
     private javax.swing.JList<String> jListInputPort;
     private javax.swing.JList<String> jListNotify;
-    private javax.swing.JList<String> jListPlant;
     private javax.swing.JList<String> jListPortDeparture;
     private javax.swing.JList<String> jListPriceUnit;
     private javax.swing.JPanel jPanelAditionalData;
     private javax.swing.JPanel jPanelBill;
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelProducts;
+    private javax.swing.JRadioButton jRadioButtonClient;
+    private javax.swing.JRadioButton jRadioButtonNotify;
     private javax.swing.JRadioButton jRadioCountryOrigen;
     private javax.swing.JRadioButton jRadioDestinationCountry;
     private javax.swing.JRadioButton jRadioInPort;

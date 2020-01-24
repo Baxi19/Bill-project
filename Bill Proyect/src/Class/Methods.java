@@ -21,8 +21,8 @@ public class Methods {
     public ArrayList<Item> cart = new ArrayList<Item>();
     public int idBill;
     public String date;
-    public String clientName;
-    public String nameNotify;
+    public int clientId;
+    public int nameNotify;
     
     
     /*------------------------------------------------------------------------*/
