@@ -102,7 +102,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jTextFieldDisscount = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jLabelTotal = new javax.swing.JLabel();
+        totalWithoutDisscount = new javax.swing.JLabel();
         EntryTotal = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jScrollCart = new javax.swing.JScrollPane();
@@ -755,6 +755,19 @@ public class W_Menu extends javax.swing.JFrame {
         subtotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         subtotal.setForeground(new java.awt.Color(255, 255, 255));
         subtotal.setText("0.0");
+        subtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                subtotalCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                subtotalInputMethodTextChanged(evt);
+            }
+        });
+        subtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                subtotalPropertyChange(evt);
+            }
+        });
         jPanelProducts.add(subtotal);
         subtotal.setBounds(280, 550, 140, 22);
 
@@ -788,10 +801,15 @@ public class W_Menu extends javax.swing.JFrame {
 
         jTextFieldDisscount.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jTextFieldDisscount.setForeground(new java.awt.Color(255, 0, 0));
+        jTextFieldDisscount.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldDisscount.setText("0");
         jTextFieldDisscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldDisscount.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextFieldDisscount.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextFieldDisscountCaretUpdate(evt);
+            }
+        });
         jTextFieldDisscount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDisscountActionPerformed(evt);
@@ -807,12 +825,12 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel33);
         jLabel33.setBounds(140, 630, 60, 30);
 
-        jLabelTotal.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelTotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelTotal.setForeground(new java.awt.Color(51, 204, 0));
-        jLabelTotal.setText("0.0");
-        jPanelProducts.add(jLabelTotal);
-        jLabelTotal.setBounds(280, 630, 130, 22);
+        totalWithoutDisscount.setBackground(new java.awt.Color(255, 255, 255));
+        totalWithoutDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        totalWithoutDisscount.setForeground(new java.awt.Color(255, 255, 255));
+        totalWithoutDisscount.setText("0.0");
+        jPanelProducts.add(totalWithoutDisscount);
+        totalWithoutDisscount.setBounds(280, 630, 140, 22);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1551,7 +1569,8 @@ public class W_Menu extends javax.swing.JFrame {
             total = (price) * (quant);
             System.out.println("Total calculado = "+total);
         }
-       
+       String price = Methods.getInstance().df2.format(total);
+       Double.parseDouble(price);
        return total;
     }
     public void cleanSpaces(){
@@ -1559,7 +1578,7 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setText("");
         jComboBoxSize.setSelectedIndex(0);
         jListPriceUnit.setModel(new DefaultListModel<>());
-        jLabelTotal.setText("0.0");
+        totalWithoutDisscount.setText("0.0");
         
     }        
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
@@ -1589,7 +1608,9 @@ public class W_Menu extends javax.swing.JFrame {
                             jListCartInfo.setModel(Methods.getInstance().getCartInfo());
                             JOptionPane.showMessageDialog(this, "Datos agregados correctamente!");
                             cleanSpaces();
+                            calculateDisscount();
                             jLabelQuantityItems.setText(Methods.getInstance().cart.size()+"");
+                            
                         }else{
                             JOptionPane.showMessageDialog(this, "Por favor seleccione el precio unitario");
                         }
@@ -1682,6 +1703,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
         subtotal.setText(calculateSubTotal()+"");
         precioItem.setText(calculatePriceItem()+"");
+        calculateDisscount();
     }//GEN-LAST:event_jListPriceUnitValueChanged
    
     private void jListClientsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClientsValueChanged
@@ -1708,7 +1730,51 @@ public class W_Menu extends javax.swing.JFrame {
     private void jListCartInfoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListCartInfoValueChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jListCartInfoValueChanged
+
+    private void subtotalCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_subtotalCaretPositionChanged
+        
+        
+    }//GEN-LAST:event_subtotalCaretPositionChanged
+
+    private void subtotalInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_subtotalInputMethodTextChanged
+        
+        
+    }//GEN-LAST:event_subtotalInputMethodTextChanged
+
+    private void subtotalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_subtotalPropertyChange
+        
+
+    }//GEN-LAST:event_subtotalPropertyChange
+
+    private void jTextFieldDisscountCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldDisscountCaretUpdate
+        calculateDisscount();
+    }//GEN-LAST:event_jTextFieldDisscountCaretUpdate
     
+    public void calculateDisscount(){
+        double subTotal = Double.parseDouble(subtotal.getText());
+        if(Methods.getInstance().isNumeric(jTextFieldDisscount.getText())){
+            if(!jTextFieldDisscount.getText().equals("0")){
+                double discount = (Double.parseDouble(jTextFieldDisscount.getText()));
+                System.out.println("Descuento ="  + discount);
+                double t = (subTotal-discount);
+                System.out.println("Total =" +t);
+                totalWithoutDisscount.setText(t+"");
+            }else{
+                double discount = 0;
+                System.out.println("Descuento ="  + discount);
+                double t = (subTotal-discount);
+                System.out.println("Total =" +t);
+                totalWithoutDisscount.setText(t+"");
+            }
+            
+        }else{
+                double discount = 0;
+                System.out.println("Descuento ="  + discount);
+                double t = (subTotal-discount);
+                System.out.println("Total =" +t);
+                totalWithoutDisscount.setText(t+"");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -1833,7 +1899,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelQuantityItems;
-    private javax.swing.JLabel jLabelTotal;
     private javax.swing.JList<String> jListCartInfo;
     private javax.swing.JList<String> jListClients;
     private javax.swing.JList<String> jListCountryDestination1;
@@ -1876,5 +1941,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSpec;
     private javax.swing.JLabel precioItem;
     private javax.swing.JLabel subtotal;
+    private javax.swing.JLabel totalWithoutDisscount;
     // End of variables declaration//GEN-END:variables
 }

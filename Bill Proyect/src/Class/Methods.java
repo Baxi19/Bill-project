@@ -38,6 +38,7 @@ public class Methods {
     public String boss = "Carlos Manuel Araya Castro, Plantas Hnos Araya";
     public String info1 = "Ced: 2-356-370 Cod.Exportador: FR4 Telefax: +506 2468 8037 Celular :+506 8340 4813";
     public String info2 = "Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos";
+    
     /*------------------------------------------------------------------------*/
     //Singleton
     public static Methods getInstance() {
@@ -95,7 +96,6 @@ public class Methods {
         } else {
             return false;
         }
-
     }
     /*------------------------------------------------------------------------*/
     public Document generatePDF(){
