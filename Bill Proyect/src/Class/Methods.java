@@ -5,19 +5,18 @@
  */
 package Class;
 
-import com.itextpdf.text.BaseColor;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,7 +28,7 @@ public class Methods {
     /*VARS*/
     public static Methods instance = null;
     public ArrayList<Item> cart = new ArrayList<Item>();
-    public int idBill;
+    public String idBill;
     public String date;
     public int clientId;
     public int idNotify;
@@ -107,8 +106,6 @@ public class Methods {
             /*Abrimos el documento*/
             document.open();
             
-            
-            
             /*Se agregan los parrafos que van a la derecha*/
             Paragraph p1 = new Paragraph("Factura #:                          ");
             p1.setAlignment(Element.ALIGN_RIGHT);
@@ -132,4 +129,19 @@ public class Methods {
         return document;
     }
     /*------------------------------------------------------------------------*/
+    public DefaultListModel getCartInfo(){
+        DefaultListModel model = new DefaultListModel();
+        for (int i = 0; i < cart.size(); i++) {
+            model.addElement("---------------------------------------");
+            model.addElement("Item #: "+ i );
+            model.addElement("Cajas : "+cart.get(i).getBox());
+            model.addElement("Cantidad: "+cart.get(i).getQuantity());
+            model.addElement("Tipo: "+cart.get(i).getDescription());
+            model.addElement("Spec: "+cart.get(i).getSpec());
+            model.addElement("Tamaño: "+cart.get(i).getSize());
+            model.addElement("Precio U: "+cart.get(i).getPriceUnit());
+            model.addElement("Total: "+cart.get(i).getTotal());
+        }
+        return model;
+    }
 }

@@ -201,12 +201,18 @@ public class CreatePDF {
             cell16.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell16.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            PdfPCell cell17 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getExporte(), lightblack2Font));
+            PdfPCell cell20 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getDireccion(), lightblack2Font));
+            cell20.setBorderColor(BaseColor.WHITE);
+            cell20.setPaddingLeft(10);
+            cell20.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell20.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+          /*  PdfPCell cell17 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getExporte(), lightblack2Font));
             cell17.setBorderColor(BaseColor.WHITE);
             cell17.setPaddingLeft(10);
             cell17.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell17.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            
+            */
             
             PdfPCell cell18 = new PdfPCell(new Paragraph("Teléfono :", lightblack3Font));
             cell18.setBorderColor(BaseColor.WHITE);
@@ -220,11 +226,12 @@ public class CreatePDF {
             cell19.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell19.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            PdfPCell cell20 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getDireccion(), lightblack2Font));
-            cell20.setBorderColor(BaseColor.WHITE);
-            cell20.setPaddingLeft(10);
-            cell20.setHorizontalAlignment(Element.ALIGN_LEFT);
-            cell20.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            PdfPCell cell23 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getTelefono(), lightblack2Font));
+            cell23.setBorderColor(BaseColor.WHITE);
+            cell23.setPaddingLeft(10);
+            cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell23.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
             
             
             PdfPCell cell21 = new PdfPCell(new Paragraph("Email :", lightblack3Font));
@@ -239,11 +246,7 @@ public class CreatePDF {
             cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell22.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            PdfPCell cell23 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getTelefono(), lightblack2Font));
-            cell23.setBorderColor(BaseColor.WHITE);
-            cell23.setPaddingLeft(10);
-            cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
-            cell23.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
             
             PdfPCell cell24 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getEmail(), lightblack2Font));
             cell24.setBorderColor(BaseColor.WHITE);
@@ -259,15 +262,12 @@ public class CreatePDF {
             table3.addCell(cell14);
             table3.addCell(cell15);
             table3.addCell(cell16);
-            table3.addCell(cell17);
+            table3.addCell(cell20);
             table3.addCell(cell18);
             table3.addCell(cell19);
-            table3.addCell(cell20);
+            table3.addCell(cell23);
             table3.addCell(cell21);
             table3.addCell(cell22);
-            table3.addCell(cell23);
-            table3.addCell(cell1);
-            table3.addCell(cell1);
             table3.addCell(cell24);
             document.add(table3);
             

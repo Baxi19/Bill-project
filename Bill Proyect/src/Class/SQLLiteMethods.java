@@ -143,7 +143,7 @@ public class SQLLiteMethods {
     }
     
     public void getNotifyTo(int idNotify){
-        String query = "SELECT * FROM Notificar_a WHERE ID = " + idNotify;
+        String query = "SELECT * FROM Notificar_a WHERE Notifica_a = " + idNotify;
         try (
             Connection conn = this.connect();
             Statement stmt  = conn.createStatement();

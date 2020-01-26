@@ -86,6 +86,12 @@ public class Item {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "\nCajas: " + box + "\nCantidad: " + quantity + 
+                "\nDescripción: " + description + "\nSpec: " + spec + "\nTamaño: " + size + "\nPrecio unitario: " + priceUnit + "\nTotal de Item: " + total;
+    }
     
     
 }

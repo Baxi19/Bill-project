@@ -55,12 +55,9 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldBillNumber = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jDateChooser = new com.toedter.calendar.JDateChooser();
-        jLabel22 = new javax.swing.JLabel();
         jScrollClients = new javax.swing.JScrollPane();
         jListClients = new javax.swing.JList<>();
         jLabel42 = new javax.swing.JLabel();
-        jScrollClients1 = new javax.swing.JScrollPane();
-        jListNotify = new javax.swing.JList<>();
         jLabel21 = new javax.swing.JLabel();
         jRadioButtonClient = new javax.swing.JRadioButton();
         jRadioButtonNotify = new javax.swing.JRadioButton();
@@ -75,7 +72,6 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanelProducts = new javax.swing.JPanel();
         jButtonClose4 = new javax.swing.JButton();
-        jLabel43 = new javax.swing.JLabel();
         jLabelQuantityItems = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextFieldBox = new javax.swing.JTextField();
@@ -89,20 +85,28 @@ public class W_Menu extends javax.swing.JFrame {
         jListDescription = new javax.swing.JList<>();
         jLabel31 = new javax.swing.JLabel();
         jComboBoxSize = new javax.swing.JComboBox<>();
-        Entry2 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jScrollUnityPrice = new javax.swing.JScrollPane();
         jListPriceUnit = new javax.swing.JList<>();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabelTotal = new javax.swing.JLabel();
-        EntryTotal = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jButtonConfirmBill2 = new javax.swing.JButton();
         jButtonConfirmBill3 = new javax.swing.JButton();
         EntrySettings = new javax.swing.JLabel();
+        Entry2 = new javax.swing.JLabel();
+        subtotal = new javax.swing.JLabel();
+        precioItem = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jTextFieldDisscount = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabelTotal = new javax.swing.JLabel();
+        EntryTotal = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jScrollCart = new javax.swing.JScrollPane();
+        jListCartInfo = new javax.swing.JList<>();
         Entry3 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jButtonConfirmBill6 = new javax.swing.JButton();
@@ -364,13 +368,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelBill.add(jDateChooser);
         jDateChooser.setBounds(470, 290, 160, 30);
 
-        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Notificar a");
-        jPanelBill.add(jLabel22);
-        jLabel22.setBounds(150, 480, 220, 28);
-
         jListClients.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -384,7 +381,7 @@ public class W_Menu extends javax.swing.JFrame {
         jScrollClients.setViewportView(jListClients);
 
         jPanelBill.add(jScrollClients);
-        jScrollClients.setBounds(150, 410, 230, 60);
+        jScrollClients.setBounds(150, 410, 230, 120);
 
         jLabel42.setBackground(new java.awt.Color(255, 255, 255));
         jLabel42.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -393,27 +390,12 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelBill.add(jLabel42);
         jLabel42.setBounds(150, 370, 230, 28);
 
-        jListNotify.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jListNotify.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListNotifyValueChanged(evt);
-            }
-        });
-        jScrollClients1.setViewportView(jListNotify);
-
-        jPanelBill.add(jScrollClients1);
-        jScrollClients1.setBounds(150, 520, 230, 60);
-
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Configuración de Clientes");
         jPanelBill.add(jLabel21);
-        jLabel21.setBounds(460, 390, 170, 17);
+        jLabel21.setBounds(460, 340, 170, 17);
 
         jRadioButtonClient.setText("Cliente");
         jRadioButtonClient.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -422,7 +404,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jRadioButtonClient);
-        jRadioButtonClient.setBounds(460, 420, 80, 28);
+        jRadioButtonClient.setBounds(460, 370, 80, 28);
 
         jRadioButtonNotify.setText("Notificado");
         jRadioButtonNotify.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -431,21 +413,21 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jRadioButtonNotify);
-        jRadioButtonNotify.setBounds(540, 420, 89, 28);
+        jRadioButtonNotify.setBounds(540, 370, 89, 28);
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Nuevo");
         jPanelBill.add(jLabel35);
-        jLabel35.setBounds(480, 460, 70, 30);
+        jLabel35.setBounds(480, 410, 70, 30);
 
         jLabel36.setBackground(new java.awt.Color(255, 255, 255));
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Eliminar");
         jPanelBill.add(jLabel36);
-        jLabel36.setBounds(480, 520, 70, 30);
+        jLabel36.setBounds(480, 470, 70, 30);
 
         jButtonConfirmBill4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete1.png"))); // NOI18N
         jButtonConfirmBill4.setBorder(null);
@@ -467,7 +449,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill4);
-        jButtonConfirmBill4.setBounds(560, 510, 40, 40);
+        jButtonConfirmBill4.setBounds(560, 460, 40, 40);
 
         jButtonConfirmBill5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add1.png"))); // NOI18N
         jButtonConfirmBill5.setBorder(null);
@@ -489,15 +471,15 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill5);
-        jButtonConfirmBill5.setBounds(560, 460, 40, 40);
+        jButtonConfirmBill5.setBounds(560, 410, 40, 40);
 
         CD_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
         jPanelBill.add(CD_Cliente);
-        CD_Cliente.setBounds(440, 380, 200, 200);
+        CD_Cliente.setBounds(440, 330, 200, 200);
 
         Border.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanelBill.add(Border);
-        Border.setBounds(110, 170, 580, 440);
+        Border.setBounds(110, 170, 580, 400);
 
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -569,19 +551,12 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jButtonClose4);
         jButtonClose4.setBounds(710, 40, 50, 50);
 
-        jLabel43.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel43.setText("Items Agregados:");
-        jPanelProducts.add(jLabel43);
-        jLabel43.setBounds(250, 60, 180, 28);
-
         jLabelQuantityItems.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelQuantityItems.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabelQuantityItems.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelQuantityItems.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelQuantityItems.setForeground(new java.awt.Color(255, 255, 255));
         jLabelQuantityItems.setText("0");
         jPanelProducts.add(jLabelQuantityItems);
-        jLabelQuantityItems.setBounds(440, 60, 110, 28);
+        jLabelQuantityItems.setBounds(600, 490, 40, 22);
 
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -601,14 +576,14 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jTextFieldBox);
-        jTextFieldBox.setBounds(450, 110, 160, 30);
+        jTextFieldBox.setBounds(450, 110, 190, 30);
 
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
         jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Unidades");
         jPanelProducts.add(jLabel25);
-        jLabel25.setBounds(130, 160, 210, 28);
+        jLabel25.setBounds(130, 150, 210, 28);
 
         jTextFieldQuantity.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldQuantity.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -616,14 +591,14 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanelProducts.add(jTextFieldQuantity);
-        jTextFieldQuantity.setBounds(450, 160, 160, 30);
+        jTextFieldQuantity.setBounds(450, 150, 190, 30);
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Spec");
         jPanelProducts.add(jLabel28);
-        jLabel28.setBounds(130, 210, 210, 28);
+        jLabel28.setBounds(130, 190, 210, 28);
 
         jTextFieldSpec.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldSpec.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -637,18 +612,18 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jTextFieldSpec);
-        jTextFieldSpec.setBounds(450, 210, 160, 30);
+        jTextFieldSpec.setBounds(450, 190, 190, 30);
 
         Entry1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jPanelProducts.add(Entry1);
-        Entry1.setBounds(100, 90, 540, 180);
+        Entry1.setBounds(100, 90, 560, 150);
 
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Descripción");
         jPanelProducts.add(jLabel27);
-        jLabel27.setBounds(130, 290, 220, 28);
+        jLabel27.setBounds(130, 260, 220, 28);
 
         jListDescription.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -663,14 +638,14 @@ public class W_Menu extends javax.swing.JFrame {
         jScrollSize.setViewportView(jListDescription);
 
         jPanelProducts.add(jScrollSize);
-        jScrollSize.setBounds(130, 320, 220, 100);
+        jScrollSize.setBounds(130, 290, 210, 60);
 
         jLabel31.setBackground(new java.awt.Color(255, 255, 255));
         jLabel31.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Altura");
         jPanelProducts.add(jLabel31);
-        jLabel31.setBounds(450, 290, 130, 28);
+        jLabel31.setBounds(450, 260, 130, 28);
 
         jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4", "6", "9", "12", "18", "24", "30", "36", "48" }));
         jComboBoxSize.addItemListener(new java.awt.event.ItemListener() {
@@ -679,18 +654,14 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jComboBoxSize);
-        jComboBoxSize.setBounds(450, 320, 160, 26);
-
-        Entry2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanelProducts.add(Entry2);
-        Entry2.setBounds(100, 280, 540, 170);
+        jComboBoxSize.setBounds(450, 290, 160, 26);
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Precio Unitario");
         jPanelProducts.add(jLabel30);
-        jLabel30.setBounds(130, 470, 220, 28);
+        jLabel30.setBounds(130, 350, 170, 28);
 
         jListPriceUnit.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "1", "2", "3", "4", "5" };
@@ -705,56 +676,28 @@ public class W_Menu extends javax.swing.JFrame {
         jScrollUnityPrice.setViewportView(jListPriceUnit);
 
         jPanelProducts.add(jScrollUnityPrice);
-        jScrollUnityPrice.setBounds(130, 500, 220, 80);
-
-        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("Total");
-        jPanelProducts.add(jLabel33);
-        jLabel33.setBounds(140, 590, 150, 30);
-
-        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("$");
-        jPanelProducts.add(jLabel34);
-        jLabel34.setBounds(140, 630, 30, 28);
-
-        jLabelTotal.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTotal.setText("00000000000");
-        jPanelProducts.add(jLabelTotal);
-        jLabelTotal.setBounds(170, 630, 180, 28);
-
-        EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
-        EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        EntryTotal.setForeground(new java.awt.Color(255, 255, 255));
-        EntryTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanelProducts.add(EntryTotal);
-        EntryTotal.setBounds(130, 590, 220, 70);
+        jScrollUnityPrice.setBounds(130, 380, 210, 40);
 
         jLabel29.setBackground(new java.awt.Color(255, 255, 255));
         jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Configuración de Precio");
         jPanelProducts.add(jLabel29);
-        jLabel29.setBounds(460, 490, 140, 16);
+        jLabel29.setBounds(460, 330, 140, 16);
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Nuevo");
         jPanelProducts.add(jLabel32);
-        jLabel32.setBounds(470, 540, 70, 30);
+        jLabel32.setBounds(470, 360, 70, 30);
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Eliminar");
         jPanelProducts.add(jLabel26);
-        jLabel26.setBounds(470, 600, 70, 30);
+        jLabel26.setBounds(470, 410, 70, 30);
 
         jButtonConfirmBill2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add1.png"))); // NOI18N
         jButtonConfirmBill2.setBorder(null);
@@ -776,7 +719,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jButtonConfirmBill2);
-        jButtonConfirmBill2.setBounds(540, 530, 50, 50);
+        jButtonConfirmBill2.setBounds(540, 350, 50, 50);
 
         jButtonConfirmBill3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete1.png"))); // NOI18N
         jButtonConfirmBill3.setBorder(null);
@@ -798,15 +741,111 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jButtonConfirmBill3);
-        jButtonConfirmBill3.setBounds(540, 590, 50, 50);
+        jButtonConfirmBill3.setBounds(540, 400, 50, 50);
 
         EntrySettings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
         jPanelProducts.add(EntrySettings);
-        EntrySettings.setBounds(450, 480, 160, 180);
+        EntrySettings.setBounds(450, 320, 160, 140);
+
+        Entry2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jPanelProducts.add(Entry2);
+        Entry2.setBounds(100, 250, 560, 220);
+
+        subtotal.setBackground(new java.awt.Color(255, 255, 255));
+        subtotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        subtotal.setForeground(new java.awt.Color(255, 255, 255));
+        subtotal.setText("0.0");
+        jPanelProducts.add(subtotal);
+        subtotal.setBounds(280, 550, 140, 22);
+
+        precioItem.setBackground(new java.awt.Color(255, 255, 255));
+        precioItem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        precioItem.setForeground(new java.awt.Color(255, 255, 255));
+        precioItem.setText("0.0");
+        jPanelProducts.add(precioItem);
+        precioItem.setBounds(280, 510, 140, 22);
+
+        jLabel62.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel62.setText("Items agregados:");
+        jPanelProducts.add(jLabel62);
+        jLabel62.setBounds(450, 490, 140, 22);
+
+        jLabel46.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel46.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setText("Subtotal Pedido:");
+        jPanelProducts.add(jLabel46);
+        jLabel46.setBounds(140, 550, 140, 22);
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("Descuento:");
+        jPanelProducts.add(jLabel34);
+        jLabel34.setBounds(140, 590, 90, 22);
+
+        jTextFieldDisscount.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTextFieldDisscount.setForeground(new java.awt.Color(255, 0, 0));
+        jTextFieldDisscount.setText("0");
+        jTextFieldDisscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        jTextFieldDisscount.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextFieldDisscount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDisscountActionPerformed(evt);
+            }
+        });
+        jPanelProducts.add(jTextFieldDisscount);
+        jTextFieldDisscount.setBounds(280, 590, 70, 30);
+
+        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("Total:");
+        jPanelProducts.add(jLabel33);
+        jLabel33.setBounds(140, 630, 60, 30);
+
+        jLabelTotal.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelTotal.setForeground(new java.awt.Color(51, 204, 0));
+        jLabelTotal.setText("0.0");
+        jPanelProducts.add(jLabelTotal);
+        jLabelTotal.setBounds(280, 630, 130, 22);
+
+        EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
+        EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        EntryTotal.setForeground(new java.awt.Color(255, 255, 255));
+        EntryTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelProducts.add(EntryTotal);
+        EntryTotal.setBounds(130, 490, 290, 170);
+
+        jLabel63.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel63.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel63.setText("Precio del Item:");
+        jPanelProducts.add(jLabel63);
+        jLabel63.setBounds(140, 510, 140, 22);
+
+        jListCartInfo.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jListCartInfo.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListCartInfoValueChanged(evt);
+            }
+        });
+        jScrollCart.setViewportView(jListCartInfo);
+
+        jPanelProducts.add(jScrollCart);
+        jScrollCart.setBounds(450, 520, 200, 140);
 
         Entry3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jPanelProducts.add(Entry3);
-        Entry3.setBounds(100, 460, 540, 210);
+        Entry3.setBounds(100, 480, 560, 190);
 
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -839,7 +878,7 @@ public class W_Menu extends javax.swing.JFrame {
 
         Entry4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanelProducts.add(Entry4);
-        Entry4.setBounds(60, 50, 620, 690);
+        Entry4.setBounds(60, 50, 640, 690);
 
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1380,30 +1419,22 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonConfirmBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBillMouseClicked
         try {
             if (!jTextFieldBillNumber.getText().isEmpty()){
-                int num = Integer.parseInt(jTextFieldBillNumber.getText());
                 if (jDateChooser.getDate() != null) {
                     if(!jListClients.isSelectionEmpty()){
-                        if(!jListNotify.isSelectionEmpty()){
-                            /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
-                            Methods.getInstance().idBill = num;
-                            Methods.getInstance().date = (
-                                            (jDateChooser.getDate().getYear() + 1900) + "-"+
-                                            (String.format("%02d",(jDateChooser.getDate().getMonth() + 1)))+"-"+
-                                            (String.format("%02d",(jDateChooser.getDate().getDate()))));
-                            
-                            
-                            System.out.println("************************************");
-                            System.out.println("Numero Factura = " + jTextFieldBillNumber.getText());
-                            System.out.println("Fecha = " + Methods.getInstance().date);
-                            System.out.println("Id Cliente = " + Methods.getInstance().clientId);
-                            System.out.println("Id Notificar a = " + Methods.getInstance().idNotify);
-                            
-                            /*Mostramos el siguiente formulario*/
-                            closePanels();
-                            changeSize(jPanelProducts);
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Por favor seleccione a quien notificar");
-                        }
+                        /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
+                        Methods.getInstance().idBill = jTextFieldBillNumber.getText();
+                        Methods.getInstance().date = (
+                                        (jDateChooser.getDate().getYear() + 1900) + "-"+
+                                        (String.format("%02d",(jDateChooser.getDate().getMonth() + 1)))+"-"+
+                                        (String.format("%02d",(jDateChooser.getDate().getDate()))));
+                        System.out.println("************************************");
+                        System.out.println("Numero Factura = " + jTextFieldBillNumber.getText());
+                        System.out.println("Fecha = " + Methods.getInstance().date);
+                        System.out.println("Id Cliente = " + Methods.getInstance().clientId);
+                        /*Mostramos el siguiente formulario*/
+                        closePanels();
+                        changeSize(jPanelProducts);
+                        
                     }else{
                         JOptionPane.showMessageDialog(this, "Por favor seleccione un cliente");
                     }
@@ -1505,9 +1536,15 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
-    
-    public double calculateTotal(){
-        double total = -1;
+    public double calculateSubTotal(){
+        double sum = 0;
+        for (Item item : Methods.getInstance().cart) {
+            sum += item.getTotal();
+        }
+        return sum;
+    }
+    public double calculatePriceItem(){
+        double total = 0;
         if(!jListPriceUnit.isSelectionEmpty()){
             double price = (Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
             double quant = Double.parseDouble(jTextFieldQuantity.getText().toString());
@@ -1547,8 +1584,9 @@ public class W_Menu extends javax.swing.JFrame {
                             i.setSize(Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
                             String price = Methods.getInstance().df2.format(Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
                             i.setPriceUnit(price);
-                            i.setTotal(calculateTotal());
+                            i.setTotal(calculatePriceItem());
                             Methods.getInstance().cart.add(i);
+                            jListCartInfo.setModel(Methods.getInstance().getCartInfo());
                             JOptionPane.showMessageDialog(this, "Datos agregados correctamente!");
                             cleanSpaces();
                             jLabelQuantityItems.setText(Methods.getInstance().cart.size()+"");
@@ -1642,35 +1680,34 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
 
     private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
-        jLabelTotal.setText(calculateTotal()+"");
-        
+        subtotal.setText(calculateSubTotal()+"");
+        precioItem.setText(calculatePriceItem()+"");
     }//GEN-LAST:event_jListPriceUnitValueChanged
-    public void loadClientNotifiers(int id){
-        jListNotify.setModel(SQLLiteMethods.getInstance().getNotificationList(id));
-        
-    }
+   
     private void jListClientsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClientsValueChanged
         try {
             String client = jListClients.getSelectedValue();
             String[] dataClient = client.split("\\) ");
             Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
-            loadClientNotifiers(Methods.getInstance().clientId);
+            SQLLiteMethods.getInstance().getNotifyTo(Integer.parseInt(dataClient[0]));
+            
         } catch (Exception e) {
             
         }
         
     }//GEN-LAST:event_jListClientsValueChanged
 
-    private void jListNotifyValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNotifyValueChanged
-        String clientNotify = jListNotify.getSelectedValue();
-        String[] dataClientNotify = clientNotify.split("\\) ");
-        Methods.getInstance().idNotify = Integer.parseInt(dataClientNotify[0]); 
-       
-    }//GEN-LAST:event_jListNotifyValueChanged
-
     private void jListDescriptionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDescriptionValueChanged
         
     }//GEN-LAST:event_jListDescriptionValueChanged
+
+    private void jTextFieldDisscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDisscountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDisscountActionPerformed
+
+    private void jListCartInfoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListCartInfoValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jListCartInfoValueChanged
     
     /**
      * @param args the command line arguments
@@ -1755,7 +1792,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1778,9 +1814,9 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -1793,16 +1829,18 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelQuantityItems;
     private javax.swing.JLabel jLabelTotal;
+    private javax.swing.JList<String> jListCartInfo;
     private javax.swing.JList<String> jListClients;
     private javax.swing.JList<String> jListCountryDestination1;
     private javax.swing.JList<String> jListCountryOrigin;
     private javax.swing.JList<String> jListDescription;
     private javax.swing.JList<String> jListDinamic;
     private javax.swing.JList<String> jListInputPort;
-    private javax.swing.JList<String> jListNotify;
     private javax.swing.JList<String> jListPortDeparture;
     private javax.swing.JList<String> jListPriceUnit;
     private javax.swing.JPanel jPanelAditionalData;
@@ -1815,8 +1853,8 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioDestinationCountry;
     private javax.swing.JRadioButton jRadioInPort;
     private javax.swing.JRadioButton jRadioOutPort;
+    private javax.swing.JScrollPane jScrollCart;
     private javax.swing.JScrollPane jScrollClients;
-    private javax.swing.JScrollPane jScrollClients1;
     private javax.swing.JScrollPane jScrollSize;
     private javax.swing.JScrollPane jScrollUnityPrice;
     private javax.swing.JScrollPane jScrollUnityPrice1;
@@ -1828,6 +1866,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldBooking;
     private javax.swing.JTextField jTextFieldBox;
     private javax.swing.JTextField jTextFieldContainer;
+    private javax.swing.JTextField jTextFieldDisscount;
     private javax.swing.JTextField jTextFieldGrossWeight;
     private javax.swing.JTextField jTextFieldLabel;
     private javax.swing.JTextField jTextFieldNetWeight;
@@ -1835,5 +1874,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldShip;
     private javax.swing.JTextField jTextFieldShipment;
     private javax.swing.JTextField jTextFieldSpec;
+    private javax.swing.JLabel precioItem;
+    private javax.swing.JLabel subtotal;
     // End of variables declaration//GEN-END:variables
 }
