@@ -36,7 +36,6 @@ public class CreatePDF {
     }
     /*------------------------------------------------------------------------*/
     public void newPDF(){
-        
         /*Colores*/
         com.itextpdf.text.Font redFont = FontFactory.getFont("Times New Roman", 10, Font.BOLD, new CMYKColor(0, 255, 0, 0));
         com.itextpdf.text.Font blackFont = FontFactory.getFont("Times New Roman", 14, Font.BOLD, new CMYKColor(255, 255, 255, 0));
@@ -44,6 +43,7 @@ public class CreatePDF {
         com.itextpdf.text.Font black2Font = FontFactory.getFont("Times New Roman", 11, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack2Font = FontFactory.getFont("Times New Roman", 10, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack3Font = FontFactory.getFont("Times New Roman", 10, Font.BOLD,new CMYKColor(255, 255, 255, 0));
+        com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 10, Font.BOLD, new CMYKColor(255, 255, 255, 0));
         BaseColor greenFont = new BaseColor(95,158,160); 
         /*Creamos el documento*/
         Document document = new Document();
@@ -52,7 +52,6 @@ public class CreatePDF {
         
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
         
-        /*--------------------------------------------------------------------*/
         
             /*--------------------------------------------------------------------*/
             document.open();
@@ -207,13 +206,6 @@ public class CreatePDF {
             cell20.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell20.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-          /*  PdfPCell cell17 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getExporte(), lightblack2Font));
-            cell17.setBorderColor(BaseColor.WHITE);
-            cell17.setPaddingLeft(10);
-            cell17.setHorizontalAlignment(Element.ALIGN_LEFT);
-            cell17.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            */
-            
             PdfPCell cell18 = new PdfPCell(new Paragraph("Teléfono :", lightblack3Font));
             cell18.setBorderColor(BaseColor.WHITE);
             cell18.setPaddingLeft(10);
@@ -328,9 +320,117 @@ public class CreatePDF {
                 tableItems.addCell(item.getPriceUnit()+"");
                 tableItems.addCell(item.getTotal()+"");
             }
-            table.setHorizontalAlignment(Element.ALIGN_LEFT);
+            //tableItems.setHorizontalAlignment(Element.ALIGN_LEFT);
             document.add(tableItems);
+            /*--------------------------------------------------------------------*/
+            /*Sum items*/
+            PdfPTable table5 = new PdfPTable(7); // number of columns.
+            table5.setWidthPercentage(86); //Width %
+            table5.setSpacingBefore(7f); //Space before table
+            table5.setSpacingAfter(7f); //Space after table
+            //Set Column widths
+           
+            float[] columnWidths5 = {3f,3f,8f,0f,5f,1f,3f};
+            table5.setWidths(columnWidths5);
             
+            PdfPCell cell_10 = new PdfPCell(new Phrase(Methods.getInstance().totalBox+"", black));
+            cell_10.setBorderColor(BaseColor.WHITE);
+            cell_10.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_10.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell_11 = new PdfPCell(new Phrase(Methods.getInstance().totalQuantity+"", black));
+            cell_11.setBorderColor(BaseColor.WHITE);
+            cell_11.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_11.setVerticalAlignment(Element.ALIGN_MIDDLE);
+             
+            PdfPCell cell_12 = new PdfPCell(new Phrase(Methods.getInstance().plants+"", black));
+            cell_12.setBorderColor(BaseColor.WHITE);
+            cell_12.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_12.setVerticalAlignment(Element.ALIGN_MIDDLE);
+             
+            PdfPCell cell_13 = new PdfPCell(new Phrase("Subtotal:", black));
+            cell_13.setBorderColor(BaseColor.WHITE);
+            cell_13.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_13.setVerticalAlignment(Element.ALIGN_MIDDLE);
+             
+            PdfPCell cell_14 = new PdfPCell(new Phrase(Methods.getInstance().subTotal+"", black));
+            cell_14.setBorderColor(BaseColor.WHITE);
+            cell_14.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell_14.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell_15 = new PdfPCell(new Phrase("Costo embarque:", black));
+            cell_15.setBorderColor(BaseColor.WHITE);
+            cell_15.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_15.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            if(Methods.getInstance().embarque == null){
+                Methods.getInstance().embarque = 0.0;
+            }
+            PdfPCell cell_16 = new PdfPCell(new Phrase(Methods.getInstance().embarque+"", black));
+            cell_16.setBorderColor(BaseColor.WHITE);
+            cell_16.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell_16.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell_17 = new PdfPCell(new Phrase("Descuento:", black));
+            cell_17.setBorderColor(BaseColor.WHITE);
+            cell_17.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_17.setVerticalAlignment(Element.ALIGN_MIDDLE);
+             
+            PdfPCell cell_18 = new PdfPCell(new Phrase(Methods.getInstance().disccount+ "", black));
+            cell_18.setBorderColor(BaseColor.WHITE);
+            cell_18.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell_18.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell_19 = new PdfPCell(new Phrase("Total:", black));
+            cell_19.setBorderColor(BaseColor.WHITE);
+            cell_19.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell_19.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String aux = Methods.getInstance().df2.format(Double.parseDouble(Methods.getInstance().total+""));
+            
+            PdfPCell cell_20 = new PdfPCell(new Phrase(Double.parseDouble(aux)+ "", black));
+            cell_20.setBorderColor(BaseColor.WHITE);
+            cell_20.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell_20.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cel = new PdfPCell(new Paragraph(" $ ", black));
+            cel.setBorderColor(BaseColor.WHITE);
+            cel.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cel.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            table5.addCell(cell_10);
+            table5.addCell(cell_11);
+            table5.addCell(cell_12);
+            table5.addCell(cell1);
+            table5.addCell(cell_13);
+            table5.addCell(cel);
+            table5.addCell(cell_14);
+            
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell_15);
+            table5.addCell(cel);
+            table5.addCell(cell_16);
+            
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell_17);
+            table5.addCell(cel);
+            table5.addCell(cell_18);
+            
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell1);
+            table5.addCell(cell_19);
+            table5.addCell(cel);
+            table5.addCell(cell_20);
+            
+            document.add(table5);
             } catch (DocumentException | FileNotFoundException e) {
         }
             /*--------------------------------------------------------------------*/

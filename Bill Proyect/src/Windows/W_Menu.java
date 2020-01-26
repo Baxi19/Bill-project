@@ -1568,6 +1568,7 @@ public class W_Menu extends javax.swing.JFrame {
             sum += item.getTotal();
         }
         String price = Methods.getInstance().df2.format(sum);
+        Methods.getInstance().subTotal = Double.parseDouble(price);
         return Double.parseDouble(price);
     }
     
@@ -1767,12 +1768,18 @@ public class W_Menu extends javax.swing.JFrame {
                 System.out.println("Descuento ="  + discount);
                 double t = (subTotal-discount);
                 System.out.println("Total =" +t);
+                
+                Methods.getInstance().total = t;
+                Methods.getInstance().disccount = discount;
                 totalWithoutDisscount.setText(t+"");
             }else{
                 double discount = 0;
                 System.out.println("Descuento ="  + discount);
                 double t = (subTotal-discount);
                 System.out.println("Total =" +t);
+                
+                Methods.getInstance().total = t;
+                Methods.getInstance().disccount = discount;
                 totalWithoutDisscount.setText(t+"");
             }
             

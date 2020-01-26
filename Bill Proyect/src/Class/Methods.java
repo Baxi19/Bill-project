@@ -32,6 +32,13 @@ public class Methods {
     public String date;
     public int clientId;
     public int idNotify;
+    public int totalBox;
+    public int totalQuantity;
+    public String plants = "Plantas vivas ornamentales";
+    public Double subTotal;
+    public Double disccount;
+    public Double total;
+    public Double embarque;
     public Client client = new Client();
     public Client clientNotify = new Client();
     public DecimalFormat df2 = new DecimalFormat("#.##");
@@ -130,12 +137,16 @@ public class Methods {
     }
     /*------------------------------------------------------------------------*/
     public DefaultListModel getCartInfo(){
+        totalBox = 0;
+        totalQuantity = 0;
         DefaultListModel model = new DefaultListModel();
         for (int i = 0; i < cart.size(); i++) {
             model.addElement("---------------------------------------");
             model.addElement("Item #: "+ (i+1) );
             model.addElement("Cajas : "+cart.get(i).getBox());
+            totalBox += cart.get(i).getBox();
             model.addElement("Cantidad: "+cart.get(i).getQuantity());
+            totalQuantity += cart.get(i).getQuantity();
             model.addElement("Tipo: "+cart.get(i).getDescription());
             model.addElement("Spec: "+cart.get(i).getSpec());
             model.addElement("Tamaño: "+cart.get(i).getSize());
