@@ -133,7 +133,7 @@ public class Methods {
         DefaultListModel model = new DefaultListModel();
         for (int i = 0; i < cart.size(); i++) {
             model.addElement("---------------------------------------");
-            model.addElement("Item #: "+ i );
+            model.addElement("Item #: "+ (i+1) );
             model.addElement("Cajas : "+cart.get(i).getBox());
             model.addElement("Cantidad: "+cart.get(i).getQuantity());
             model.addElement("Tipo: "+cart.get(i).getDescription());

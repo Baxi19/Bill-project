@@ -8,6 +8,7 @@ package Class;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,12 +70,11 @@ public class SQLLiteMethods {
     }
     
     public boolean deleteClient(int id){
-        String query = "DELETE FROM Clientes WHERE ID = " + id;
+        String query = "UPDATE Clientes SET Activo = 'F' WHERE ID = " + id;
         try {
             Connection conn = connect();
             Statement stmt  = conn.createStatement();
             stmt.executeQuery(query);
-            
             stmt.close();
             conn.close();
             return true;
@@ -85,23 +85,24 @@ public class SQLLiteMethods {
         }
     }
     
-    public boolean addClient(String name, String export, String direction, String telephone){
-        String query = "INSERT INTO Clientes(Cliente, Exporte, Direccion, Telefono) values "
-                + "(" + name + "," + export + "," + direction + "," + telephone +")";
+    public String addClient(String name, String export, String direction, String telephone){
+        String query = "INSERT INTO Clientes(Cliente, Exporte, Direccion, Telefono, Activo) values "
+                + "('" + name  + "' , '" + export + "', '" + direction + "', '" + telephone +"' , 'T')";
         try {
             Connection conn = connect();
-            Statement stmt  = conn.createStatement();
-            stmt.executeQuery(query);
-            return true;
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+            return "Registro realizado con éxito";
         }
-            catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        catch (SQLException e) {
+            return e.getMessage();
+        }  
     }
     
     public DefaultListModel getClientList(){
-        String query = "SELECT * FROM Clientes";
+        String query = "SELECT * FROM Clientes WHERE Activo = 'T'";
         try (Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
@@ -251,4 +252,7 @@ public class SQLLiteMethods {
             return " - ";  // No posee emails registrados en el sistema
         }
     }
+    
+    
+    
 }

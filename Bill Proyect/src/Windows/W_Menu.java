@@ -1529,7 +1529,14 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill4MouseClicked
 
     private void jButtonConfirmBill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4ActionPerformed
-        // TODO add your handling code here:
+        try{
+            SQLLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
+            JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(rootPane, ex.toString());
+        }
+        
     }//GEN-LAST:event_jButtonConfirmBill4ActionPerformed
     public boolean checkFirtsRadioB(){
         if( jRadioButtonClient.isSelected() || jRadioButtonNotify.isSelected()){
@@ -1552,15 +1559,18 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill5MouseClicked
 
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
-        // TODO add your handling code here:
+        W_RegisterClient wr = new W_RegisterClient();
+        wr.show();
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
     public double calculateSubTotal(){
         double sum = 0;
         for (Item item : Methods.getInstance().cart) {
             sum += item.getTotal();
         }
-        return sum;
+        String price = Methods.getInstance().df2.format(sum);
+        return Double.parseDouble(price);
     }
+    
     public double calculatePriceItem(){
         double total = 0;
         if(!jListPriceUnit.isSelectionEmpty()){
@@ -1570,15 +1580,14 @@ public class W_Menu extends javax.swing.JFrame {
             System.out.println("Total calculado = "+total);
         }
        String price = Methods.getInstance().df2.format(total);
-       Double.parseDouble(price);
-       return total;
+       return Double.parseDouble(price);
     }
     public void cleanSpaces(){
         jTextFieldBox.setText("");
         jTextFieldQuantity.setText("");
         jComboBoxSize.setSelectedIndex(0);
         jListPriceUnit.setModel(new DefaultListModel<>());
-        totalWithoutDisscount.setText("0.0");
+        //totalWithoutDisscount.setText("0.0");
         
     }        
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
