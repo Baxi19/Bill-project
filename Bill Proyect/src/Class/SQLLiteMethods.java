@@ -42,6 +42,9 @@ public class SQLLiteMethods {
                 //model.addElement(rs.getDouble("Precio"));
                 model.addElement(rs.getString("Precio"));
             }
+            rs.close();
+            stmt.close();
+            conn.close();
             return model;
         } 
         catch (SQLException e) {
@@ -71,6 +74,9 @@ public class SQLLiteMethods {
             Connection conn = connect();
             Statement stmt  = conn.createStatement();
             stmt.executeQuery(query);
+            
+            stmt.close();
+            conn.close();
             return true;
         }
             catch (SQLException e) {
@@ -105,6 +111,9 @@ public class SQLLiteMethods {
                 String clientName = rs.getString("Cliente");
                 model.addElement(clientId + ") " + clientName);
             }
+            rs.close();
+            stmt.close();
+            conn.close();
             return model;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -113,51 +122,47 @@ public class SQLLiteMethods {
     }
     
     public void getClient(int idBuscado){
-        String query = "SELECT * FROM Clientes";
-        try (
-            
+        String query = "SELECT * FROM Clientes WHERE ID = " + idBuscado;
+        try (          
             Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
             while (rs.next()) {
-                int clientId = rs.getInt("ID");
-                if(clientId == idBuscado){
-                    Methods.getInstance().client.setClient(rs.getString("Cliente"));
-                    Methods.getInstance().client.setExporte(rs.getString("Exporte"));
-                    Methods.getInstance().client.setDireccion(rs.getString("Direccion"));
-                    Methods.getInstance().client.setExporte(rs.getString("Telefono"));
-                    Methods.getInstance().client.setExporte(rs.getString("Email"));
-                }
- 
+                Methods.getInstance().client.setClient(rs.getString("Cliente"));
+                Methods.getInstance().client.setExporte(rs.getString("Exporte"));
+                Methods.getInstance().client.setDireccion(rs.getString("Direccion"));
+                Methods.getInstance().client.setTelefono(rs.getString("Telefono"));
+                Methods.getInstance().client.setEmail(getEmails(idBuscado));
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public void getNotifyTo(int idClient){
-        String query = "select Notificar_a.ID,Notificar_a.Nombre, Notificar_a.Direccion, Notificar_a.Telefono, Notificar_a.Email " +
-                       "from Clientes inner join Notificar_a "+ "on Clientes.ID = Notificar_a.Notifica_a where Clientes.ID = " + idClient;
-        try (
-            
-            Connection conn = this.connect();
-            Statement stmt  = conn.createStatement();
-            ResultSet rs    = stmt.executeQuery(query)){
-            while (rs.next()) {
-                int clientId = rs.getInt("ID");
-                if(clientId == idClient){
-                    Methods.getInstance().clientNotify.setClient(rs.getString("Cliente"));
-                    Methods.getInstance().clientNotify.setExporte(rs.getString("Exporte"));
-                    Methods.getInstance().clientNotify.setDireccion(rs.getString("Direccion"));
-                    Methods.getInstance().clientNotify.setExporte(rs.getString("Telefono"));
-                    Methods.getInstance().clientNotify.setExporte(rs.getString("Email"));
-                }
- 
-            }
+            rs.close();
+            stmt.close();
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
     
+    public void getNotifyTo(int idNotify){
+        String query = "SELECT * FROM Notificar_a WHERE ID = " + idNotify;
+        try (
+            Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            while (rs.next()) {
+                Methods.getInstance().clientNotify.setClient(rs.getString("Nombre"));
+                Methods.getInstance().clientNotify.setExporte("");
+                Methods.getInstance().clientNotify.setDireccion(rs.getString("Direccion"));
+                Methods.getInstance().clientNotify.setEmail(rs.getString("Email"));
+                Methods.getInstance().clientNotify.setTelefono(rs.getString("Telefono"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+    
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     
     public DefaultListModel getNotificationList(int client){
         String query = "select Notificar_a.ID,Notificar_a.Nombre, Notificar_a.Direccion, Notificar_a.Telefono, Notificar_a.Email " +
@@ -171,6 +176,9 @@ public class SQLLiteMethods {
                 String clientName = rs.getString("Nombre");
                 model.addElement(clientId + ") " + clientName);
             }
+            rs.close();
+            stmt.close();
+            conn.close();
             return model;
         } 
         catch (SQLException e) {
@@ -188,6 +196,9 @@ public class SQLLiteMethods {
             while (rs.next()) {
                 model.addElement(rs.getString("Descripcion"));
             }
+            rs.close();
+            stmt.close();
+            conn.close();
             return model;
         } 
         catch (SQLException e) {
@@ -205,11 +216,39 @@ public class SQLLiteMethods {
             while (rs.next()) {
                 priceList.add(rs.getDouble("Precio"));
             }
+            rs.close();
+            stmt.close();
+            conn.close();
             return priceList;
         } 
         catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
         } 
+    }
+    
+    public String getEmails(int idClient){
+        String query = "SELECT * FROM Emails WHERE Cliente = " + idClient;
+        String emails = "";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            while (rs.next()) {
+                if(emails.length() == 0){
+                    emails += rs.getString("Email"); 
+                }
+                else{
+                    emails += "\n" + rs.getString("Email"); 
+                }
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return emails;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return " - ";  // No posee emails registrados en el sistema
+        }
     }
 }

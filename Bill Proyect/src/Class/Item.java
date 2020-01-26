@@ -15,13 +15,13 @@ public class Item {
     public String description;
     public String spec;
     public int size;
-    public double priceUnit;
+    public String priceUnit;
     public double total;
 
     public Item() {
     }
 
-    public Item(int box, int quantity, String description, String spec, int size, double priceUnit, double total) {
+    public Item(int box, int quantity, String description, String spec, int size, String priceUnit, double total) {
         this.box = box;
         this.quantity = quantity;
         this.description = description;
@@ -71,11 +71,11 @@ public class Item {
         this.size = size;
     }
 
-    public double getPriceUnit() {
+    public String getPriceUnit() {
         return priceUnit;
     }
 
-    public void setPriceUnit(double priceUnit) {
+    public void setPriceUnit(String priceUnit) {
         this.priceUnit = priceUnit;
     }
 

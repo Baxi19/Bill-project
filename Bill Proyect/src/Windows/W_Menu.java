@@ -5,10 +5,10 @@
  */
 package Windows;
 
+import Class.CreatePDF;
 import Class.Item;
 import Class.Methods;
 import Class.SQLLiteMethods;
-import com.itextpdf.text.Document;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -574,14 +574,14 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("Items Agregados:");
         jPanelProducts.add(jLabel43);
-        jLabel43.setBounds(220, 60, 180, 28);
+        jLabel43.setBounds(250, 60, 180, 28);
 
         jLabelQuantityItems.setBackground(new java.awt.Color(255, 255, 255));
         jLabelQuantityItems.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabelQuantityItems.setForeground(new java.awt.Color(0, 0, 0));
         jLabelQuantityItems.setText("0");
         jPanelProducts.add(jLabelQuantityItems);
-        jLabelQuantityItems.setBounds(410, 60, 110, 28);
+        jLabelQuantityItems.setBounds(440, 60, 110, 28);
 
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1318,7 +1318,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoginMouseClicked
         closePanels();
         /*Generar el PDF*/
-        Document pdf = Methods.getInstance().generatePDF();
+        CreatePDF.getInstance().newPDF();
     }//GEN-LAST:event_jButtonLoginMouseClicked
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
@@ -1545,7 +1545,8 @@ public class W_Menu extends javax.swing.JFrame {
                             i.setDescription(jListDescription.getSelectedValue());
                             i.setSpec(jTextFieldSpec.getText());
                             i.setSize(Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
-                            i.setPriceUnit(Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
+                            String price = Methods.getInstance().df2.format(Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
+                            i.setPriceUnit(price);
                             i.setTotal(calculateTotal());
                             Methods.getInstance().cart.add(i);
                             JOptionPane.showMessageDialog(this, "Datos agregados correctamente!");
@@ -1663,7 +1664,8 @@ public class W_Menu extends javax.swing.JFrame {
     private void jListNotifyValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListNotifyValueChanged
         String clientNotify = jListNotify.getSelectedValue();
         String[] dataClientNotify = clientNotify.split("\\) ");
-        Methods.getInstance().idNotify = Integer.parseInt(dataClientNotify[0]);  
+        Methods.getInstance().idNotify = Integer.parseInt(dataClientNotify[0]); 
+       
     }//GEN-LAST:event_jListNotifyValueChanged
 
     private void jListDescriptionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDescriptionValueChanged

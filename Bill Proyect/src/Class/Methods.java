@@ -15,6 +15,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -34,6 +35,7 @@ public class Methods {
     public int idNotify;
     public Client client = new Client();
     public Client clientNotify = new Client();
+    public DecimalFormat df2 = new DecimalFormat("#.##");
     public String boss = "Carlos Manuel Araya Castro, Plantas Hnos Araya";
     public String info1 = "Ced: 2-356-370 Cod.Exportador: FR4 Telefax: +506 2468 8037 Celular :+506 8340 4813";
     public String info2 = "Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos";
