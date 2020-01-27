@@ -5,7 +5,7 @@
  */
 package Windows;
 
-import Class.SQLLiteMethods;
+import Class.SQLiteMethods;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -230,7 +230,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText(); // Falta por hacer
-            JOptionPane.showMessageDialog(rootPane, SQLLiteMethods.getInstance().addClient(name, export, direction, phone)); 
+            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addClient(name, export, direction, phone)); 
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
@@ -242,7 +242,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText();
-            JOptionPane.showMessageDialog(rootPane, SQLLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, clientId)); 
+            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, clientId)); 
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
@@ -272,7 +272,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jListClients.setVisible(true);
         jLabelExport.setText("Cliente:");
         jLabelTitle.setText("Registrar nuevo notificado");
-        jListClients.setModel(SQLLiteMethods.getInstance().getClientList());
+        jListClients.setModel(SQLiteMethods.getInstance().getClientList());
     }
     
     public void loadRegisterClient(){

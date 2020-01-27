@@ -147,8 +147,8 @@ public class CreatePDF {
             float[] columnWidths3 = {0.7f,2f, 2f};
             table3.setWidths(columnWidths3);
             /*Se consultan los datos completos a la BD*/
-            SQLLiteMethods.getInstance().getClient(Methods.getInstance().clientId);
-            SQLLiteMethods.getInstance().getNotifyTo(Methods.getInstance().idNotify);
+            SQLiteMethods.getInstance().getClient(Methods.getInstance().clientId);
+            SQLiteMethods.getInstance().getNotifyTo(Methods.getInstance().idNotify);
             
             PdfPCell cell9 = new PdfPCell(new Paragraph("Cliente :", lightblack3Font));
             cell9.setBorderColor(BaseColor.WHITE);

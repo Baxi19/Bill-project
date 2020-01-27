@@ -8,7 +8,7 @@ package Windows;
 import Class.CreatePDF;
 import Class.Item;
 import Class.Methods;
-import Class.SQLLiteMethods;
+import Class.SQLiteMethods;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -26,8 +26,9 @@ public class W_Menu extends javax.swing.JFrame {
         this.setSize(1200,800);
         setLocationRelativeTo(null);
         loadClients();
-        jListDescription.setModel(SQLLiteMethods.getInstance().getPlantsList());
+        jListDescription.setModel(SQLiteMethods.getInstance().getPlantsList());
         closePanels();  
+        loadPortCountryData();
     }
 
     /**
@@ -1434,7 +1435,7 @@ public class W_Menu extends javax.swing.JFrame {
     }
     public void loadClients(){
         
-        jListClients.setModel(SQLLiteMethods.getInstance().getClientList());
+        jListClients.setModel(SQLiteMethods.getInstance().getClientList());
     }
     public void closePanels(){
         jPanelBill.setVisible(false);
@@ -1516,7 +1517,7 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jComboBoxSizeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSizeItemStateChanged
         if(jComboBoxSize.getSelectedIndex() != 0){
-            DefaultListModel modelo = SQLLiteMethods.getInstance().getUnitPrice(
+            DefaultListModel modelo = SQLiteMethods.getInstance().getUnitPrice(
                             jListDescription.getSelectedValue(), 
                             Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
             jListPriceUnit.setModel(modelo);
@@ -1545,7 +1546,7 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jButtonConfirmBill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4ActionPerformed
         try{
-            SQLLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
+            SQLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
             JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
         }
         catch(Exception ex){
@@ -1747,7 +1748,7 @@ public class W_Menu extends javax.swing.JFrame {
             String client = jListClients.getSelectedValue();
             String[] dataClient = client.split("\\) ");
             Methods.getInstance().clientId = Integer.parseInt(dataClient[0]);
-            SQLLiteMethods.getInstance().getNotifyTo(Integer.parseInt(dataClient[0]));
+            SQLiteMethods.getInstance().getNotifyTo(Integer.parseInt(dataClient[0]));
             
         } catch (Exception e) {
             
@@ -1828,6 +1829,13 @@ public class W_Menu extends javax.swing.JFrame {
                 System.out.println("Total =" +t);
                 totalWithoutDisscount.setText(t+"");
         }
+    }
+    
+    private void loadPortCountryData(){
+        jListCountryDestination1.setModel(SQLiteMethods.getInstance().getCountriesList());
+        jListCountryOrigin.setModel(SQLiteMethods.getInstance().getCountriesList());
+        jListInputPort.setModel(SQLiteMethods.getInstance().getPortsList());
+        jListPortDeparture.setModel(SQLiteMethods.getInstance().getPortsList());
     }
     /**
      * @param args the command line arguments

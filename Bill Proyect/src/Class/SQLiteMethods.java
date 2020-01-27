@@ -20,12 +20,12 @@ import javax.swing.DefaultListModel;
  *
  * @author Baxi
  */
-public class SQLLiteMethods {
-    public static SQLLiteMethods instance = null;
+public class SQLiteMethods {
+    public static SQLiteMethods instance = null;
     
-    public static SQLLiteMethods getInstance() {
+    public static SQLiteMethods getInstance() {
         if (instance == null) {
-            return instance = new SQLLiteMethods();
+            return instance = new SQLiteMethods();
         }
         return instance;
     }
@@ -269,6 +269,46 @@ public class SQLLiteMethods {
         }
     }
     
-    
+   public DefaultListModel getPortsList(){
+        String query = "SELECT * FROM Puertos";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            DefaultListModel model = new DefaultListModel();
+            while (rs.next()) {
+                model.addElement(rs.getInt("ID") + ") "+ rs.getString("Nombre"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return model;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } 
+    }
+   
+
+   
+   public DefaultListModel getCountriesList(){
+        String query = "SELECT * FROM Paises";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            DefaultListModel model = new DefaultListModel();
+            while (rs.next()) {
+                model.addElement(rs.getInt("ID") + ") "+ rs.getString("Nombre"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return model;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } 
+    }
     
 }
