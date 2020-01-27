@@ -94,7 +94,23 @@ public class SQLLiteMethods {
             pstmt.executeUpdate();         
             pstmt.close();
             conn.close();
-            return "Registro realizado con éxito";
+            return "Registro de cliente realizado con éxito";
+        }
+        catch (SQLException e) {
+            return e.getMessage();
+        }  
+    }
+    
+     public String addNotifyTo(String name,String direction, String telephone,String email, int Cliente_id){
+        String query = "INSERT INTO Notificar_a(Nombre, Direccion, Telefono, Email, Notifica_a) values "
+                + "('" + name  + "' , '" + direction + "', '" + telephone +"' , '"+ email + "', " + Cliente_id + ")";
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+            return "Registro de notificado realizado con éxito";
         }
         catch (SQLException e) {
             return e.getMessage();

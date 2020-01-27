@@ -184,21 +184,21 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel3.setText("Menu");
         jLabel3.setToolTipText("");
         jPanelMenu.add(jLabel3);
-        jLabel3.setBounds(140, 30, 89, 42);
+        jLabel3.setBounds(140, 30, 89, 43);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Información de Factura");
         jPanelMenu.add(jLabel4);
-        jLabel4.setBounds(50, 200, 250, 28);
+        jLabel4.setBounds(50, 200, 250, 29);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Agregar Productos");
         jPanelMenu.add(jLabel5);
-        jLabel5.setBounds(50, 300, 250, 28);
+        jLabel5.setBounds(50, 300, 250, 29);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -210,13 +210,13 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelMenu.add(jLabel2);
-        jLabel2.setBounds(50, 500, 210, 28);
+        jLabel2.setBounds(50, 500, 210, 29);
 
         jButtonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonLogin.setBorder(null);
         jButtonLogin.setBorderPainted(false);
         jButtonLogin.setContentAreaFilled(false);
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin.setRequestFocusEnabled(false);
         jButtonLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonLogin.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -244,13 +244,13 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelMenu.add(jLabel6);
-        jLabel6.setBounds(50, 400, 210, 28);
+        jLabel6.setBounds(50, 400, 210, 29);
 
         jButtonLogin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonLogin1.setBorder(null);
         jButtonLogin1.setBorderPainted(false);
         jButtonLogin1.setContentAreaFilled(false);
-        jButtonLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin1.setRequestFocusEnabled(false);
         jButtonLogin1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonLogin1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -272,7 +272,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonLogin2.setBorder(null);
         jButtonLogin2.setBorderPainted(false);
         jButtonLogin2.setContentAreaFilled(false);
-        jButtonLogin2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin2.setRequestFocusEnabled(false);
         jButtonLogin2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonLogin2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -294,7 +294,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonLogin3.setBorder(null);
         jButtonLogin3.setBorderPainted(false);
         jButtonLogin3.setContentAreaFilled(false);
-        jButtonLogin3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin3.setRequestFocusEnabled(false);
         jButtonLogin3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonLogin3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -326,7 +326,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonClose1.setBorder(null);
         jButtonClose1.setBorderPainted(false);
         jButtonClose1.setContentAreaFilled(false);
-        jButtonClose1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClose1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonClose1.setRequestFocusEnabled(false);
         jButtonClose1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
         jButtonClose1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
@@ -349,7 +349,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Número de Factura");
         jPanelBill.add(jLabel19);
-        jLabel19.setBounds(150, 220, 220, 28);
+        jLabel19.setBounds(150, 220, 220, 29);
 
         jTextFieldBillNumber.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBillNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -364,7 +364,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Seleccione la Fecha ");
         jPanelBill.add(jLabel20);
-        jLabel20.setBounds(150, 290, 210, 28);
+        jLabel20.setBounds(150, 290, 210, 29);
         jPanelBill.add(jDateChooser);
         jDateChooser.setBounds(470, 290, 160, 30);
 
@@ -372,6 +372,11 @@ public class W_Menu extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jListClients.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListClientsMouseClicked(evt);
+            }
         });
         jListClients.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -388,7 +393,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Seleccione el Cliente");
         jPanelBill.add(jLabel42);
-        jLabel42.setBounds(150, 370, 230, 28);
+        jLabel42.setBounds(150, 370, 230, 29);
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -403,6 +408,11 @@ public class W_Menu extends javax.swing.JFrame {
                 jRadioButtonClientMouseClicked(evt);
             }
         });
+        jRadioButtonClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonClientActionPerformed(evt);
+            }
+        });
         jPanelBill.add(jRadioButtonClient);
         jRadioButtonClient.setBounds(460, 370, 80, 28);
 
@@ -410,6 +420,11 @@ public class W_Menu extends javax.swing.JFrame {
         jRadioButtonNotify.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRadioButtonNotifyMouseClicked(evt);
+            }
+        });
+        jRadioButtonNotify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNotifyActionPerformed(evt);
             }
         });
         jPanelBill.add(jRadioButtonNotify);
@@ -433,7 +448,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonConfirmBill4.setBorder(null);
         jButtonConfirmBill4.setBorderPainted(false);
         jButtonConfirmBill4.setContentAreaFilled(false);
-        jButtonConfirmBill4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill4.setRequestFocusEnabled(false);
         jButtonConfirmBill4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
         jButtonConfirmBill4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
@@ -455,7 +470,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonConfirmBill5.setBorder(null);
         jButtonConfirmBill5.setBorderPainted(false);
         jButtonConfirmBill5.setContentAreaFilled(false);
-        jButtonConfirmBill5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill5.setRequestFocusEnabled(false);
         jButtonConfirmBill5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
         jButtonConfirmBill5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
@@ -486,13 +501,13 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Siguiente");
         jPanelBill.add(jLabel37);
-        jLabel37.setBounds(590, 720, 110, 28);
+        jLabel37.setBounds(590, 720, 110, 29);
 
         jButtonConfirmBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill.setBorder(null);
         jButtonConfirmBill.setBorderPainted(false);
         jButtonConfirmBill.setContentAreaFilled(false);
-        jButtonConfirmBill.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill.setRequestFocusEnabled(false);
         jButtonConfirmBill.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonConfirmBill.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -533,7 +548,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonClose4.setBorder(null);
         jButtonClose4.setBorderPainted(false);
         jButtonClose4.setContentAreaFilled(false);
-        jButtonClose4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClose4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonClose4.setRequestFocusEnabled(false);
         jButtonClose4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
         jButtonClose4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
@@ -556,14 +571,14 @@ public class W_Menu extends javax.swing.JFrame {
         jLabelQuantityItems.setForeground(new java.awt.Color(255, 255, 255));
         jLabelQuantityItems.setText("0");
         jPanelProducts.add(jLabelQuantityItems);
-        jLabelQuantityItems.setBounds(600, 490, 40, 22);
+        jLabelQuantityItems.setBounds(600, 490, 40, 21);
 
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Cajones");
         jPanelProducts.add(jLabel23);
-        jLabel23.setBounds(130, 110, 220, 28);
+        jLabel23.setBounds(130, 110, 220, 29);
 
         jTextFieldBox.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBox.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -583,7 +598,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Unidades");
         jPanelProducts.add(jLabel25);
-        jLabel25.setBounds(130, 150, 210, 28);
+        jLabel25.setBounds(130, 150, 210, 29);
 
         jTextFieldQuantity.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldQuantity.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -598,7 +613,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Spec");
         jPanelProducts.add(jLabel28);
-        jLabel28.setBounds(130, 190, 210, 28);
+        jLabel28.setBounds(130, 190, 210, 29);
 
         jTextFieldSpec.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldSpec.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -623,7 +638,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Descripción");
         jPanelProducts.add(jLabel27);
-        jLabel27.setBounds(130, 260, 220, 28);
+        jLabel27.setBounds(130, 260, 220, 29);
 
         jListDescription.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -645,7 +660,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Altura");
         jPanelProducts.add(jLabel31);
-        jLabel31.setBounds(450, 260, 130, 28);
+        jLabel31.setBounds(450, 260, 130, 29);
 
         jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4", "6", "9", "12", "18", "24", "30", "36", "48" }));
         jComboBoxSize.addItemListener(new java.awt.event.ItemListener() {
@@ -661,7 +676,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Precio Unitario");
         jPanelProducts.add(jLabel30);
-        jLabel30.setBounds(130, 350, 170, 28);
+        jLabel30.setBounds(130, 350, 170, 29);
 
         jListPriceUnit.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "1", "2", "3", "4", "5" };
@@ -703,7 +718,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonConfirmBill2.setBorder(null);
         jButtonConfirmBill2.setBorderPainted(false);
         jButtonConfirmBill2.setContentAreaFilled(false);
-        jButtonConfirmBill2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill2.setRequestFocusEnabled(false);
         jButtonConfirmBill2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
         jButtonConfirmBill2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
@@ -725,7 +740,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonConfirmBill3.setBorder(null);
         jButtonConfirmBill3.setBorderPainted(false);
         jButtonConfirmBill3.setContentAreaFilled(false);
-        jButtonConfirmBill3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill3.setRequestFocusEnabled(false);
         jButtonConfirmBill3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
         jButtonConfirmBill3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
@@ -769,35 +784,35 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(subtotal);
-        subtotal.setBounds(280, 550, 140, 22);
+        subtotal.setBounds(280, 550, 140, 21);
 
         precioItem.setBackground(new java.awt.Color(255, 255, 255));
         precioItem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         precioItem.setForeground(new java.awt.Color(255, 255, 255));
         precioItem.setText("0.0");
         jPanelProducts.add(precioItem);
-        precioItem.setBounds(280, 510, 140, 22);
+        precioItem.setBounds(280, 510, 140, 21);
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(255, 255, 255));
         jLabel62.setText("Items agregados:");
         jPanelProducts.add(jLabel62);
-        jLabel62.setBounds(450, 490, 140, 22);
+        jLabel62.setBounds(450, 490, 140, 21);
 
         jLabel46.setBackground(new java.awt.Color(255, 255, 255));
         jLabel46.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("Subtotal Pedido:");
         jPanelProducts.add(jLabel46);
-        jLabel46.setBounds(140, 550, 140, 22);
+        jLabel46.setBounds(140, 550, 140, 21);
 
         jLabel34.setBackground(new java.awt.Color(255, 255, 255));
         jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Descuento:");
         jPanelProducts.add(jLabel34);
-        jLabel34.setBounds(140, 590, 90, 22);
+        jLabel34.setBounds(140, 590, 90, 21);
 
         jTextFieldDisscount.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -830,7 +845,7 @@ public class W_Menu extends javax.swing.JFrame {
         totalWithoutDisscount.setForeground(new java.awt.Color(255, 255, 255));
         totalWithoutDisscount.setText("0.0");
         jPanelProducts.add(totalWithoutDisscount);
-        totalWithoutDisscount.setBounds(280, 630, 140, 22);
+        totalWithoutDisscount.setBounds(280, 630, 140, 21);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -844,7 +859,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel63.setForeground(new java.awt.Color(255, 255, 255));
         jLabel63.setText("Precio del Item:");
         jPanelProducts.add(jLabel63);
-        jLabel63.setBounds(140, 510, 140, 22);
+        jLabel63.setBounds(140, 510, 140, 21);
 
         jListCartInfo.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -870,13 +885,13 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(204, 204, 0));
         jLabel38.setText("Agregar Pedido");
         jPanelProducts.add(jLabel38);
-        jLabel38.setBounds(250, 690, 180, 28);
+        jLabel38.setBounds(250, 690, 180, 29);
 
         jButtonConfirmBill6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addItem1.png"))); // NOI18N
         jButtonConfirmBill6.setBorder(null);
         jButtonConfirmBill6.setBorderPainted(false);
         jButtonConfirmBill6.setContentAreaFilled(false);
-        jButtonConfirmBill6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill6.setRequestFocusEnabled(false);
         jButtonConfirmBill6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addItem2.png"))); // NOI18N
         jButtonConfirmBill6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addItem2.png"))); // NOI18N
@@ -903,13 +918,13 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Siguiente");
         jPanelProducts.add(jLabel24);
-        jLabel24.setBounds(600, 750, 110, 28);
+        jLabel24.setBounds(600, 750, 110, 29);
 
         jButtonConfirmBill1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill1.setBorder(null);
         jButtonConfirmBill1.setBorderPainted(false);
         jButtonConfirmBill1.setContentAreaFilled(false);
-        jButtonConfirmBill1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill1.setRequestFocusEnabled(false);
         jButtonConfirmBill1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonConfirmBill1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -950,7 +965,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonClose5.setBorder(null);
         jButtonClose5.setBorderPainted(false);
         jButtonClose5.setContentAreaFilled(false);
-        jButtonClose5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClose5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonClose5.setRequestFocusEnabled(false);
         jButtonClose5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
         jButtonClose5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close2.png"))); // NOI18N
@@ -973,7 +988,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Embarque");
         jPanelAditionalData.add(jLabel39);
-        jLabel39.setBounds(130, 110, 120, 28);
+        jLabel39.setBounds(130, 110, 120, 29);
 
         jTextFieldShipment.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldShipment.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -993,7 +1008,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Peso Neto");
         jPanelAditionalData.add(jLabel40);
-        jLabel40.setBounds(130, 170, 120, 28);
+        jLabel40.setBounds(130, 170, 120, 29);
 
         jTextFieldNetWeight.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldNetWeight.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1008,7 +1023,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
         jLabel41.setText("Peso Bruto");
         jPanelAditionalData.add(jLabel41);
-        jLabel41.setBounds(130, 230, 120, 28);
+        jLabel41.setBounds(130, 230, 120, 29);
 
         jTextFieldGrossWeight.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldGrossWeight.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1028,7 +1043,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
         jLabel53.setText("Contenedor");
         jPanelAditionalData.add(jLabel53);
-        jLabel53.setBounds(130, 290, 130, 28);
+        jLabel53.setBounds(130, 290, 130, 29);
 
         jTextFieldContainer.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldContainer.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1043,7 +1058,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setText("Barco");
         jPanelAditionalData.add(jLabel52);
-        jLabel52.setBounds(130, 350, 70, 28);
+        jLabel52.setBounds(130, 350, 70, 29);
 
         jTextFieldShip.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldShip.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1063,7 +1078,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Puerto de Salida");
         jPanelAditionalData.add(jLabel54);
-        jLabel54.setBounds(400, 110, 220, 28);
+        jLabel54.setBounds(400, 110, 220, 29);
 
         jTextFieldBooking.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBooking.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1083,7 +1098,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("Marchamo");
         jPanelAditionalData.add(jLabel55);
-        jLabel55.setBounds(130, 410, 130, 28);
+        jLabel55.setBounds(130, 410, 130, 29);
 
         jTextFieldLabel.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1098,7 +1113,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
         jLabel56.setText("Booking");
         jPanelAditionalData.add(jLabel56);
-        jLabel56.setBounds(130, 470, 100, 28);
+        jLabel56.setBounds(130, 470, 100, 29);
 
         jListPortDeparture.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1115,7 +1130,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Puerto de Entrada");
         jPanelAditionalData.add(jLabel57);
-        jLabel57.setBounds(400, 220, 220, 28);
+        jLabel57.setBounds(400, 220, 220, 29);
 
         jListInputPort.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1132,7 +1147,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("País de origen");
         jPanelAditionalData.add(jLabel44);
-        jLabel44.setBounds(400, 320, 170, 28);
+        jLabel44.setBounds(400, 320, 170, 29);
 
         jListCountryOrigin.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1149,7 +1164,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("País de Destino");
         jPanelAditionalData.add(jLabel45);
-        jLabel45.setBounds(400, 420, 170, 28);
+        jLabel45.setBounds(400, 420, 170, 29);
 
         jListCountryDestination1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1225,7 +1240,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonAdd.setBorder(null);
         jButtonAdd.setBorderPainted(false);
         jButtonAdd.setContentAreaFilled(false);
-        jButtonAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonAdd.setRequestFocusEnabled(false);
         jButtonAdd.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
         jButtonAdd.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add2.png"))); // NOI18N
@@ -1247,7 +1262,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonDelete.setBorder(null);
         jButtonDelete.setBorderPainted(false);
         jButtonDelete.setContentAreaFilled(false);
-        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonDelete.setRequestFocusEnabled(false);
         jButtonDelete.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
         jButtonDelete.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete2.png"))); // NOI18N
@@ -1282,13 +1297,13 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
         jLabel51.setText("Finalizar");
         jPanelAditionalData.add(jLabel51);
-        jLabel51.setBounds(600, 750, 110, 28);
+        jLabel51.setBounds(600, 750, 110, 29);
 
         jButtonConfirmBill10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill10.setBorder(null);
         jButtonConfirmBill10.setBorderPainted(false);
         jButtonConfirmBill10.setContentAreaFilled(false);
-        jButtonConfirmBill10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConfirmBill10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConfirmBill10.setRequestFocusEnabled(false);
         jButtonConfirmBill10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonConfirmBill10.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -1323,13 +1338,13 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Siguiente");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(250, 710, 110, 28);
+        jLabel12.setBounds(250, 710, 110, 29);
 
         jButtonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
         jButtonLogout.setBorder(null);
         jButtonLogout.setBorderPainted(false);
         jButtonLogout.setContentAreaFilled(false);
-        jButtonLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogout.setRequestFocusEnabled(false);
         jButtonLogout.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout2.png"))); // NOI18N
         jButtonLogout.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout2.png"))); // NOI18N
@@ -1559,8 +1574,19 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill5MouseClicked
 
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
-        W_RegisterClient wr = new W_RegisterClient();
-        wr.show();
+        if(jRadioButtonClient.isSelected()){
+            W_RegisterClient wr = new W_RegisterClient(1);
+            wr.show();
+        }
+        else if(jRadioButtonNotify.isSelected()){
+            W_RegisterClient wr = new W_RegisterClient(2);
+            wr.show();
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Seleccione un una opción a registrar");
+        }
+       
+        
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
     public double calculateSubTotal(){
         double sum = 0;
@@ -1759,6 +1785,18 @@ public class W_Menu extends javax.swing.JFrame {
     private void jTextFieldDisscountCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldDisscountCaretUpdate
         calculateDisscount();
     }//GEN-LAST:event_jTextFieldDisscountCaretUpdate
+
+    private void jListClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListClientsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jListClientsMouseClicked
+
+    private void jRadioButtonClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonClientActionPerformed
+
+    private void jRadioButtonNotifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNotifyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonNotifyActionPerformed
     
     public void calculateDisscount(){
         double subTotal = Double.parseDouble(subtotal.getText());
