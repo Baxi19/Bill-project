@@ -21,7 +21,8 @@ import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -705,8 +706,8 @@ public class CreatePDF {
                 System.out.println("Error = " + e);
             }
         
-            document.close();
-            /*----------------------------------------------------------------*/
-            
+        document.close();
+        /*----------------------------------------------------------------*/
+        
     }
 }

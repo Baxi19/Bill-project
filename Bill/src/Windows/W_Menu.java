@@ -1926,7 +1926,7 @@ public class W_Menu extends javax.swing.JFrame {
         System.out.println("Current dir : " + file.getCanonicalPath());
         if (Desktop.isDesktopSupported()) {
             try {
-                File myFile = new File("/path/to/file.pdf");
+                File myFile = new File(file.getCanonicalPath()+"\\Factura"+Methods.getInstance().idBill+".pdf");
                 Desktop.getDesktop().open(myFile);
             } catch (IOException ex) {
                 // no application registered for PDFs

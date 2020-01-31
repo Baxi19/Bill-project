@@ -18,16 +18,8 @@ public class Main {
      * @throws java.io.FileNotFoundException
      * @throws com.itextpdf.text.DocumentException
      */
-    public static void main(String[] args) throws FileNotFoundException, DocumentException, BadElementException, IOException {
-        try {
-            File file = new File(".");  
-            File[] files = file.listFiles();  
-            System.out.println("Current dir : " + file.getCanonicalPath()); 
-            System.out.println("Current dir : " + file.getAbsolutePath()); 
-            System.out.println("Current dir : " + file.getPath());
-            System.out.println("Current dir : " + file.getParent());
-        } catch (Exception e) {
-        }
+    public static void main(String[] args) throws FileNotFoundException, DocumentException,  IOException {
+        
         W_Login w = new W_Login();
         w.setVisible(true);
     }
