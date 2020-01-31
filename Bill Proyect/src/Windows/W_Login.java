@@ -119,7 +119,7 @@ public class W_Login extends javax.swing.JFrame {
         getContentPane().add(jButtonOff);
         jButtonOff.setBounds(1120, 40, 40, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backg.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg.jpg"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setMaximumSize(new java.awt.Dimension(1200, 800));
         jLabel1.setMinimumSize(new java.awt.Dimension(1200, 800));

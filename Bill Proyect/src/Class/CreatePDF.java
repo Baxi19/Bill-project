@@ -18,8 +18,10 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Font;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 /**
  *
@@ -52,6 +54,11 @@ public class CreatePDF {
         Document document = new Document();
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
+            
+            document.addAuthor("Plantas Hermanos Araya");
+            document.addCreator("Carlos Manuel Araya Castro");
+            document.addTitle("Factura"+Methods.getInstance().idBill);
+            document.addSubject("Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos");
             /*--------------------------------------------------------------------*/
             document.open();
             /*--------------------------------------------------------------------*/
@@ -690,9 +697,14 @@ public class CreatePDF {
             tableSing.addCell(c_3);
             document.add(tableSing);
             
-            } catch (DocumentException | FileNotFoundException e) {
             
+            
+            
+            
+            } catch (DocumentException | FileNotFoundException e) {
+                System.out.println("Error = " + e);
             }
+        
             document.close();
             /*----------------------------------------------------------------*/
             
