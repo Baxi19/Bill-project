@@ -48,19 +48,21 @@ public class Methods {
     public Double total;
     public Double embarque;
     /*Aditional Information*/
-    public String shipment ="___________________";
-    public String netWeight ="___________________";
-    public String grossWeight ="___________________";
-    public String container="___________________";
-    public String ship="___________________";
-    public String label="___________________";
-    public String booking="___________________";
-    public String outPort="___________________";
-    public String inPort="____________________";
-    public String originCountry="____________________";
-    public String destinationCountry="___________________";
-    
-    
+    public String shipment          ="";
+    public String netWeight         ="__________________";
+    public String grossWeight       ="__________________";
+    public String container         ="__________________";
+    public String ship              ="__________________";
+    public String label             ="__________________";
+    public String booking           ="__________________";
+    public String outPort           ="__________________";
+    public String inPort            ="__________________";
+    public String originCountry     ="__________________";
+    public String destinationCountry="__________________";
+    /*sign's Boss*/
+    public String line              ="_________________________________________________________";
+    public String ced               ="               Firma        Céd: 2-356-370               ";
+    public String shortLine         ="----------------------------------------------------------------------------------------------------------------------------------";
     /*------------------------------------------------------------------------*/
     //Singleton
     public static Methods getInstance() {
@@ -169,5 +171,12 @@ public class Methods {
             model.addElement("Total: "+cart.get(i).getTotal());
         }
         return model;
+    }
+    public String modifyString(String s){
+        int size = s.length();
+        for (int i = size; i < 20; i++) {
+            s+="_";
+        }
+        return s;
     }
 }
