@@ -6,6 +6,7 @@
 package Class;
 
 import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -43,29 +44,26 @@ public class CreatePDF {
         com.itextpdf.text.Font black2Font = FontFactory.getFont("Times New Roman", 11, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack2Font = FontFactory.getFont("Times New Roman", 10, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack3Font = FontFactory.getFont("Times New Roman", 10, Font.BOLD,new CMYKColor(255, 255, 255, 0));
-        com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 10, Font.BOLD, new CMYKColor(255, 255, 255, 0));
+        com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 10, Font.BOLD , new CMYKColor(255, 255, 255, 0));
+        com.itextpdf.text.Font blackLight = FontFactory.getFont("Times New Roman", 10 , new CMYKColor(255, 255, 255, 0));
         BaseColor greenFont = new BaseColor(95,158,160); 
+        
         /*Creamos el documento*/
         Document document = new Document();
         try {
-            
-        
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
-        
-        
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
             /*--------------------------------------------------------------------*/
             document.open();
-            
             /*--------------------------------------------------------------------*/
-            /*Se crea una tabla para fecha y # factura*/
-            PdfPTable table = new PdfPTable(3); // number of columns.
-            table.setWidthPercentage(86); //Width %
-            table.setSpacingBefore(7f); //Space before table
-            table.setSpacingAfter(7f); //Space after table
+            /*Date and bill information*/
+            PdfPTable tableBillInformation = new PdfPTable(3); // number of columns.
+            tableBillInformation.setWidthPercentage(86); //Width %
+            tableBillInformation.setSpacingBefore(7f); //Space before table
+            tableBillInformation.setSpacingAfter(7f); //Space after table
 
             //Set Column widths
             float[] columnWidths = {3f,1f, 1f};
-            table.setWidths(columnWidths);
+            tableBillInformation.setWidths(columnWidths);
 
             PdfPCell cell1 = new PdfPCell(new Paragraph(""));
             cell1.setBorderColor(BaseColor.WHITE);
@@ -98,19 +96,19 @@ public class CreatePDF {
             cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
             
-            table.addCell(cell1);
-            table.addCell(cell2);
-            table.addCell(cell3);
-            table.addCell(cell1);
-            table.addCell(cell4);
-            table.addCell(cell5);
-            document.add(table);
+            tableBillInformation.addCell(cell1);
+            tableBillInformation.addCell(cell2);
+            tableBillInformation.addCell(cell3);
+            tableBillInformation.addCell(cell1);
+            tableBillInformation.addCell(cell4);
+            tableBillInformation.addCell(cell5);
+            document.add(tableBillInformation);
             /*----------------------------------------------------------------*/
-            /*Se crea una tabla para fecha y # factura*/
-            PdfPTable table2 = new PdfPTable(1); // number of columns.
-            table2.setWidthPercentage(86); //Width %
-            table2.setSpacingBefore(7f); //Space before table
-            table2.setSpacingAfter(7f); //Space after table
+            /*Boss information*/
+            PdfPTable tableBossInformation = new PdfPTable(1); // number of columns.
+            tableBossInformation.setWidthPercentage(86); //Width %
+            tableBossInformation.setSpacingBefore(7f); //Space before table
+            tableBossInformation.setSpacingAfter(7f); //Space after table
 
             PdfPCell cell6 = new PdfPCell(new Paragraph(Methods.getInstance().boss, blackFont));
             cell6.setBorderColor(BaseColor.WHITE);
@@ -131,22 +129,22 @@ public class CreatePDF {
             cell8.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell8.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            table2.addCell(cell6);
-            table2.addCell(cell7);
-            table2.addCell(cell8);
-            document.add(table2);
+            tableBossInformation.addCell(cell6);
+            tableBossInformation.addCell(cell7);
+            tableBossInformation.addCell(cell8);
+            document.add(tableBossInformation);
             
             /*--------------------------------------------------------------------*/
-            /*Se crea una tabla para informacion de clientes y noticados*/
-            PdfPTable table3 = new PdfPTable(3); // number of columns.
-            table3.setWidthPercentage(80); //Width %
-            table3.setSpacingBefore(7f); //Space before table
-            table3.setSpacingAfter(7f); //Space after table
+            /*clients information*/
+            PdfPTable tableClientsInformation = new PdfPTable(3); // number of columns.
+            tableClientsInformation.setWidthPercentage(80); //Width %
+            tableClientsInformation.setSpacingBefore(7f); //Space before table
+            tableClientsInformation.setSpacingAfter(7f); //Space after table
             
             //Set Column widths
             float[] columnWidths3 = {0.7f,2f, 2f};
-            table3.setWidths(columnWidths3);
-            /*Se consultan los datos completos a la BD*/
+            tableClientsInformation.setWidths(columnWidths3);
+            
             SQLiteMethods.getInstance().getClient(Methods.getInstance().clientId);
             SQLiteMethods.getInstance().getNotifyTo(Methods.getInstance().idNotify);
             
@@ -187,7 +185,6 @@ public class CreatePDF {
             cell14.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell14.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            
             PdfPCell cell15 = new PdfPCell(new Paragraph("Direción :", lightblack3Font));
             cell15.setBorderColor(BaseColor.WHITE);
             cell15.setPaddingLeft(10);
@@ -224,8 +221,6 @@ public class CreatePDF {
             cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell23.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            
-            
             PdfPCell cell21 = new PdfPCell(new Paragraph("Email :", lightblack3Font));
             cell21.setBorderColor(BaseColor.WHITE);
             cell21.setPaddingLeft(10);
@@ -238,42 +233,39 @@ public class CreatePDF {
             cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell22.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            
-            
             PdfPCell cell24 = new PdfPCell(new Paragraph(Methods.getInstance().clientNotify.getEmail(), lightblack2Font));
             cell24.setBorderColor(BaseColor.WHITE);
             cell24.setPaddingLeft(10);
             cell24.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell24.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            table3.addCell(cell9);
-            table3.addCell(cell10);
-            table3.addCell(cell11);
-            table3.addCell(cell12);
-            table3.addCell(cell13);
-            table3.addCell(cell14);
-            table3.addCell(cell15);
-            table3.addCell(cell16);
-            table3.addCell(cell20);
-            table3.addCell(cell18);
-            table3.addCell(cell19);
-            table3.addCell(cell23);
-            table3.addCell(cell21);
-            table3.addCell(cell22);
-            table3.addCell(cell24);
-            document.add(table3);
+            tableClientsInformation.addCell(cell9);
+            tableClientsInformation.addCell(cell10);
+            tableClientsInformation.addCell(cell11);
+            tableClientsInformation.addCell(cell12);
+            tableClientsInformation.addCell(cell13);
+            tableClientsInformation.addCell(cell14);
+            tableClientsInformation.addCell(cell15);
+            tableClientsInformation.addCell(cell16);
+            tableClientsInformation.addCell(cell20);
+            tableClientsInformation.addCell(cell18);
+            tableClientsInformation.addCell(cell19);
+            tableClientsInformation.addCell(cell23);
+            tableClientsInformation.addCell(cell21);
+            tableClientsInformation.addCell(cell22);
+            tableClientsInformation.addCell(cell24);
+            document.add(tableClientsInformation);
             
             /*--------------------------------------------------------------------*/
-
+            /*Products information*/
             PdfPTable tableItems = new PdfPTable(7);
-            
             tableItems.setWidthPercentage(86); //Width %
             tableItems.setSpacingBefore(7f); //Space before table
             tableItems.setSpacingAfter(7f); //Space after table
             //Set Column widths
             float[] columnWidths4 = {3f,3f,6f,2f,2f,3f,3f};
             tableItems.setWidths(columnWidths4);
-            
+            /*Header*/
             PdfPCell cell_1 = new PdfPCell(new Phrase("Cajones"));
             cell_1.setBackgroundColor(greenFont);
             cell_1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -309,7 +301,7 @@ public class CreatePDF {
             tableItems.addCell(cell_5);
             tableItems.addCell(cell_6);
             tableItems.addCell(cell_7);
-            
+            /*Body table's information*/
             System.out.println(Methods.getInstance().cart.size());
             for (Item item : Methods.getInstance().cart) {
                 tableItems.addCell(item.getBox()+"");
@@ -323,15 +315,15 @@ public class CreatePDF {
             //tableItems.setHorizontalAlignment(Element.ALIGN_LEFT);
             document.add(tableItems);
             /*--------------------------------------------------------------------*/
-            /*Sum items*/
-            PdfPTable table5 = new PdfPTable(7); // number of columns.
-            table5.setWidthPercentage(86); //Width %
-            table5.setSpacingBefore(7f); //Space before table
-            table5.setSpacingAfter(7f); //Space after table
+            /*Sum of items*/
+            PdfPTable tableCalculateSum = new PdfPTable(7); // number of columns.
+            tableCalculateSum.setWidthPercentage(86); //Width %
+            tableCalculateSum.setSpacingBefore(7f); //Space before table
+            tableCalculateSum.setSpacingAfter(7f); //Space after table
             //Set Column widths
            
             float[] columnWidths5 = {3f,3f,8f,0f,5f,1f,3f};
-            table5.setWidths(columnWidths5);
+            tableCalculateSum.setWidths(columnWidths5);
             
             PdfPCell cell_10 = new PdfPCell(new Phrase(Methods.getInstance().totalBox+"", black));
             cell_10.setBorderColor(BaseColor.WHITE);
@@ -366,6 +358,7 @@ public class CreatePDF {
             if(Methods.getInstance().embarque == null){
                 Methods.getInstance().embarque = 0.0;
             }
+            
             PdfPCell cell_16 = new PdfPCell(new Phrase(Methods.getInstance().embarque+"", black));
             cell_16.setBorderColor(BaseColor.WHITE);
             cell_16.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -398,42 +391,220 @@ public class CreatePDF {
             cel.setHorizontalAlignment(Element.ALIGN_LEFT);
             cel.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            table5.addCell(cell_10);
-            table5.addCell(cell_11);
-            table5.addCell(cell_12);
-            table5.addCell(cell1);
-            table5.addCell(cell_13);
-            table5.addCell(cel);
-            table5.addCell(cell_14);
+            tableCalculateSum.addCell(cell_10);
+            tableCalculateSum.addCell(cell_11);
+            tableCalculateSum.addCell(cell_12);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell_13);
+            tableCalculateSum.addCell(cel);
+            tableCalculateSum.addCell(cell_14);
             
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell_15);
-            table5.addCell(cel);
-            table5.addCell(cell_16);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell_15);
+            tableCalculateSum.addCell(cel);
+            tableCalculateSum.addCell(cell_16);
             
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell_17);
-            table5.addCell(cel);
-            table5.addCell(cell_18);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell_17);
+            tableCalculateSum.addCell(cel);
+            tableCalculateSum.addCell(cell_18);
             
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell1);
-            table5.addCell(cell_19);
-            table5.addCell(cel);
-            table5.addCell(cell_20);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell1);
+            tableCalculateSum.addCell(cell_19);
+            tableCalculateSum.addCell(cel);
+            tableCalculateSum.addCell(cell_20);
             
-            document.add(table5);
+            document.add(tableCalculateSum);
+            /*----------------------------------------------------------------*/
+            /*Aditional information*/
+            PdfPTable tableAditionalInformation = new PdfPTable(4); // number of columns.
+            tableAditionalInformation.setWidthPercentage(86); //Width %
+            tableAditionalInformation.setSpacingBefore(7f); //Space before table
+            tableAditionalInformation.setSpacingAfter(7f); //Space after table
+            //Set Column widths
+           
+            float[] columnWidthsAditionalInfo = {1f,2f,1f,2f};
+            tableAditionalInformation.setWidths(columnWidthsAditionalInfo);
+            /*--------------------*/
+            PdfPCell c0 = new PdfPCell(new Paragraph("Embarque: ", black));
+            c0.setBorderColor(BaseColor.WHITE);
+            c0.setPaddingLeft(10);
+            c0.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c0.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String shipment = Methods.getInstance().shipment;
+            Chunk underlineShipment = new Chunk(shipment, blackLight);
+            underlineShipment.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c1 = new PdfPCell(new Phrase(underlineShipment));
+            c1.setBorderColor(BaseColor.WHITE);
+            c1.setPaddingLeft(10);
+            c1.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            c1.setBorderColorTop(BaseColor.BLACK);
+            /*--------------------*/
+            PdfPCell c2 = new PdfPCell(new Paragraph("Marchamo: ", black));
+            c2.setBorderColor(BaseColor.WHITE);
+            c2.setPaddingLeft(10);
+            c2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String label = Methods.getInstance().label;
+            Chunk underlineLabel = new Chunk(label, blackLight);
+            underlineLabel.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c3 = new PdfPCell(new Phrase(underlineLabel));
+            c3.setBorderColor(BaseColor.WHITE);
+            c3.setPaddingLeft(10);
+            c3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            /*--------------------*/
+            PdfPCell c4 = new PdfPCell(new Paragraph("Peso Neto: ", black));
+            c4.setBorderColor(BaseColor.WHITE);
+            c4.setPaddingLeft(10);
+            c4.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String netWeight = Methods.getInstance().netWeight;
+            Chunk underlineNetWeight = new Chunk(netWeight, blackLight);
+            underlineNetWeight.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c5 = new PdfPCell(new Phrase(underlineNetWeight));
+            c5.setBorderColor(BaseColor.WHITE);
+            c5.setPaddingLeft(10);
+            c5.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c5.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            c5.setBorderColorTop(BaseColor.BLACK);
+            /*--------------------*/
+            PdfPCell c6 = new PdfPCell(new Paragraph("Booking: ", black));
+            c6.setBorderColor(BaseColor.WHITE);
+            c6.setPaddingLeft(10);
+            c6.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c6.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String booking = Methods.getInstance().booking;
+            Chunk underlineBooking = new Chunk(booking, blackLight);
+            underlineBooking.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c7 = new PdfPCell(new Phrase(underlineBooking));
+            c7.setBorderColor(BaseColor.WHITE);
+            c7.setPaddingLeft(10);
+            c7.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c7.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            /*--------------------*/
+            PdfPCell c8 = new PdfPCell(new Paragraph("Peso Bruto: ", black));
+            c8.setBorderColor(BaseColor.WHITE);
+            c8.setPaddingLeft(10);
+            c8.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c8.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String grossWeight = Methods.getInstance().grossWeight;
+            Chunk underlineGrossWeight = new Chunk(grossWeight, blackLight);
+            underlineGrossWeight.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c9 = new PdfPCell(new Phrase(underlineGrossWeight));
+            c9.setBorderColor(BaseColor.WHITE);
+            c9.setPaddingLeft(10);
+            c9.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c9.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            c9.setBorderColorTop(BaseColor.BLACK);
+            
+            /*--------------------*/
+            PdfPCell c10 = new PdfPCell(new Paragraph("Puerto de salida: ", black));
+            c10.setBorderColor(BaseColor.WHITE);
+            c10.setPaddingLeft(10);
+            c10.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c10.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            
+            String outPort = Methods.getInstance().outPort;
+            String[] dataOutPort = outPort.split("\\) ");
+            Chunk underlineOutPort = new Chunk(dataOutPort[1], blackLight);
+            underlineOutPort.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c11 = new PdfPCell(new Phrase(underlineOutPort));
+            c11.setBorderColor(BaseColor.WHITE);
+            c11.setPaddingLeft(10);
+            c11.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c11.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            /*--------------------*/
+            PdfPCell c12 = new PdfPCell(new Paragraph("Contenedor: ", black));
+            c12.setBorderColor(BaseColor.WHITE);
+            c12.setPaddingLeft(10);
+            c12.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c12.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String container = Methods.getInstance().container;
+            Chunk underlineContainer = new Chunk(container, blackLight);
+            underlineContainer.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c13 = new PdfPCell(new Phrase(underlineContainer));
+            c13.setBorderColor(BaseColor.WHITE);
+            c13.setPaddingLeft(10);
+            c13.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c13.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            c13.setBorderColorTop(BaseColor.BLACK);
+            /*--------------------*/
+            PdfPCell c14 = new PdfPCell(new Paragraph("Puerto de entrada: ", black));
+            c14.setBorderColor(BaseColor.WHITE);
+            c14.setPaddingLeft(10);
+            c14.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c14.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            String inPort = Methods.getInstance().inPort;
+            String[] dataInPort = inPort.split("\\) ");
+            Chunk underlineInPort = new Chunk(dataInPort[1], blackLight);
+            underlineInPort.setUnderline(0.1f, -2f); 
+            
+            PdfPCell c15 = new PdfPCell(new Phrase(underlineInPort));
+            c15.setBorderColor(BaseColor.WHITE);
+            c15.setPaddingLeft(10);
+            c15.setHorizontalAlignment(Element.ALIGN_LEFT);
+            c15.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            
+            
+            /*--------------------*/
+            
+            tableAditionalInformation.addCell(c0);
+            tableAditionalInformation.addCell(c1);
+            tableAditionalInformation.addCell(c2);
+            tableAditionalInformation.addCell(c3);
+            
+            tableAditionalInformation.addCell(c4);
+            tableAditionalInformation.addCell(c5);
+            tableAditionalInformation.addCell(c6);
+            tableAditionalInformation.addCell(c7);
+            
+            tableAditionalInformation.addCell(c8);
+            tableAditionalInformation.addCell(c9);
+            tableAditionalInformation.addCell(c10);
+            tableAditionalInformation.addCell(c11);
+            
+            tableAditionalInformation.addCell(c12);
+            tableAditionalInformation.addCell(c13);
+            tableAditionalInformation.addCell(c14);
+            tableAditionalInformation.addCell(c15);
+            //document.add(underline);
+            document.add(tableAditionalInformation);
+            
             } catch (DocumentException | FileNotFoundException e) {
-        }
-            /*--------------------------------------------------------------------*/
+            
+            }
             document.close();
+            /*----------------------------------------------------------------*/
+            
     }
 }

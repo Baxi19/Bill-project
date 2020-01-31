@@ -27,11 +27,19 @@ public class Methods {
     /*------------------------------------------------------------------------*/
     /*VARS*/
     public static Methods instance = null;
-    public ArrayList<Item> cart = new ArrayList<Item>();
+    public String boss = "Carlos Manuel Araya Castro, Plantas Hnos Araya";
+    public String info1 = "Ced: 2-356-370 Cod.Exportador: FR4 Telefax: +506 2468 8037 Celular :+506 8340 4813";
+    public String info2 = "Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos";
+    public Client client = new Client();
+    public Client clientNotify = new Client();
+    public DecimalFormat df2 = new DecimalFormat("#.##");
+    /*Bill information*/
     public String idBill;
     public String date;
     public int clientId;
     public int idNotify;
+    /*Products*/
+    public ArrayList<Item> cart = new ArrayList<Item>();
     public int totalBox;
     public int totalQuantity;
     public String plants = "Plantas vivas ornamentales";
@@ -39,12 +47,19 @@ public class Methods {
     public Double disccount;
     public Double total;
     public Double embarque;
-    public Client client = new Client();
-    public Client clientNotify = new Client();
-    public DecimalFormat df2 = new DecimalFormat("#.##");
-    public String boss = "Carlos Manuel Araya Castro, Plantas Hnos Araya";
-    public String info1 = "Ced: 2-356-370 Cod.Exportador: FR4 Telefax: +506 2468 8037 Celular :+506 8340 4813";
-    public String info2 = "Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos";
+    /*Aditional Information*/
+    public String shipment ="___________________";
+    public String netWeight ="___________________";
+    public String grossWeight ="___________________";
+    public String container="___________________";
+    public String ship="___________________";
+    public String label="___________________";
+    public String booking="___________________";
+    public String outPort="___________________";
+    public String inPort="____________________";
+    public String originCountry="____________________";
+    public String destinationCountry="___________________";
+    
     
     /*------------------------------------------------------------------------*/
     //Singleton
