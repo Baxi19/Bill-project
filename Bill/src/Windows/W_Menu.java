@@ -361,7 +361,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabelSelect.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSelect.setText("Seleccione el Cliente");
         jPanelBill.add(jLabelSelect);
-        jLabelSelect.setBounds(150, 370, 230, 28);
+        jLabelSelect.setBounds(150, 370, 290, 28);
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1408,13 +1408,13 @@ public class W_Menu extends javax.swing.JFrame {
                     if(!jListClients.isSelectionEmpty()){
                         /*Se guardan los datos de los clientes ya que ingreso los datos correctamente*/
                         Methods.getInstance().idBill = jTextFieldBillNumber.getText();
-                        Methods.getInstance().date = (
+                        Methods.getInstance().dateNewBill = (
                                         (jDateChooser.getDate().getYear() + 1900) + "-"+
                                         (String.format("%02d",(jDateChooser.getDate().getMonth() + 1)))+"-"+
                                         (String.format("%02d",(jDateChooser.getDate().getDate()))));
                         System.out.println("************************************");
                         System.out.println("Numero Factura = " + jTextFieldBillNumber.getText());
-                        System.out.println("Fecha = " + Methods.getInstance().date);
+                        System.out.println("Fecha = " + Methods.getInstance().dateNewBill);
                         System.out.println("Id Cliente = " + Methods.getInstance().clientId);
                         /*Mostramos el siguiente formulario*/
                         closePanels();
@@ -1490,7 +1490,10 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill2MouseClicked
 
     private void jButtonConfirmBill2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill2ActionPerformed
-        // TODO add your handling code here:
+        String plantName = jListDescription.getSelectedValue();
+        int heigh = Integer.parseInt(jComboBoxSize.getSelectedItem().toString());
+        W_RegisterPrice wr = new W_RegisterPrice(plantName, heigh);
+        wr.show();
     }//GEN-LAST:event_jButtonConfirmBill2ActionPerformed
 
     private void jButtonConfirmBill3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill3MouseClicked
@@ -1498,7 +1501,18 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill3MouseClicked
 
     private void jButtonConfirmBill3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill3ActionPerformed
-        // TODO add your handling code here:
+         try {
+            String plantName = jListDescription.getSelectedValue();
+            int heigh = Integer.parseInt(jComboBoxSize.getSelectedItem().toString());
+            double actualPrice = Double.parseDouble(jListPriceUnit.getSelectedValue());
+            if (SQLiteMethods.getInstance().deletePrice(plantName, heigh, actualPrice)) {
+                JOptionPane.showMessageDialog(rootPane, "Precio eliminado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "No se pudo eliminar el precio");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.toString());
+        }
     }//GEN-LAST:event_jButtonConfirmBill3ActionPerformed
 
     private void jButtonConfirmBill4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4MouseClicked
@@ -1523,6 +1537,7 @@ public class W_Menu extends javax.swing.JFrame {
                     SQLiteMethods.getInstance().deleteNotifyTo(Methods.getInstance().clientId);
                     JOptionPane.showMessageDialog(rootPane, "Notificar eliminado con éxito");
                     loadClients();
+                    jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
                 }
             }
 
@@ -1750,6 +1765,7 @@ public class W_Menu extends javax.swing.JFrame {
                         Methods.getInstance().inPort = jListInputPort.getSelectedValue();
                         Methods.getInstance().originCountry = jListCountryOrigin.getSelectedValue();
                         Methods.getInstance().destinationCountry = jListCountryDestination.getSelectedValue();
+                        Methods.getInstance().getCurrentTime();
                         closePanels();
                         CreatePDF.getInstance().newPDF();
                         try {
@@ -1795,8 +1811,8 @@ public class W_Menu extends javax.swing.JFrame {
         if(jRadioButtonNotify.isSelected()){
             jRadioButtonNotify.setSelected(false);
             jRadioButtonClient.setSelected(true);
-            jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
-            jLabelSelect.setText("Seleccione notificar a eliminar");
+            jListClients.setModel(SQLiteMethods.getInstance().getClientList());
+            jLabelSelect.setText("Seleccione el cliente");
 
         }
     }//GEN-LAST:event_jRadioButtonClientMouseClicked
@@ -1805,8 +1821,9 @@ public class W_Menu extends javax.swing.JFrame {
         if(jRadioButtonClient.isSelected()){     
             jRadioButtonClient.setSelected(false);
             jRadioButtonNotify.setSelected(true);
-            jListClients.setModel(SQLiteMethods.getInstance().getClientList());
-            jLabelSelect.setText("Seleccione el cliente");
+            jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
+            jLabelSelect.setText("Notificado a modificar");
+            
         }
     }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
 
@@ -2018,7 +2035,9 @@ public class W_Menu extends javax.swing.JFrame {
             jButtonAditionalData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png")));
         }
     }
-   
+    public void loadNotifyTo(){
+        jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Border;

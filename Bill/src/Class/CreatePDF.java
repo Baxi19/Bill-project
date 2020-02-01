@@ -17,11 +17,11 @@ import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import java.awt.Font;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import javax.swing.JOptionPane;
+
 
 
 /**
@@ -97,7 +97,7 @@ public class CreatePDF {
             cell4.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-            PdfPCell cell5 = new PdfPCell(new Paragraph(Methods.getInstance().date + "", lightblackFont));
+            PdfPCell cell5 = new PdfPCell(new Paragraph(Methods.getInstance().dateNewBill + "", lightblackFont));
             cell5.setBorderColor(BaseColor.WHITE);
             cell5.setPaddingRight(10);
             cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -698,7 +698,41 @@ public class CreatePDF {
             tableSing.addCell(c_3);
             document.add(tableSing);
             
+            /*Chunk linebreak = new Chunk(new DottedLineSeparator());
+            document.add(linebreak);*/
+            /*----------------------------------*/
+            PdfPTable table = new PdfPTable(4); // number of columns.
+            table.setWidthPercentage(86); //Width %
+            table.setSpacingBefore(7f); //Space before table
+            table.setSpacingAfter(7f); //Space after table
             
+            float[] columnWidthsTable = {1.3f,2f,2f,2.3f};
+            table.setWidths(columnWidthsTable);
+            
+            PdfPCell a_1 = new PdfPCell(new Paragraph("Embarque: ", blackLight));
+            a_1.setBorderColor(BaseColor.WHITE);
+            a_1.setPaddingLeft(10);
+            a_1.setHorizontalAlignment(Element.ALIGN_LEFT);
+            a_1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell a_2 = new PdfPCell(new Paragraph(new Chunk(new DottedLineSeparator())));
+            a_2.setBorderColor(BaseColor.WHITE);
+            a_2.setPaddingLeft(10);
+            a_2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            a_2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell a_3 = new PdfPCell(new Paragraph("Marchamo", blackLight));
+            a_3.setBorderColor(BaseColor.WHITE);
+            a_3.setPaddingLeft(10);
+            a_3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            a_3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            table.addCell(a_1);
+            table.addCell(a_2);
+            table.addCell(a_3);
+            table.addCell(a_2);
+            
+            document.add(table);
             
             
             

@@ -14,7 +14,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -33,20 +32,24 @@ public class Methods {
     public Client client = new Client();
     public Client clientNotify = new Client();
     public DecimalFormat df2 = new DecimalFormat("#.##");
-    /*Bill information*/
+    public String dateNewBill;
     public String idBill;
-    public String date;
+    
+    /*Bill information*/
+    public String currentDateTime;
+    public Double subTotal;
+    public Double disccount;
+    public Double total;
+    public Double embarque;
     public int clientId;
     public int idNotify;
+    
     /*Products*/
     public ArrayList<Item> cart = new ArrayList<Item>();
     public int totalBox;
     public int totalQuantity;
     public String plants = "Plantas vivas ornamentales";
-    public Double subTotal;
-    public Double disccount;
-    public Double total;
-    public Double embarque;
+    
     /*Aditional Information*/
     public String shipment          ="__________________";
     public String netWeight         ="__________________";
@@ -67,6 +70,8 @@ public class Methods {
     public boolean two = false;
     public boolean added = false;
     
+    
+    
     /*------------------------------------------------------------------------*/
     //Singleton
     public static Methods getInstance() {
@@ -75,22 +80,7 @@ public class Methods {
         }
         return instance;
     }
-    /*------------------------------------------------------------------------*/
-    public String getLocalDate() {
-        String fecha = "Fecha : " 
-                        + LocalDate.now().getDayOfMonth() + "-" 
-                        + LocalDate.now().getMonthValue() + "-" 
-                        + LocalDate.now().getYear()+"             ";
-        return fecha;
-    }
-    /*------------------------------------------------------------------------*/
-    public Document  setAtributes(Document document, String author, String creator, int numero_factura ){
-        document.addAuthor(author);/*Nombre Empresa Vendedora*/
-        document.addCreationDate();
-        document.addCreator(creator);/*Dueno de empresa*/
-        document.addTitle("Factura : " + numero_factura);/*Numero Ingresado por usuario*/
-        return document;
-    }
+   
     /*------------------------------------------------------------------------*/
     public void closeSystem(){    
         try {
@@ -139,7 +129,7 @@ public class Methods {
             p1.setAlignment(Element.ALIGN_RIGHT);
             document.add(p1);
             
-            Paragraph p2 = new Paragraph(Methods.getInstance().date);
+            Paragraph p2 = new Paragraph(Methods.getInstance().dateNewBill);
             p2.setAlignment(Element.ALIGN_RIGHT);
             document.add(p2);
             
@@ -182,9 +172,15 @@ public class Methods {
             s+=" ";
         }
         return s;
-    }public void reset(){
+    }
+    public void reset(){
         Methods.getInstance().cart.clear();
         Methods.getInstance().one = false;
         Methods.getInstance().two = false;
     }
+    
+    public void getCurrentTime(){
+        currentDateTime =  java.time.LocalDateTime.now().toString();
+    }
+    
 }

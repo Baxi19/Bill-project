@@ -1,9 +1,7 @@
 package Class;
 
 import Windows.W_Login;
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

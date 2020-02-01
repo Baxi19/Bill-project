@@ -6,8 +6,6 @@
 package Windows;
 
 import Class.SQLiteMethods;
-import java.sql.SQLException;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -261,14 +259,16 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String export = jTextFieldExport.getText();
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
-            String email = jTextFieldEmail.getText(); // Falta por hacer
+            String email = jTextFieldEmail.getText();
             JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addClient(name, export, direction, phone)); 
+            SQLiteMethods.getInstance().addEmail(SQLiteMethods.getInstance().getLastID(), email);
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
             jTextFieldTelephone.setText("");
             jTextFieldEmail.setText("");
             wm.loadClients();
+            this.dispose();
         }
         else{
             String name = jTextFieldName.getText();
@@ -281,7 +281,8 @@ public class W_RegisterClient extends javax.swing.JFrame {
             jTextFieldDirection.setText("");
             jTextFieldTelephone.setText("");
             jTextFieldEmail.setText("");
-            wm.loadClients();
+            wm.loadNotifyTo();
+            this.dispose();
         } 
     }//GEN-LAST:event_jButtonLogin3ActionPerformed
 

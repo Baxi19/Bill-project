@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+
 
 
 /**
@@ -105,6 +105,15 @@ public class SQLiteMethods {
     public void addEmail(int id, String email){
         String query = "INSERT INTO Emails(Cliente, Email) VALUES"
                 + "(" + id + ", '" + email + "')";
+         try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+        }
+        catch (SQLException e) {
+        }  
     }
     
      public String addNotifyTo(String name,String direction, String telephone,String email, int Cliente_id){
@@ -231,7 +240,7 @@ public class SQLiteMethods {
     }
     public ArrayList<Double> getPrice(int height){
         String query = "SELECT DISTINCT precio FROM Plantas INNER JOIN Precios " +
-                       "on Plantas.ID = Precios.Planta_id WHERE Altura = " + height;
+                       "on Plantas.ID = Precios.Planta_id WHERE Altura = " + height + "AND Precios.Activo = 'T'";
         try (Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
@@ -449,5 +458,41 @@ public class SQLiteMethods {
             return false;
         }
     }
+   
+    public boolean deletePrice(String plantName, int height, double price) {
+        int plantId = getPlantID(plantName, height);
+        String query = "UPDATE Precios SET Activo = 'F' WHERE Precio = " + price + " AND Planta_id = " + plantId;
+         try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            stmt.executeQuery(query);
+            stmt.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public int getLastID(){
+        String query = "SELECT * FROM Clientes ORDER BY rowid DESC LIMIT 1";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            int id = 0;
+            while (rs.next()) {
+                id = rs.getInt("ID");
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return id;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        } 
 
+    }
 }
