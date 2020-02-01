@@ -404,14 +404,14 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Nuevo");
         jPanelBill.add(jLabel35);
-        jLabel35.setBounds(480, 410, 70, 30);
+        jLabel35.setBounds(480, 410, 70, 40);
 
         jLabel36.setBackground(new java.awt.Color(255, 255, 255));
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Eliminar");
         jPanelBill.add(jLabel36);
-        jLabel36.setBounds(480, 470, 70, 30);
+        jLabel36.setBounds(480, 460, 70, 40);
 
         jButtonConfirmBill4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete1.png"))); // NOI18N
         jButtonConfirmBill4.setBorder(null);
@@ -1502,6 +1502,7 @@ public class W_Menu extends javax.swing.JFrame {
             else{
                 SQLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
                 JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
+                loadClients();
             }            
         }
         catch(Exception ex){
@@ -1523,11 +1524,11 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
         if(jRadioButtonClient.isSelected()){
-            W_RegisterClient wr = new W_RegisterClient(1);
+            W_RegisterClient wr = new W_RegisterClient(1, this);
             wr.show();
         }
         else if(jRadioButtonNotify.isSelected()){
-            W_RegisterClient wr = new W_RegisterClient(2);
+            W_RegisterClient wr = new W_RegisterClient(2, this);
             wr.show();
         }
         else{
