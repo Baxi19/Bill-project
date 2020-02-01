@@ -440,7 +440,7 @@ public class CreatePDF {
             tableAditionalInformation.setSpacingAfter(7f); //Space after table
             //Set Column widths
            
-            float[] columnWidthsAditionalInfo = {1.3f,2f,2f,2f};
+            float[] columnWidthsAditionalInfo = {1.7f,3f,2.3f,3.3f};
             tableAditionalInformation.setWidths(columnWidthsAditionalInfo);
             /*--------------------*/
             PdfPCell c0 = new PdfPCell(new Paragraph("Embarque: ", black));
@@ -449,8 +449,7 @@ public class CreatePDF {
             c0.setHorizontalAlignment(Element.ALIGN_LEFT);
             c0.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String shipment = Methods.getInstance().modifyString(Methods.getInstance().shipment);
-            Chunk underlineShipment = new Chunk(shipment, blackLight);
+            Chunk underlineShipment = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().shipment), black);
             underlineShipment.setUnderline(0.1f, -2f); 
             
             PdfPCell c1 = new PdfPCell(new Phrase(underlineShipment));
@@ -459,6 +458,7 @@ public class CreatePDF {
             c1.setHorizontalAlignment(Element.ALIGN_LEFT);
             c1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             c1.setBorderColorTop(BaseColor.BLACK);
+            
             /*--------------------*/
             PdfPCell c2 = new PdfPCell(new Paragraph("Marchamo: ", black));
             c2.setBorderColor(BaseColor.WHITE);
@@ -466,8 +466,7 @@ public class CreatePDF {
             c2.setHorizontalAlignment(Element.ALIGN_LEFT);
             c2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String label = Methods.getInstance().modifyString(Methods.getInstance().label);
-            Chunk underlineLabel = new Chunk(label, blackLight);
+            Chunk underlineLabel = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().label), black);
             underlineLabel.setUnderline(0.1f, -2f); 
             
             PdfPCell c3 = new PdfPCell(new Phrase(underlineLabel));
@@ -483,8 +482,7 @@ public class CreatePDF {
             c4.setHorizontalAlignment(Element.ALIGN_LEFT);
             c4.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String netWeight = Methods.getInstance().modifyString(Methods.getInstance().netWeight);
-            Chunk underlineNetWeight = new Chunk(netWeight, blackLight);
+            Chunk underlineNetWeight = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().netWeight), blackLight);
             underlineNetWeight.setUnderline(0.1f, -2f); 
             
             PdfPCell c5 = new PdfPCell(new Phrase(underlineNetWeight));
@@ -500,8 +498,7 @@ public class CreatePDF {
             c6.setHorizontalAlignment(Element.ALIGN_LEFT);
             c6.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String booking = Methods.getInstance().modifyString(Methods.getInstance().booking);
-            Chunk underlineBooking = new Chunk(booking, blackLight);
+            Chunk underlineBooking = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().booking), blackLight);
             underlineBooking.setUnderline(0.1f, -2f); 
             
             PdfPCell c7 = new PdfPCell(new Phrase(underlineBooking));
@@ -517,8 +514,7 @@ public class CreatePDF {
             c8.setHorizontalAlignment(Element.ALIGN_LEFT);
             c8.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String grossWeight = Methods.getInstance().modifyString(Methods.getInstance().grossWeight);
-            Chunk underlineGrossWeight = new Chunk(grossWeight, blackLight);
+            Chunk underlineGrossWeight = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().grossWeight), blackLight);
             underlineGrossWeight.setUnderline(0.1f, -2f); 
             
             PdfPCell c9 = new PdfPCell(new Phrase(underlineGrossWeight));
@@ -536,9 +532,9 @@ public class CreatePDF {
             c10.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             
-            String outPort = Methods.getInstance().modifyString(Methods.getInstance().outPort);
+            String outPort = Methods.getInstance().outPort;
             String[] dataOutPort = outPort.split("\\) ");
-            Chunk underlineOutPort = new Chunk(dataOutPort[1], blackLight);
+            Chunk underlineOutPort = new Chunk(Methods.getInstance().modifyString(dataOutPort[1]), black);
             underlineOutPort.setUnderline(0.1f, -2f); 
             
             PdfPCell c11 = new PdfPCell(new Phrase(underlineOutPort));
@@ -554,8 +550,8 @@ public class CreatePDF {
             c12.setHorizontalAlignment(Element.ALIGN_LEFT);
             c12.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String container = Methods.getInstance().modifyString(Methods.getInstance().container);
-            Chunk underlineContainer = new Chunk(container, blackLight);
+            
+            Chunk underlineContainer = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().container), black);
             underlineContainer.setUnderline(0.1f, -2f); 
             
             PdfPCell c13 = new PdfPCell(new Phrase(underlineContainer));
@@ -571,9 +567,9 @@ public class CreatePDF {
             c14.setHorizontalAlignment(Element.ALIGN_LEFT);
             c14.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String inPort = Methods.getInstance().modifyString(Methods.getInstance().inPort);
+            String inPort = Methods.getInstance().inPort;
             String[] dataInPort = inPort.split("\\) ");
-            Chunk underlineInPort = new Chunk(dataInPort[1], blackLight);
+            Chunk underlineInPort = new Chunk(Methods.getInstance().modifyString(dataInPort[1]), black);
             underlineInPort.setUnderline(0.1f, -2f); 
             
             PdfPCell c15 = new PdfPCell(new Phrase(underlineInPort));
@@ -589,8 +585,8 @@ public class CreatePDF {
             c16.setHorizontalAlignment(Element.ALIGN_LEFT);
             c16.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String ship = Methods.getInstance().modifyString(Methods.getInstance().ship);
-            Chunk underlineShip = new Chunk(ship, blackLight);
+            
+            Chunk underlineShip = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().ship), black);
             underlineShip.setUnderline(0.1f, -2f); 
             
             PdfPCell c17 = new PdfPCell(new Phrase(underlineShip));
@@ -606,9 +602,9 @@ public class CreatePDF {
             c18.setHorizontalAlignment(Element.ALIGN_LEFT);
             c18.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String originCountry = Methods.getInstance().modifyString(Methods.getInstance().originCountry);
+            String originCountry = Methods.getInstance().originCountry;
             String[] dataOriginCountry = originCountry.split("\\) ");
-            Chunk underlineOriginCountry = new Chunk(dataOriginCountry[1], blackLight);
+            Chunk underlineOriginCountry = new Chunk(Methods.getInstance().modifyString(dataOriginCountry[1]), black);
             underlineOriginCountry.setUnderline(0.1f, -2f); 
             
             PdfPCell c19 = new PdfPCell(new Phrase(underlineOriginCountry));
@@ -624,9 +620,9 @@ public class CreatePDF {
             c20.setHorizontalAlignment(Element.ALIGN_LEFT);
             c20.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            String destinationCountry = Methods.getInstance().modifyString(Methods.getInstance().destinationCountry);
+            String destinationCountry = Methods.getInstance().destinationCountry;
             String[] dataDestinationCountry = destinationCountry.split("\\) ");
-            Chunk underlineDestinationCountry = new Chunk(dataDestinationCountry[1], blackLight);
+            Chunk underlineDestinationCountry = new Chunk(Methods.getInstance().modifyString(dataDestinationCountry[1]), black);
             underlineDestinationCountry.setUnderline(0.1f, -2f); 
             
             PdfPCell c21 = new PdfPCell(new Phrase(underlineDestinationCountry));
@@ -701,15 +697,15 @@ public class CreatePDF {
             /*Chunk linebreak = new Chunk(new DottedLineSeparator());
             document.add(linebreak);*/
             /*----------------------------------*/
-            PdfPTable table = new PdfPTable(4); // number of columns.
+          /*  PdfPTable table = new PdfPTable(4); // number of columns.
             table.setWidthPercentage(86); //Width %
             table.setSpacingBefore(7f); //Space before table
             table.setSpacingAfter(7f); //Space after table
             
-            float[] columnWidthsTable = {1.3f,2f,2f,2.3f};
+            float[] columnWidthsTable = {1.3f,2f,2f,3f};
             table.setWidths(columnWidthsTable);
             
-            PdfPCell a_1 = new PdfPCell(new Paragraph("Embarque: ", blackLight));
+            PdfPCell a_1 = new PdfPCell(new Paragraph("Embarque: ", black));
             a_1.setBorderColor(BaseColor.WHITE);
             a_1.setPaddingLeft(10);
             a_1.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -721,19 +717,28 @@ public class CreatePDF {
             a_2.setHorizontalAlignment(Element.ALIGN_LEFT);
             a_2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            PdfPCell a_3 = new PdfPCell(new Paragraph("Marchamo", blackLight));
+            PdfPCell a_3 = new PdfPCell(new Paragraph("Marchamo:", black));
             a_3.setBorderColor(BaseColor.WHITE);
             a_3.setPaddingLeft(10);
             a_3.setHorizontalAlignment(Element.ALIGN_LEFT);
             a_3.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
+            Chunk underline = new Chunk(Methods.getInstance().modifyString(""), black);
+            underline.setUnderline(0.1f, -2f); //0.1 thick, -2 y-location
+            
+            PdfPCell a_4 = new PdfPCell(new Paragraph(underline));
+            a_4.setBorderColor(BaseColor.WHITE);
+            a_4.setPaddingLeft(10);
+            a_4.setHorizontalAlignment(Element.ALIGN_LEFT);
+            a_4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
             table.addCell(a_1);
             table.addCell(a_2);
             table.addCell(a_3);
-            table.addCell(a_2);
+            table.addCell(a_4);
             
             document.add(table);
-            
+            */
             
             
             } catch (DocumentException | FileNotFoundException e) {

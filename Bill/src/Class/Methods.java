@@ -51,17 +51,17 @@ public class Methods {
     public String plants = "Plantas vivas ornamentales";
     
     /*Aditional Information*/
-    public String shipment          ="__________________";
-    public String netWeight         ="__________________";
-    public String grossWeight       ="__________________";
-    public String container         ="__________________";
-    public String ship              ="__________________";
-    public String label             ="__________________";
-    public String booking           ="__________________";
-    public String outPort           ="__________________";
-    public String inPort            ="__________________";
-    public String originCountry     ="__________________";
-    public String destinationCountry="__________________";
+    public String shipment          ="";
+    public String netWeight         ="";
+    public String grossWeight       ="";
+    public String container         ="";
+    public String ship              ="";
+    public String label             ="";
+    public String booking           ="";
+    public String outPort           ="";
+    public String inPort            ="";
+    public String originCountry     ="";
+    public String destinationCountry="";
     /*sign's Boss*/
     public String line              ="_________________________________________________________";
     public String ced               ="               Firma        Céd: 2-356-370               ";
@@ -169,7 +169,7 @@ public class Methods {
     public String modifyString(String s){
         int size = s.length();
         for (int i = size; i < 20; i++) {
-            s+=" ";
+            s+="_";
         }
         return s;
     }
