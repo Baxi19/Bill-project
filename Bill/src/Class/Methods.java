@@ -168,8 +168,8 @@ public class Methods {
     }
     public String modifyString(String s){
         int size = s.length();
-        for (int i = size; i < 20; i++) {
-            s+="_";
+        for (int i = size; i < 18; i++) {
+            s+=" ";
         }
         return s;
     }
