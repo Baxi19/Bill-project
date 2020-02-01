@@ -63,6 +63,9 @@ public class Methods {
     public String line              ="_________________________________________________________";
     public String ced               ="               Firma        Céd: 2-356-370               ";
     public String shortLine         ="----------------------------------------------------------------------------------------------------------------------------------";
+    public boolean one = false;
+    public boolean two = false;
+    
     /*------------------------------------------------------------------------*/
     //Singleton
     public static Methods getInstance() {
@@ -178,5 +181,9 @@ public class Methods {
             s+="_";
         }
         return s;
+    }public void reset(){
+        Methods.getInstance().cart.clear();
+        Methods.getInstance().one = false;
+        Methods.getInstance().two = false;
     }
 }

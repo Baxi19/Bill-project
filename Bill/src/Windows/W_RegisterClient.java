@@ -22,7 +22,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
      */
     public W_RegisterClient(int format) {
         initComponents();
-        this.setSize(446,298);
+        this.setSize(450,300);
         setLocationRelativeTo(null);
         this.format = format;
         if(format==1){
@@ -44,22 +44,23 @@ public class W_RegisterClient extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabelExport = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextFieldName = new javax.swing.JTextField();
-        jLabelTitle = new javax.swing.JLabel();
-        jTextFieldExport = new javax.swing.JTextField();
-        jTextFieldDirection = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextFieldTelephone = new javax.swing.JTextField();
-        jButtonLogin3 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jButtonClose1 = new javax.swing.JButton();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextFieldName = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jTextFieldDirection = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldTelephone = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jLabelExport = new javax.swing.JLabel();
+        jTextFieldExport = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jButtonLogin3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListClients = new javax.swing.JList<>();
+        bg = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -67,96 +68,6 @@ public class W_RegisterClient extends javax.swing.JFrame {
         setUndecorated(true);
         setSize(new java.awt.Dimension(467, 3));
         getContentPane().setLayout(null);
-
-        jLabel1.setText("Nombre:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 60, 60, 20);
-
-        jLabelExport.setText("Exporte:");
-        getContentPane().add(jLabelExport);
-        jLabelExport.setBounds(30, 220, 60, 20);
-
-        jLabel3.setText("Dirección:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 100, 70, 20);
-
-        jLabel4.setText("Teléfono:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 140, 60, 20);
-
-        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldName);
-        jTextFieldName.setBounds(110, 60, 260, 24);
-
-        jLabelTitle.setText("Registrar nuevo cliente");
-        getContentPane().add(jLabelTitle);
-        jLabelTitle.setBounds(170, 10, 140, 25);
-
-        jTextFieldExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldExportActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldExport);
-        jTextFieldExport.setBounds(110, 220, 260, 24);
-
-        jTextFieldDirection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDirectionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldDirection);
-        jTextFieldDirection.setBounds(110, 100, 260, 24);
-
-        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldEmail);
-        jTextFieldEmail.setBounds(110, 180, 260, 24);
-
-        jLabel6.setText("Email:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 180, 50, 20);
-
-        jTextFieldTelephone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelephoneActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldTelephone);
-        jTextFieldTelephone.setBounds(110, 140, 260, 24);
-
-        jButtonLogin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
-        jButtonLogin3.setBorder(null);
-        jButtonLogin3.setBorderPainted(false);
-        jButtonLogin3.setContentAreaFilled(false);
-        jButtonLogin3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonLogin3.setRequestFocusEnabled(false);
-        jButtonLogin3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonLogin3MouseClicked(evt);
-            }
-        });
-        jButtonLogin3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonLogin3);
-        jButtonLogin3.setBounds(380, 240, 80, 60);
-
-        jLabel7.setText("Registrar");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(330, 250, 60, 40);
 
         jButtonClose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close1.png"))); // NOI18N
         jButtonClose1.setBorder(null);
@@ -178,7 +89,118 @@ public class W_RegisterClient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonClose1);
-        jButtonClose1.setBounds(390, 10, 60, 50);
+        jButtonClose1.setBounds(360, 10, 70, 60);
+
+        jLabelTitle.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitle.setText("Registrar nuevo cliente");
+        getContentPane().add(jLabelTitle);
+        jLabelTitle.setBounds(20, 10, 320, 28);
+
+        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Nombre");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(20, 50, 80, 30);
+
+        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldName);
+        jTextFieldName.setBounds(110, 60, 230, 24);
+
+        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Direccíon");
+        getContentPane().add(jLabel24);
+        jLabel24.setBounds(20, 90, 80, 30);
+
+        jTextFieldDirection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDirectionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldDirection);
+        jTextFieldDirection.setBounds(110, 100, 230, 24);
+
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Teléfono");
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(20, 140, 80, 30);
+
+        jTextFieldTelephone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelephoneActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldTelephone);
+        jTextFieldTelephone.setBounds(110, 140, 230, 24);
+
+        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Email");
+        getContentPane().add(jLabel25);
+        jLabel25.setBounds(20, 180, 80, 30);
+
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldEmail);
+        jTextFieldEmail.setBounds(110, 180, 230, 24);
+
+        jLabelExport.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelExport.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabelExport.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelExport.setText("Exporte");
+        getContentPane().add(jLabelExport);
+        jLabelExport.setBounds(20, 220, 80, 30);
+
+        jTextFieldExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldExportActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldExport);
+        jTextFieldExport.setBounds(110, 220, 230, 24);
+
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Registrar");
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(280, 240, 80, 30);
+
+        jButtonLogin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
+        jButtonLogin3.setBorder(null);
+        jButtonLogin3.setBorderPainted(false);
+        jButtonLogin3.setContentAreaFilled(false);
+        jButtonLogin3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonLogin3.setRequestFocusEnabled(false);
+        jButtonLogin3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonLogin3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonLogin3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonLogin3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLogin3MouseClicked(evt);
+            }
+        });
+        jButtonLogin3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogin3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonLogin3);
+        jButtonLogin3.setBounds(360, 220, 80, 70);
 
         jListClients.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -193,7 +215,14 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jListClients);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 220, 260, 20);
+        jScrollPane1.setBounds(110, 220, 230, 20);
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hydrogen.jpg"))); // NOI18N
+        bg.setMaximumSize(new java.awt.Dimension(450, 300));
+        bg.setMinimumSize(new java.awt.Dimension(450, 300));
+        bg.setPreferredSize(new java.awt.Dimension(450, 300));
+        getContentPane().add(bg);
+        bg.setBounds(0, 0, 450, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -283,14 +312,15 @@ public class W_RegisterClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonClose1;
     private javax.swing.JButton jButtonLogin3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabelExport;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JList<String> jListClients;

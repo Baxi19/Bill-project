@@ -34,6 +34,7 @@ public class W_Menu extends javax.swing.JFrame {
         jListDescription.setModel(SQLiteMethods.getInstance().getPlantsList());
         closePanels();  
         loadPortCountryData();
+        checkBottons();
     }
 
     /**
@@ -49,12 +50,10 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButtonLogin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButtonLogin1 = new javax.swing.JButton();
-        jButtonLogin2 = new javax.swing.JButton();
-        jButtonLogin3 = new javax.swing.JButton();
+        jButtonProducts = new javax.swing.JButton();
+        jButtonAditionalData = new javax.swing.JButton();
         jPanelBill = new javax.swing.JPanel();
         jButtonClose1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -204,40 +203,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelMenu.add(jLabel5);
         jLabel5.setBounds(50, 300, 250, 28);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Generar PDF");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanelMenu.add(jLabel2);
-        jLabel2.setBounds(50, 500, 210, 28);
-
-        jButtonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
-        jButtonLogin.setBorder(null);
-        jButtonLogin.setBorderPainted(false);
-        jButtonLogin.setContentAreaFilled(false);
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonLogin.setRequestFocusEnabled(false);
-        jButtonLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonLoginMouseClicked(evt);
-            }
-        });
-        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLoginActionPerformed(evt);
-            }
-        });
-        jPanelMenu.add(jButtonLogin);
-        jButtonLogin.setBounds(320, 490, 50, 50);
-
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,49 +237,49 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelMenu.add(jButtonLogin1);
         jButtonLogin1.setBounds(320, 190, 50, 50);
 
-        jButtonLogin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
-        jButtonLogin2.setBorder(null);
-        jButtonLogin2.setBorderPainted(false);
-        jButtonLogin2.setContentAreaFilled(false);
-        jButtonLogin2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonLogin2.setRequestFocusEnabled(false);
-        jButtonLogin2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
+        jButtonProducts.setBorder(null);
+        jButtonProducts.setBorderPainted(false);
+        jButtonProducts.setContentAreaFilled(false);
+        jButtonProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonProducts.setRequestFocusEnabled(false);
+        jButtonProducts.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonProducts.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonProducts.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonProducts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonLogin2MouseClicked(evt);
+                jButtonProductsMouseClicked(evt);
             }
         });
-        jButtonLogin2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin2ActionPerformed(evt);
+                jButtonProductsActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonLogin2);
-        jButtonLogin2.setBounds(320, 290, 50, 50);
+        jPanelMenu.add(jButtonProducts);
+        jButtonProducts.setBounds(320, 290, 50, 50);
 
-        jButtonLogin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
-        jButtonLogin3.setBorder(null);
-        jButtonLogin3.setBorderPainted(false);
-        jButtonLogin3.setContentAreaFilled(false);
-        jButtonLogin3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonLogin3.setRequestFocusEnabled(false);
-        jButtonLogin3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
-        jButtonLogin3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAditionalData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
+        jButtonAditionalData.setBorder(null);
+        jButtonAditionalData.setBorderPainted(false);
+        jButtonAditionalData.setContentAreaFilled(false);
+        jButtonAditionalData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonAditionalData.setRequestFocusEnabled(false);
+        jButtonAditionalData.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonAditionalData.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonAditionalData.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
+        jButtonAditionalData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonLogin3MouseClicked(evt);
+                jButtonAditionalDataMouseClicked(evt);
             }
         });
-        jButtonLogin3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAditionalData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin3ActionPerformed(evt);
+                jButtonAditionalDataActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonLogin3);
-        jButtonLogin3.setBounds(320, 390, 50, 50);
+        jPanelMenu.add(jButtonAditionalData);
+        jButtonAditionalData.setBounds(320, 390, 50, 50);
 
         getContentPane().add(jPanelMenu);
         jPanelMenu.setBounds(0, 0, 400, 800);
@@ -682,11 +647,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel30);
         jLabel30.setBounds(130, 350, 170, 28);
 
-        jListPriceUnit.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1", "2", "3", "4", "5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListPriceUnit.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jListPriceUnitValueChanged(evt);
@@ -775,11 +735,11 @@ public class W_Menu extends javax.swing.JFrame {
         subtotal.setForeground(new java.awt.Color(255, 255, 255));
         subtotal.setText("0.0");
         subtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                subtotalCaretPositionChanged(evt);
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 subtotalInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                subtotalCaretPositionChanged(evt);
             }
         });
         subtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -865,11 +825,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel63);
         jLabel63.setBounds(140, 510, 140, 22);
 
-        jListCartInfo.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListCartInfo.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jListCartInfoValueChanged(evt);
@@ -1180,11 +1135,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelAditionalData.add(jScrollUnityPrice5);
         jScrollUnityPrice5.setBounds(400, 450, 220, 60);
 
-        jListDinamic.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollUnityPrice4.setViewportView(jListDinamic);
 
         jPanelAditionalData.add(jScrollUnityPrice4);
@@ -1373,6 +1323,7 @@ public class W_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLogoutMouseClicked
+        Methods.getInstance().reset();
         W_Login w = new W_Login();
         w.setVisible(true);
         this.dispose();
@@ -1381,20 +1332,6 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLogoutActionPerformed
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-   
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoginMouseClicked
-        closePanels();
-        /*Generar el PDF*/
-        CreatePDF.getInstance().newPDF();
-    }//GEN-LAST:event_jButtonLoginMouseClicked
-
-    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
@@ -1410,23 +1347,28 @@ public class W_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLogin1ActionPerformed
 
-    private void jButtonLogin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLogin2MouseClicked
-        closePanels();
-        changeSize(jPanelProducts);
-    }//GEN-LAST:event_jButtonLogin2MouseClicked
+    private void jButtonProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonProductsMouseClicked
+        if(Methods.getInstance().one){
+            closePanels();
+            changeSize(jPanelProducts);
+        }
+        
+    }//GEN-LAST:event_jButtonProductsMouseClicked
 
-    private void jButtonLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin2ActionPerformed
+    private void jButtonProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin2ActionPerformed
+    }//GEN-LAST:event_jButtonProductsActionPerformed
 
-    private void jButtonLogin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLogin3MouseClicked
-        closePanels();
-        changeSize(jPanelAditionalData);
-    }//GEN-LAST:event_jButtonLogin3MouseClicked
+    private void jButtonAditionalDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAditionalDataMouseClicked
+        if(Methods.getInstance().two){
+            closePanels();
+            changeSize(jPanelAditionalData);
+        }
+    }//GEN-LAST:event_jButtonAditionalDataMouseClicked
 
-    private void jButtonLogin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin3ActionPerformed
+    private void jButtonAditionalDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAditionalDataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin3ActionPerformed
+    }//GEN-LAST:event_jButtonAditionalDataActionPerformed
     public void changeSize(javax.swing.JPanel panel){
         panel.setVisible(true);
        
@@ -1465,6 +1407,8 @@ public class W_Menu extends javax.swing.JFrame {
                         System.out.println("Id Cliente = " + Methods.getInstance().clientId);
                         /*Mostramos el siguiente formulario*/
                         closePanels();
+                        Methods.getInstance().one = true;
+                        checkBottons();
                         changeSize(jPanelProducts);
                         
                     }else{
@@ -1497,8 +1441,15 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClose4ActionPerformed
 
     private void jButtonConfirmBill1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill1MouseClicked
-        closePanels();
-        changeSize(jPanelAditionalData);
+        if(!Methods.getInstance().cart.isEmpty()){
+            closePanels();
+            Methods.getInstance().two = true;
+            checkBottons();
+            changeSize(jPanelAditionalData);
+        }else{
+            JOptionPane.showMessageDialog(this, "por favor agregue al menos un item");
+        }
+        
     }//GEN-LAST:event_jButtonConfirmBill1MouseClicked
 
     private void jButtonConfirmBill1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill1ActionPerformed
@@ -1514,7 +1465,8 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBoxActionPerformed
 
     private void jComboBoxSizeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSizeItemStateChanged
-        if(jComboBoxSize.getSelectedIndex() != 0){
+        
+        if(jComboBoxSize.getSelectedIndex() != 0 && !jListDescription.isSelectionEmpty()){
             DefaultListModel modelo = SQLiteMethods.getInstance().getUnitPrice(
                             jListDescription.getSelectedValue(), 
                             Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
@@ -1560,15 +1512,7 @@ public class W_Menu extends javax.swing.JFrame {
         }
     }
     private void jButtonConfirmBill5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5MouseClicked
-        /*Agregar nuevo cliente*/
-        /*Si es un cliente*/
-        /*if (checkFirtsRadioB()) {
-            if (jRadioButtonClient.isSelected()) {
-                System.out.println("Agregar nuevo cliente");
-            } else if (jRadioButtonNotify.isSelected()) {
-                System.out.println("Agregar nueva persona para notificar");
-            }
-        }*/
+        
         
     }//GEN-LAST:event_jButtonConfirmBill5MouseClicked
 
@@ -1625,6 +1569,7 @@ public class W_Menu extends javax.swing.JFrame {
                     int num2 = Integer.parseInt(jTextFieldQuantity.getText());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Los valores de los cajones y unidades deben de ser números!");
+                    return;
                 }
                 if(!jListDescription.isSelectionEmpty()){
                     if(jComboBoxSize.getSelectedIndex() != 0){
@@ -1800,9 +1745,19 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
 
     private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
-        subtotal.setText(calculateSubTotal()+"");
-        precioItem.setText(calculatePriceItem()+"");
-        calculateDisscount();
+        
+        if(!jTextFieldQuantity.getText().isEmpty()){
+            if(Methods.getInstance().isNumeric(jTextFieldQuantity.getText())){
+                subtotal.setText(calculateSubTotal()+"");
+                precioItem.setText(calculatePriceItem()+"");
+                calculateDisscount();
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Las unidades tienen que ser un número");
+            }
+            
+        }
+        
     }//GEN-LAST:event_jListPriceUnitValueChanged
    
     private void jListClientsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClientsValueChanged
@@ -1819,7 +1774,12 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jListClientsValueChanged
 
     private void jListDescriptionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDescriptionValueChanged
-        
+        if(jComboBoxSize.getSelectedIndex() != 0 && !jListDescription.isSelectionEmpty()){
+            DefaultListModel modelo = SQLiteMethods.getInstance().getUnitPrice(
+                            jListDescription.getSelectedValue(), 
+                            Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
+            jListPriceUnit.setModel(modelo);
+        } 
     }//GEN-LAST:event_jListDescriptionValueChanged
 
     private void jTextFieldDisscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDisscountActionPerformed
@@ -1921,16 +1881,32 @@ public class W_Menu extends javax.swing.JFrame {
     
     public void checkLocalization() throws IOException {
         
-        File file = new File(".");  
-        File[] files = file.listFiles();  
-        System.out.println("Current dir : " + file.getCanonicalPath());
+        File file = new File(".");
+        File[] files = file.listFiles();
+
         if (Desktop.isDesktopSupported()) {
             try {
-                File myFile = new File(file.getCanonicalPath()+"\\Factura"+Methods.getInstance().idBill+".pdf");
+                File myFile = new File(file.getCanonicalPath() + "\\Factura" + Methods.getInstance().idBill + ".pdf");
                 Desktop.getDesktop().open(myFile);
             } catch (IOException ex) {
                 // no application registered for PDFs
             }
+        }
+    }
+    public void checkBottons(){
+        if(Methods.getInstance().one){
+            jButtonProducts.setEnabled(true);
+            jButtonProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png")));
+        }else{
+            jButtonProducts.setEnabled(false);
+            jButtonProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png")));
+        }
+        if(Methods.getInstance().two){
+            jButtonAditionalData.setEnabled(true);
+            jButtonAditionalData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png")));
+        }else{
+            jButtonAditionalData.setEnabled(false);
+            jButtonAditionalData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png")));
         }
     }
     /**
@@ -1989,6 +1965,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel EntrySettings1;
     private javax.swing.JLabel EntryTotal;
     private javax.swing.JButton jButtonAdd;
+    private javax.swing.JButton jButtonAditionalData;
     private javax.swing.JButton jButtonClose1;
     private javax.swing.JButton jButtonClose4;
     private javax.swing.JButton jButtonClose5;
@@ -2001,11 +1978,9 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConfirmBill5;
     private javax.swing.JButton jButtonConfirmBill6;
     private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonLogin;
     private javax.swing.JButton jButtonLogin1;
-    private javax.swing.JButton jButtonLogin2;
-    private javax.swing.JButton jButtonLogin3;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jButtonProducts;
     private javax.swing.JComboBox<String> jComboBoxSize;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
@@ -2013,7 +1988,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
