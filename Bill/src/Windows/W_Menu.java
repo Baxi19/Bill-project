@@ -12,8 +12,6 @@ import Class.SQLiteMethods;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -107,7 +105,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jTextFieldDisscount = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        totalWithoutDisscount = new javax.swing.JLabel();
+        totalWithDisscount = new javax.swing.JLabel();
         EntryTotal = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jScrollCart = new javax.swing.JScrollPane();
@@ -817,12 +815,12 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jLabel33);
         jLabel33.setBounds(140, 630, 60, 30);
 
-        totalWithoutDisscount.setBackground(new java.awt.Color(255, 255, 255));
-        totalWithoutDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        totalWithoutDisscount.setForeground(new java.awt.Color(255, 255, 255));
-        totalWithoutDisscount.setText("0.0");
-        jPanelProducts.add(totalWithoutDisscount);
-        totalWithoutDisscount.setBounds(280, 630, 140, 22);
+        totalWithDisscount.setBackground(new java.awt.Color(255, 255, 255));
+        totalWithDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        totalWithDisscount.setForeground(new java.awt.Color(255, 255, 255));
+        totalWithDisscount.setText("0.0");
+        jPanelProducts.add(totalWithDisscount);
+        totalWithDisscount.setBounds(280, 630, 140, 22);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1588,7 +1586,7 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setText("");
         jComboBoxSize.setSelectedIndex(0);
         jListPriceUnit.setModel(new DefaultListModel<>());
-        //totalWithoutDisscount.setText("0.0");
+        precioItem.setText("0.0");
         
     }        
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
@@ -1819,8 +1817,14 @@ public class W_Menu extends javax.swing.JFrame {
                 Methods.getInstance().subTotal = calculateSubTotal();
                 subtotal.setText(Methods.getInstance().subTotal+"");
                 precioItem.setText(calculatePriceItem()+"");
-                calculateDisscount();
-            
+                if(Methods.getInstance().isNumeric(jTextFieldDisscount.getText())){
+                   if(Integer.parseInt(jTextFieldDisscount.getText()) > 0){
+                       Methods.getInstance().disccount = Double.parseDouble(jTextFieldDisscount.getText());
+                       totalWithDisscount.setText((calculateSubTotal()-Methods.getInstance().disccount)+"");
+                       calculateDisscount();
+                   } 
+                }
+
             }else{
                 JOptionPane.showMessageDialog(this, "Las unidades tienen que ser un número");
             }
@@ -1897,19 +1901,18 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioPortActionPerformed
 
     private void jTextFieldQuantityCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextFieldQuantityCaretPositionChanged
-        
-       /* if(!jTextFieldQuantity.getText().isEmpty()){
-            if(Methods.getInstance().isNumeric(jTextFieldQuantity.getText())){
-                if(!jListPriceUnit.isSelectionEmpty()){
-                    subtotal.setText(calculateSubTotal()+"");
-                    precioItem.setText(calculatePriceItem()+"");
-                    calculateDisscount();
-                }
-            }else{
-                JOptionPane.showMessageDialog(this, "Las unidades tienen que ser un número");
+        if(Methods.getInstance().isNumeric(jTextFieldQuantity.getText())){
+            if(!jListPriceUnit.isSelectionEmpty()){
+                //subtotal.setText(calculateSubTotal()+"");
+                //precioItem.setText(calculatePriceItem()+"");
+                //totalWithDisscount.setText((calculateSubTotal()-Methods.getInstance().disccount)+"");
+                calculateDisscount();
             }
-            
-        }*/
+        }else{
+            JOptionPane.showMessageDialog(this, "Las unidades tienen que ser un número");
+        }
+
+
        
     }//GEN-LAST:event_jTextFieldQuantityCaretPositionChanged
     
@@ -1924,9 +1927,12 @@ public class W_Menu extends javax.swing.JFrame {
                 String price = Methods.getInstance().df2.format(Methods.getInstance().total);
                 Methods.getInstance().total = Double.parseDouble(price);
                 
+                System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
                 System.out.println("Descuento ="  + Methods.getInstance().disccount);
                 System.out.println("Total =" +Methods.getInstance().total);
-                totalWithoutDisscount.setText(Methods.getInstance().total+"");
+                
+                subtotal.setText(Methods.getInstance().subTotal+"");
+                totalWithDisscount.setText(Methods.getInstance().total+"");
             }else{
                 double discount = 0;
                 Methods.getInstance().subTotal = calculateSubTotal();
@@ -1936,9 +1942,12 @@ public class W_Menu extends javax.swing.JFrame {
                 String price = Methods.getInstance().df2.format(Methods.getInstance().total);
                 Methods.getInstance().total = Double.parseDouble(price);
                 
-                System.out.println("Descuento ="  + discount);
+                System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
+                System.out.println("Descuento ="  + Methods.getInstance().disccount);
                 System.out.println("Total =" +Methods.getInstance().total);
-                totalWithoutDisscount.setText(Methods.getInstance().total+"");
+                
+                subtotal.setText(Methods.getInstance().subTotal+"");
+                totalWithDisscount.setText(Methods.getInstance().total+"");
             }
             
         }else{
@@ -1950,9 +1959,12 @@ public class W_Menu extends javax.swing.JFrame {
                 String price = Methods.getInstance().df2.format(Methods.getInstance().total);
                 Methods.getInstance().total = Double.parseDouble(price);
                 
-                System.out.println("Descuento ="  + discount);
+                System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
+                System.out.println("Descuento ="  + Methods.getInstance().disccount);
                 System.out.println("Total =" +Methods.getInstance().total);
-                totalWithoutDisscount.setText(Methods.getInstance().total+"");
+                
+                subtotal.setText(Methods.getInstance().subTotal+"");
+                totalWithDisscount.setText(Methods.getInstance().total+"");
         }
     }
     
@@ -2128,6 +2140,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSpec;
     private javax.swing.JLabel precioItem;
     private javax.swing.JLabel subtotal;
-    private javax.swing.JLabel totalWithoutDisscount;
+    private javax.swing.JLabel totalWithDisscount;
     // End of variables declaration//GEN-END:variables
 }
