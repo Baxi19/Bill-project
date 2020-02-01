@@ -169,7 +169,7 @@ public class W_Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setUndecorated(true);
+        setFocusable(false);
         getContentPane().setLayout(null);
 
         jPanelMenu.setBackground(new java.awt.Color(5, 5, 5));
@@ -187,21 +187,21 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel3.setText("Menu");
         jLabel3.setToolTipText("");
         jPanelMenu.add(jLabel3);
-        jLabel3.setBounds(140, 30, 89, 42);
+        jLabel3.setBounds(140, 30, 89, 43);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Información de Factura");
         jPanelMenu.add(jLabel4);
-        jLabel4.setBounds(50, 200, 250, 28);
+        jLabel4.setBounds(50, 200, 250, 29);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Agregar Productos");
         jPanelMenu.add(jLabel5);
-        jLabel5.setBounds(50, 300, 250, 28);
+        jLabel5.setBounds(50, 300, 250, 29);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -213,7 +213,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelMenu.add(jLabel6);
-        jLabel6.setBounds(50, 400, 210, 28);
+        jLabel6.setBounds(50, 400, 210, 29);
 
         jButtonLogin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonLogin1.setBorder(null);
@@ -318,7 +318,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Número de Factura");
         jPanelBill.add(jLabel19);
-        jLabel19.setBounds(150, 220, 220, 28);
+        jLabel19.setBounds(150, 220, 220, 29);
 
         jTextFieldBillNumber.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBillNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -333,7 +333,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Seleccione la Fecha ");
         jPanelBill.add(jLabel20);
-        jLabel20.setBounds(150, 290, 210, 28);
+        jLabel20.setBounds(150, 290, 210, 29);
         jPanelBill.add(jDateChooser);
         jDateChooser.setBounds(470, 290, 160, 30);
 
@@ -362,7 +362,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Seleccione el Cliente");
         jPanelBill.add(jLabel42);
-        jLabel42.setBounds(150, 370, 230, 28);
+        jLabel42.setBounds(150, 370, 230, 29);
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -470,7 +470,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Siguiente");
         jPanelBill.add(jLabel37);
-        jLabel37.setBounds(590, 720, 110, 28);
+        jLabel37.setBounds(550, 670, 110, 29);
 
         jButtonConfirmBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill.setBorder(null);
@@ -492,7 +492,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill);
-        jButtonConfirmBill.setBounds(710, 710, 50, 50);
+        jButtonConfirmBill.setBounds(720, 500, 50, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel8.setAlignmentY(0.0F);
@@ -540,14 +540,14 @@ public class W_Menu extends javax.swing.JFrame {
         jLabelQuantityItems.setForeground(new java.awt.Color(255, 255, 255));
         jLabelQuantityItems.setText("0");
         jPanelProducts.add(jLabelQuantityItems);
-        jLabelQuantityItems.setBounds(600, 490, 40, 22);
+        jLabelQuantityItems.setBounds(600, 490, 40, 21);
 
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Cajones");
         jPanelProducts.add(jLabel23);
-        jLabel23.setBounds(130, 110, 220, 28);
+        jLabel23.setBounds(130, 110, 220, 29);
 
         jTextFieldBox.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBox.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -567,7 +567,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Unidades");
         jPanelProducts.add(jLabel25);
-        jLabel25.setBounds(130, 150, 210, 28);
+        jLabel25.setBounds(130, 150, 210, 29);
 
         jTextFieldQuantity.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldQuantity.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -582,7 +582,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Spec");
         jPanelProducts.add(jLabel28);
-        jLabel28.setBounds(130, 190, 210, 28);
+        jLabel28.setBounds(130, 190, 210, 29);
 
         jTextFieldSpec.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldSpec.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -607,7 +607,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Descripción");
         jPanelProducts.add(jLabel27);
-        jLabel27.setBounds(130, 260, 220, 28);
+        jLabel27.setBounds(130, 260, 220, 29);
 
         jListDescription.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -629,7 +629,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Altura");
         jPanelProducts.add(jLabel31);
-        jLabel31.setBounds(450, 260, 130, 28);
+        jLabel31.setBounds(450, 260, 130, 29);
 
         jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "4", "6", "9", "12", "18", "24", "30", "36", "48" }));
         jComboBoxSize.addItemListener(new java.awt.event.ItemListener() {
@@ -645,7 +645,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Precio Unitario");
         jPanelProducts.add(jLabel30);
-        jLabel30.setBounds(130, 350, 170, 28);
+        jLabel30.setBounds(130, 350, 170, 29);
 
         jListPriceUnit.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -735,11 +735,11 @@ public class W_Menu extends javax.swing.JFrame {
         subtotal.setForeground(new java.awt.Color(255, 255, 255));
         subtotal.setText("0.0");
         subtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                subtotalInputMethodTextChanged(evt);
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 subtotalCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                subtotalInputMethodTextChanged(evt);
             }
         });
         subtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -748,35 +748,35 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(subtotal);
-        subtotal.setBounds(280, 550, 140, 22);
+        subtotal.setBounds(280, 550, 140, 21);
 
         precioItem.setBackground(new java.awt.Color(255, 255, 255));
         precioItem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         precioItem.setForeground(new java.awt.Color(255, 255, 255));
         precioItem.setText("0.0");
         jPanelProducts.add(precioItem);
-        precioItem.setBounds(280, 510, 140, 22);
+        precioItem.setBounds(280, 510, 140, 21);
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(255, 255, 255));
         jLabel62.setText("Items agregados:");
         jPanelProducts.add(jLabel62);
-        jLabel62.setBounds(450, 490, 140, 22);
+        jLabel62.setBounds(450, 490, 140, 21);
 
         jLabel46.setBackground(new java.awt.Color(255, 255, 255));
         jLabel46.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("Subtotal Pedido:");
         jPanelProducts.add(jLabel46);
-        jLabel46.setBounds(140, 550, 140, 22);
+        jLabel46.setBounds(140, 550, 140, 21);
 
         jLabel34.setBackground(new java.awt.Color(255, 255, 255));
         jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Descuento:");
         jPanelProducts.add(jLabel34);
-        jLabel34.setBounds(140, 590, 90, 22);
+        jLabel34.setBounds(140, 590, 90, 21);
 
         jTextFieldDisscount.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldDisscount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -809,7 +809,7 @@ public class W_Menu extends javax.swing.JFrame {
         totalWithoutDisscount.setForeground(new java.awt.Color(255, 255, 255));
         totalWithoutDisscount.setText("0.0");
         jPanelProducts.add(totalWithoutDisscount);
-        totalWithoutDisscount.setBounds(280, 630, 140, 22);
+        totalWithoutDisscount.setBounds(280, 630, 140, 21);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -823,7 +823,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel63.setForeground(new java.awt.Color(255, 255, 255));
         jLabel63.setText("Precio del Item:");
         jPanelProducts.add(jLabel63);
-        jLabel63.setBounds(140, 510, 140, 22);
+        jLabel63.setBounds(140, 510, 140, 21);
 
         jListCartInfo.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -844,7 +844,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(204, 204, 0));
         jLabel38.setText("Agregar Pedido");
         jPanelProducts.add(jLabel38);
-        jLabel38.setBounds(250, 690, 180, 28);
+        jLabel38.setBounds(250, 690, 180, 29);
 
         jButtonConfirmBill6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addItem1.png"))); // NOI18N
         jButtonConfirmBill6.setBorder(null);
@@ -877,7 +877,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Siguiente");
         jPanelProducts.add(jLabel24);
-        jLabel24.setBounds(600, 750, 110, 28);
+        jLabel24.setBounds(590, 760, 110, 29);
 
         jButtonConfirmBill1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill1.setBorder(null);
@@ -899,7 +899,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jButtonConfirmBill1);
-        jButtonConfirmBill1.setBounds(710, 740, 50, 50);
+        jButtonConfirmBill1.setBounds(720, 680, 50, 50);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel11.setAlignmentY(0.0F);
@@ -947,7 +947,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Embarque");
         jPanelAditionalData.add(jLabel39);
-        jLabel39.setBounds(130, 110, 120, 28);
+        jLabel39.setBounds(130, 110, 120, 29);
 
         jTextFieldShipment.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldShipment.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -967,7 +967,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Peso Neto");
         jPanelAditionalData.add(jLabel40);
-        jLabel40.setBounds(130, 170, 120, 28);
+        jLabel40.setBounds(130, 170, 120, 29);
 
         jTextFieldNetWeight.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldNetWeight.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -982,7 +982,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
         jLabel41.setText("Peso Bruto");
         jPanelAditionalData.add(jLabel41);
-        jLabel41.setBounds(130, 230, 120, 28);
+        jLabel41.setBounds(130, 230, 120, 29);
 
         jTextFieldGrossWeight.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldGrossWeight.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1002,7 +1002,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
         jLabel53.setText("Contenedor");
         jPanelAditionalData.add(jLabel53);
-        jLabel53.setBounds(130, 290, 130, 28);
+        jLabel53.setBounds(130, 290, 130, 29);
 
         jTextFieldContainer.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldContainer.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1017,7 +1017,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setText("Barco");
         jPanelAditionalData.add(jLabel52);
-        jLabel52.setBounds(130, 350, 70, 28);
+        jLabel52.setBounds(130, 350, 70, 29);
 
         jTextFieldShip.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldShip.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1037,7 +1037,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("Marchamo");
         jPanelAditionalData.add(jLabel55);
-        jLabel55.setBounds(130, 410, 130, 28);
+        jLabel55.setBounds(130, 410, 130, 29);
 
         jTextFieldLabel.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1052,7 +1052,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
         jLabel56.setText("Booking");
         jPanelAditionalData.add(jLabel56);
-        jLabel56.setBounds(130, 470, 100, 28);
+        jLabel56.setBounds(130, 470, 100, 29);
 
         jTextFieldBooking.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldBooking.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -1072,7 +1072,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Puerto de Salida");
         jPanelAditionalData.add(jLabel54);
-        jLabel54.setBounds(400, 110, 220, 28);
+        jLabel54.setBounds(400, 110, 220, 29);
 
         jListPortDeparture.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1089,7 +1089,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Puerto de Entrada");
         jPanelAditionalData.add(jLabel57);
-        jLabel57.setBounds(400, 220, 220, 28);
+        jLabel57.setBounds(400, 220, 220, 29);
 
         jListInputPort.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1106,7 +1106,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("País de origen");
         jPanelAditionalData.add(jLabel44);
-        jLabel44.setBounds(400, 320, 170, 28);
+        jLabel44.setBounds(400, 320, 170, 29);
 
         jListCountryOrigin.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1123,7 +1123,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("País de Destino");
         jPanelAditionalData.add(jLabel45);
-        jLabel45.setBounds(400, 420, 170, 28);
+        jLabel45.setBounds(400, 420, 170, 29);
 
         jListCountryDestination.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1246,7 +1246,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
         jLabel51.setText("Finalizar");
         jPanelAditionalData.add(jLabel51);
-        jLabel51.setBounds(600, 750, 110, 28);
+        jLabel51.setBounds(600, 750, 110, 29);
 
         jButtonConfirmBill10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill10.setBorder(null);
@@ -1268,7 +1268,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelAditionalData.add(jButtonConfirmBill10);
-        jButtonConfirmBill10.setBounds(710, 740, 50, 50);
+        jButtonConfirmBill10.setBounds(710, 620, 50, 50);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel13.setAlignmentY(0.0F);
@@ -1287,7 +1287,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Siguiente");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(250, 710, 110, 28);
+        jLabel12.setBounds(250, 710, 110, 29);
 
         jButtonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
         jButtonLogout.setBorder(null);
@@ -1496,8 +1496,13 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jButtonConfirmBill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4ActionPerformed
         try{
-            SQLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
-            JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
+            if(jListClients.getSelectedValue() == null){
+                JOptionPane.showMessageDialog(rootPane, "Seleccione un cliente a eliminar");
+            }
+            else{
+                SQLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
+                JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
+            }            
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(rootPane, ex.toString());
@@ -1636,7 +1641,24 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddMouseClicked
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        
+        if(jRadioPort.isSelected()){
+            Methods.getInstance().added = false;
+            W_RegisterPortClient wr = new W_RegisterPortClient(2, this);
+            wr.setVisible(true);
+            loadToUpdateData(0);
+            if(Methods.getInstance().added){
+                
+            }
+        }
+        else if(jRadioCountry.isSelected()){
+            Methods.getInstance().added = false;
+            W_RegisterPortClient wr = new W_RegisterPortClient(1, this);
+            wr.setVisible(true);
+            loadToUpdateData(1);
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Seleccione una opción");
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteMouseClicked
@@ -1647,6 +1669,12 @@ public class W_Menu extends javax.swing.JFrame {
         if(jRadioPort.isSelected()){
             if(!jListDinamic.isSelectionEmpty()){
                 /*Llamar el metodo de eliminar*/
+                String port = jListDinamic.getSelectedValue();
+                String[] dataPort = port.split("\\) ");
+                int idPort = Integer.parseInt(dataPort[0]);
+                SQLiteMethods.getInstance().deletePort(idPort);
+                JOptionPane.showMessageDialog(rootPane, "Puerto eliminado con éxito");
+                loadToUpdateData(0);
             }else{
                 JOptionPane.showMessageDialog(this, "Por favor seleccione el puerto que desea eliminar");
             }
@@ -1654,6 +1682,13 @@ public class W_Menu extends javax.swing.JFrame {
         else if(jRadioCountry.isSelected()){
             if(!jListDinamic.isSelectionEmpty()){
                 /*Llamar el metodo de eliminar*/
+                String country = jListDinamic.getSelectedValue();
+                String[] dataCountry = country.split("\\) ");
+                int idCountry = Integer.parseInt(dataCountry[0]);
+                SQLiteMethods.getInstance().deleteCountry(idCountry);
+                JOptionPane.showMessageDialog(rootPane, "País eliminado con éxito");
+                loadToUpdateData(1);
+                
             }else{
                 JOptionPane.showMessageDialog(this, "Por favor seleccione el país que desea eliminar");
             }
@@ -1909,48 +1944,8 @@ public class W_Menu extends javax.swing.JFrame {
             jButtonAditionalData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png")));
         }
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Windows (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(W_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(W_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(W_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(W_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new W_Menu().setVisible(true);
-            }
-        });
-    }
-
+   
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Border;
     private javax.swing.JLabel CD_Cliente;

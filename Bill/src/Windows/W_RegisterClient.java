@@ -7,6 +7,7 @@ package Windows;
 
 import Class.SQLiteMethods;
 import java.sql.SQLException;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,14 +90,14 @@ public class W_RegisterClient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonClose1);
-        jButtonClose1.setBounds(360, 10, 70, 60);
+        jButtonClose1.setBounds(370, 10, 70, 60);
 
         jLabelTitle.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setText("Registrar nuevo cliente");
         getContentPane().add(jLabelTitle);
-        jLabelTitle.setBounds(20, 10, 320, 28);
+        jLabelTitle.setBounds(20, 10, 320, 29);
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -178,7 +179,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Registrar");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(280, 240, 80, 30);
+        jLabel21.setBounds(370, 200, 80, 30);
 
         jButtonLogin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonLogin3.setBorder(null);
@@ -215,7 +216,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jListClients);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 220, 230, 20);
+        jScrollPane1.setBounds(110, 220, 230, 60);
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hydrogen.jpg"))); // NOI18N
         bg.setMaximumSize(new java.awt.Dimension(450, 300));
@@ -281,7 +282,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogin3ActionPerformed
 
     private void jButtonClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClose1MouseClicked
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButtonClose1MouseClicked
 
     private void jButtonClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClose1ActionPerformed

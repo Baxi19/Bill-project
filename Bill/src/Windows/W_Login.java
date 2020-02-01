@@ -7,6 +7,7 @@ package Windows;
 
 import Class.Methods;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,7 +66,7 @@ public class W_Login extends javax.swing.JFrame {
         jLabel3.setText("Plantas Hermanos Araya");
         jLabel3.setToolTipText("");
         jPanelLogin.add(jLabel3);
-        jLabel3.setBounds(50, 40, 390, 42);
+        jLabel3.setBounds(50, 40, 390, 43);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.jpg"))); // NOI18N
         jLabel6.setToolTipText("");
@@ -76,7 +77,7 @@ public class W_Login extends javax.swing.JFrame {
         jButtonLogin.setBorder(null);
         jButtonLogin.setBorderPainted(false);
         jButtonLogin.setContentAreaFilled(false);
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin.setRequestFocusEnabled(false);
         jButtonLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
         jButtonLogin.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar2.png"))); // NOI18N
@@ -101,7 +102,7 @@ public class W_Login extends javax.swing.JFrame {
         jButtonOff.setBorder(null);
         jButtonOff.setBorderPainted(false);
         jButtonOff.setContentAreaFilled(false);
-        jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonOff.setRequestFocusEnabled(false);
         jButtonOff.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/off2.png"))); // NOI18N
         jButtonOff.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/off2.png"))); // NOI18N
@@ -139,9 +140,17 @@ public class W_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOffActionPerformed
 
     private void jButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoginMouseClicked
-        W_Menu w = new W_Menu();
-        w.setVisible(true);
-        this.dispose();
+try{
+    W_Menu w = new W_Menu();
+           w.setVisible(true);
+           this.setVisible(false);
+}
+catch(Exception ex){
+    JOptionPane.showMessageDialog(rootPane,ex);
+}
+           
+     
+        //this.dispose();
     }//GEN-LAST:event_jButtonLoginMouseClicked
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed

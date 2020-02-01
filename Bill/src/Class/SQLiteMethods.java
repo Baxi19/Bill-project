@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -99,6 +100,11 @@ public class SQLiteMethods {
         catch (SQLException e) {
             return e.getMessage();
         }  
+    }
+    
+    public void addEmail(int id, String email){
+        String query = "INSERT INTO Emails(Cliente, Email) VALUES"
+                + "(" + id + ", '" + email + "')";
     }
     
      public String addNotifyTo(String name,String direction, String telephone,String email, int Cliente_id){
@@ -270,7 +276,7 @@ public class SQLiteMethods {
     }
     
    public DefaultListModel getPortsList(){
-        String query = "SELECT * FROM Puertos";
+        String query = "SELECT * FROM Puertos WHERE Activo = 'T'";
         try (Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
@@ -292,7 +298,7 @@ public class SQLiteMethods {
 
    
    public DefaultListModel getCountriesList(){
-        String query = "SELECT * FROM Paises";
+        String query = "SELECT * FROM Paises WHERE Activo = 'T'";
         try (Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
@@ -310,5 +316,68 @@ public class SQLiteMethods {
             return null;
         } 
     }
+   
+   public boolean deleteCountry(int id){
+       String query = "UPDATE Paises SET Activo = 'F' WHERE ID = " + id;
+       try {
+            Connection conn = connect();
+            Statement stmt  = conn.createStatement();
+            stmt.executeQuery(query);
+            stmt.close();
+            conn.close();
+            return true;
+        }
+            catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+   
+        }
+    }
+
+    public boolean deletePort(int id) {
+        String query = "UPDATE Puertos SET Activo = 'F' WHERE ID = " + id;
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            stmt.executeQuery(query);
+            stmt.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     
+    public String addPort(String name){
+        String query = "INSERT INTO Puertos(Nombre) values "
+                + "('" + name + "')";
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+            return "Registro de puerto " + name + " realizado con éxito";
+        }
+        catch (SQLException e) {
+            return e.getMessage();
+        }  
+    }
+    
+     public String addCountry(String name) {
+        String query = "INSERT INTO Paises(Nombre) values "
+                + "('" + name + "')";
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            return "Registro de pais " + name + " realizado con éxito";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+
 }

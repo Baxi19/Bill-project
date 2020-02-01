@@ -65,6 +65,7 @@ public class Methods {
     public String shortLine         ="----------------------------------------------------------------------------------------------------------------------------------";
     public boolean one = false;
     public boolean two = false;
+    public boolean added = false;
     
     /*------------------------------------------------------------------------*/
     //Singleton
@@ -178,7 +179,7 @@ public class Methods {
     public String modifyString(String s){
         int size = s.length();
         for (int i = size; i < 20; i++) {
-            s+="_";
+            s+=" ";
         }
         return s;
     }public void reset(){
