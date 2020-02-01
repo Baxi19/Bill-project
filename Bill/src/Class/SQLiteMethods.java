@@ -379,5 +379,75 @@ public class SQLiteMethods {
             return e.getMessage();
         }
     }
+     public DefaultListModel getNotifyToList(){
+        String query = "SELECT * FROM Notificar_a WHERE Activo = 'T'";
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            DefaultListModel model = new DefaultListModel();
+            while (rs.next()) {
+                model.addElement(rs.getInt("ID") + ") "+ rs.getString("Nombre"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return model;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } 
+    }
+     
+    private int getPlantID(String description, int height){
+        String query = "SELECT ID FROM Plantas WHERE Descripcion = '"+ description + "' AND Altura = " + height;
+        try (Connection conn = this.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(query)){
+            int id = 0;
+            while (rs.next()) {
+                id = rs.getInt("ID");
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return id;
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        } 
+    }
+    
+    public String addPrice(String plantName, int height, double price){
+        int plantId = getPlantID(plantName, height);
+        String query = "INSERT INTO Precios(" + price + "," + plantId + ")";
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+            return "Registro de precio realizado con éxito";
+        }
+        catch (SQLException e) {
+            return e.getMessage();
+        }  
+    }
+   
+     public boolean deleteNotifyTo(int id) {
+        String query = "UPDATE Notificar_a SET Activo = 'F' WHERE ID = " + id;
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            stmt.executeQuery(query);
+            stmt.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 
 }

@@ -48,7 +48,7 @@ public class Methods {
     public Double total;
     public Double embarque;
     /*Aditional Information*/
-    public String shipment          ="";
+    public String shipment          ="__________________";
     public String netWeight         ="__________________";
     public String grossWeight       ="__________________";
     public String container         ="__________________";
