@@ -13,6 +13,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
@@ -1557,10 +1558,14 @@ public class W_Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
     public BigDecimal calculateSubTotal() {
-        BigDecimal sum = new BigDecimal(0);
-        for (Item item : Methods.getInstance().cart) {
-            sum.add(item.getTotal());
+        BigDecimal sum = BigDecimal.ZERO;
+        for (int i = 0; i < Methods.getInstance().cart.size(); i++) {
+            
+            sum.add(Methods.getInstance().cart.get(i).getTotal());
+            System.out.println("*********************************");
+            System.out.println("Precio Item = "+Methods.getInstance().cart.get(i).getTotal().toString());
         }
+        
         try {
             sum = sum.setScale(2, RoundingMode.HALF_EVEN);
             NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);
@@ -1569,7 +1574,7 @@ public class W_Menu extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         Methods.getInstance().subTotal = sum;
-        System.out.println("****SubTotal == "+ sum );
+        System.out.println("****SubTotal == "+ Methods.getInstance().subTotal );
         return sum;
     }
 
@@ -1821,7 +1826,7 @@ public class W_Menu extends javax.swing.JFrame {
                        try {
                             totalWithDisccount = totalWithDisccount.setScale(2, RoundingMode.HALF_EVEN);
                             
-                            System.out.println(usdFormat.format(totalWithDisccount.doubleValue()));
+                            System.out.println("**-**Total = "+usdFormat.format(totalWithDisccount.doubleValue()));
 
                        } catch (Exception e) {
                        }
@@ -1937,7 +1942,7 @@ public class W_Menu extends javax.swing.JFrame {
                 totalWithDisscount.setText(Methods.getInstance().total+"");
                 
             }else{
-                Methods.getInstance().disccount = new BigDecimal(0.00);
+                Methods.getInstance().disccount = new BigDecimal(0);
                 Methods.getInstance().subTotal = calculateSubTotal();
                 Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(Methods.getInstance().disccount));
                 
@@ -1951,7 +1956,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
             
         }else{
-                Methods.getInstance().disccount = new BigDecimal(0.00);
+                Methods.getInstance().disccount = new BigDecimal(0);
                 Methods.getInstance().subTotal = calculateSubTotal();
                 Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(Methods.getInstance().disccount));
                 
