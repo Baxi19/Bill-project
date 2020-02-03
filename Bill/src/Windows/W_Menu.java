@@ -1554,8 +1554,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
         W_RegisterClient wr = new W_RegisterClient(this);
         wr.show();
-       
-        
+     
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
     public BigDecimal calculateSubTotal() {
         BigDecimal sum = BigDecimal.ZERO;
