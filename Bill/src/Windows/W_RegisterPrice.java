@@ -5,9 +5,8 @@
  */
 package Windows;
 
-import Class.Methods;
+
 import Class.SQLiteMethods;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,12 +17,12 @@ public class W_RegisterPrice extends javax.swing.JFrame {
 
     int heigh;
     String plantName;
-
+    W_Menu wm;
 
     /**
      * Creates new form W_RegisterClient
      */
-    public W_RegisterPrice(String plantName, int heigh) {
+    public W_RegisterPrice(String plantName, int heigh,W_Menu w) {
         initComponents();
         this.setSize(450,211);
         setLocationRelativeTo(null);
@@ -31,6 +30,7 @@ public class W_RegisterPrice extends javax.swing.JFrame {
         this.heigh = heigh;
         jLabelPlant.setText(this.plantName);
         jLabelheigh.setText(""+this.heigh);
+        this.wm = w;
     }
 
     /**
@@ -124,7 +124,7 @@ public class W_RegisterPrice extends javax.swing.JFrame {
         jLabelPlant.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPlant.setText("Nombre");
         getContentPane().add(jLabelPlant);
-        jLabelPlant.setBounds(110, 50, 60, 40);
+        jLabelPlant.setBounds(110, 50, 240, 40);
 
         jTextFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +185,8 @@ public class W_RegisterPrice extends javax.swing.JFrame {
        try{
            double price = Double.parseDouble(jTextFieldPrice.getText());
            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addPrice(this.plantName, this.heigh, price));
+           wm.updatePrices();
+           this.dispose();
        }
        catch(NumberFormatException  ex){
            JOptionPane.showMessageDialog(rootPane, "Digite un valor en formato: #.#");

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Fabian
  */
-public class W_RegisterPortClient extends javax.swing.JFrame {
+public class W_RegisterLocations extends javax.swing.JFrame {
     int clientId;
     int format;
     W_Menu wm;
@@ -22,7 +22,7 @@ public class W_RegisterPortClient extends javax.swing.JFrame {
     /**
      * Creates new form W_RegisterClient
      */
-    public W_RegisterPortClient(int format, W_Menu wm) {
+    public W_RegisterLocations(int format, W_Menu wm) {
         initComponents();
         this.setSize(450,211);
         setLocationRelativeTo(null);
@@ -89,7 +89,7 @@ public class W_RegisterPortClient extends javax.swing.JFrame {
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setText("Registrar nuevo país");
         getContentPane().add(jLabelTitle);
-        jLabelTitle.setBounds(20, 10, 320, 29);
+        jLabelTitle.setBounds(20, 10, 320, 28);
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -161,6 +161,7 @@ public class W_RegisterPortClient extends javax.swing.JFrame {
             Methods.getInstance().added = true;
             jTextFieldName.setText("");
             wm.loadToUpdateData(1);
+            wm.loadPortCountryData();
             this.dispose();
         }
         else{
@@ -169,6 +170,7 @@ public class W_RegisterPortClient extends javax.swing.JFrame {
             Methods.getInstance().added = true;
             jTextFieldName.setText("");
             wm.loadToUpdateData(0);
+            wm.loadPortCountryData();
             this.dispose();
 
         } 

@@ -58,7 +58,7 @@ public class Methods {
     public String destinationCountry="";
     /*sign's Boss*/
     public String line              ="_________________________________________________________";
-    public String ced               ="               Firma        Céd: 2-356-370               ";
+    public String ced               ="Firma        Céd: 2-356-370";
     public String shortLine         ="----------------------------------------------------------------------------------------------------------------------------------";
     public boolean one = false;
     public boolean two = false;

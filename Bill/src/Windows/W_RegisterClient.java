@@ -263,9 +263,10 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText();
-            int id = SQLiteMethods.getInstance().getLastID();
+            
             
             JOptionPane.showMessageDialog(rootPane,SQLiteMethods.getInstance().addClient(client.client, client.exporte, client.direccion, client.telefono)); 
+            int id = SQLiteMethods.getInstance().getLastID();
             SQLiteMethods.getInstance().addEmail(SQLiteMethods.getInstance().getLastID(), client.email);
             SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, id); 
             

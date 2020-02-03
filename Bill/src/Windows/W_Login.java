@@ -7,6 +7,7 @@ package Windows;
 
 import Class.Methods;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +20,9 @@ public class W_Login extends javax.swing.JFrame {
      * Creates new form W_Main
      */
     public W_Login() {
+        this.setIconImage(new ImageIcon(getClass().getResource("..\\Images\\logo.jpg")).getImage());
         initComponents();
+        
         this.setSize(1200,800);
         setLocationRelativeTo(null);
         jPanelLogin.setBackground(new Color(0, 0, 0 , 240));

@@ -13,8 +13,6 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -32,6 +30,7 @@ public class W_Menu extends javax.swing.JFrame {
      */
     public W_Menu() {
         initComponents();
+        
         this.setSize(1200,800);
         setLocationRelativeTo(null);
         loadClients();
@@ -467,7 +466,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill);
-        jButtonConfirmBill.setBounds(700, 520, 50, 50);
+        jButtonConfirmBill.setBounds(700, 740, 50, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel8.setAlignmentY(0.0F);
@@ -512,10 +511,10 @@ public class W_Menu extends javax.swing.JFrame {
 
         jLabelQuantityItems.setBackground(new java.awt.Color(255, 255, 255));
         jLabelQuantityItems.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelQuantityItems.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelQuantityItems.setForeground(new java.awt.Color(0, 255, 0));
         jLabelQuantityItems.setText("0");
         jPanelProducts.add(jLabelQuantityItems);
-        jLabelQuantityItems.setBounds(600, 490, 40, 22);
+        jLabelQuantityItems.setBounds(600, 490, 50, 22);
 
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -735,14 +734,14 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(LabelSubtotal);
-        LabelSubtotal.setBounds(280, 550, 140, 30);
+        LabelSubtotal.setBounds(280, 550, 170, 30);
 
         precioItem.setBackground(new java.awt.Color(255, 255, 255));
         precioItem.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         precioItem.setForeground(new java.awt.Color(255, 255, 255));
         precioItem.setText("0.0");
         jPanelProducts.add(precioItem);
-        precioItem.setBounds(280, 510, 140, 30);
+        precioItem.setBounds(280, 510, 170, 30);
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -767,13 +766,20 @@ public class W_Menu extends javax.swing.JFrame {
 
         jTextFieldDisscount.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldDisscount.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextFieldDisscount.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldDisscount.setForeground(new java.awt.Color(204, 0, 0));
         jTextFieldDisscount.setText("0");
         jTextFieldDisscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldDisscount.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextFieldDisscount.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 jTextFieldDisscountCaretUpdate(evt);
+            }
+        });
+        jTextFieldDisscount.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jTextFieldDisscountCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextFieldDisscount.addActionListener(new java.awt.event.ActionListener() {
@@ -796,7 +802,7 @@ public class W_Menu extends javax.swing.JFrame {
         totalWithDisscount.setForeground(new java.awt.Color(255, 255, 255));
         totalWithDisscount.setText("0.0");
         jPanelProducts.add(totalWithDisscount);
-        totalWithDisscount.setBounds(280, 630, 140, 30);
+        totalWithDisscount.setBounds(280, 630, 170, 30);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -886,7 +892,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jButtonConfirmBill1);
-        jButtonConfirmBill1.setBounds(720, 480, 50, 50);
+        jButtonConfirmBill1.setBounds(720, 740, 50, 50);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel11.setAlignmentY(0.0F);
@@ -1255,7 +1261,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelAditionalData.add(jButtonConfirmBill10);
-        jButtonConfirmBill10.setBounds(710, 460, 50, 50);
+        jButtonConfirmBill10.setBounds(710, 740, 50, 50);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel13.setAlignmentY(0.0F);
@@ -1476,7 +1482,7 @@ public class W_Menu extends javax.swing.JFrame {
             else{
                 String plantName = jListDescription.getSelectedValue();
                 int heigh = Integer.parseInt(jComboBoxSize.getSelectedItem().toString());
-                W_RegisterPrice wr = new W_RegisterPrice(plantName, heigh);
+                W_RegisterPrice wr = new W_RegisterPrice(plantName, heigh, this);
                 wr.show();
             }
             
@@ -1496,6 +1502,7 @@ public class W_Menu extends javax.swing.JFrame {
                     double actualPrice = Double.parseDouble(jListPriceUnit.getSelectedValue());
                     if (SQLiteMethods.getInstance().deletePrice(plantName, heigh, actualPrice)) {
                         JOptionPane.showMessageDialog(rootPane, "Precio eliminado con éxito");
+                        updatePrices();
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "No se pudo eliminar el precio");
                     }
@@ -1672,7 +1679,7 @@ public class W_Menu extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         if(jRadioPort.isSelected()){
             Methods.getInstance().added = false;
-            W_RegisterPortClient wr = new W_RegisterPortClient(2, this);
+            W_RegisterLocations wr = new W_RegisterLocations(2, this);
             wr.setVisible(true);
             loadToUpdateData(0);
             if(Methods.getInstance().added){
@@ -1681,7 +1688,7 @@ public class W_Menu extends javax.swing.JFrame {
         }
         else if(jRadioCountry.isSelected()){
             Methods.getInstance().added = false;
-            W_RegisterPortClient wr = new W_RegisterPortClient(1, this);
+            W_RegisterLocations wr = new W_RegisterLocations(1, this);
             wr.setVisible(true);
             loadToUpdateData(1);
         }
@@ -1695,29 +1702,35 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteMouseClicked
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        
         if(jRadioPort.isSelected()){
             if(!jListDinamic.isSelectionEmpty()){
-                /*Llamar el metodo de eliminar*/
-                String port = jListDinamic.getSelectedValue();
-                String[] dataPort = port.split("\\) ");
-                int idPort = Integer.parseInt(dataPort[0]);
-                SQLiteMethods.getInstance().deletePort(idPort);
-                JOptionPane.showMessageDialog(rootPane, "Puerto eliminado con éxito");
-                loadToUpdateData(0);
+                if(Methods.getInstance().delete(" este puerto ")){
+                    /*Llamar el metodo de eliminar*/
+                    String port = jListDinamic.getSelectedValue();
+                    String[] dataPort = port.split("\\) ");
+                    int idPort = Integer.parseInt(dataPort[0]);
+                    SQLiteMethods.getInstance().deletePort(idPort);
+                    JOptionPane.showMessageDialog(rootPane, "Puerto eliminado con éxito");
+                    loadToUpdateData(0);
+                    loadPortCountryData();
+                }
             }else{
                 JOptionPane.showMessageDialog(this, "Por favor seleccione el puerto que desea eliminar");
             }
         }
         else if(jRadioCountry.isSelected()){
             if(!jListDinamic.isSelectionEmpty()){
-                /*Llamar el metodo de eliminar*/
-                String country = jListDinamic.getSelectedValue();
-                String[] dataCountry = country.split("\\) ");
-                int idCountry = Integer.parseInt(dataCountry[0]);
-                SQLiteMethods.getInstance().deleteCountry(idCountry);
-                JOptionPane.showMessageDialog(rootPane, "País eliminado con éxito");
-                loadToUpdateData(1);
-                
+                if(Methods.getInstance().delete(" este país ")){
+                    /*Llamar el metodo de eliminar*/
+                    String country = jListDinamic.getSelectedValue();
+                    String[] dataCountry = country.split("\\) ");
+                    int idCountry = Integer.parseInt(dataCountry[0]);
+                    SQLiteMethods.getInstance().deleteCountry(idCountry);
+                    JOptionPane.showMessageDialog(rootPane, "País eliminado con éxito");
+                    loadToUpdateData(1);
+                    loadPortCountryData();
+                }
             }else{
                 JOptionPane.showMessageDialog(this, "Por favor seleccione el país que desea eliminar");
             }
@@ -1848,13 +1861,16 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jListDescriptionValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDescriptionValueChanged
         if(jComboBoxSize.getSelectedIndex() != 0 && !jListDescription.isSelectionEmpty()){
-            DefaultListModel modelo = SQLiteMethods.getInstance().getUnitPrice(
+            updatePrices();
+        } 
+    }//GEN-LAST:event_jListDescriptionValueChanged
+    
+    public void updatePrices(){
+        DefaultListModel modelo = SQLiteMethods.getInstance().getUnitPrice(
                             jListDescription.getSelectedValue(), 
                             Integer.parseInt(jComboBoxSize.getSelectedItem().toString()));
             jListPriceUnit.setModel(modelo);
-        } 
-    }//GEN-LAST:event_jListDescriptionValueChanged
-
+    }
     private void jTextFieldDisscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDisscountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDisscountActionPerformed
@@ -1904,6 +1920,10 @@ public class W_Menu extends javax.swing.JFrame {
 
        
     }//GEN-LAST:event_jTextFieldQuantityCaretPositionChanged
+
+    private void jTextFieldDisscountCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextFieldDisscountCaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDisscountCaretPositionChanged
     
     public String calculateDisscount(){
         
@@ -1911,7 +1931,10 @@ public class W_Menu extends javax.swing.JFrame {
             if(!jTextFieldDisscount.getText().equals("0")){
                 Methods.getInstance().subTotal = calculateSubTotal();
                 Methods.getInstance().disccount =new BigDecimal(jTextFieldDisscount.getText());
-                Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(Methods.getInstance().disccount));
+                
+                BigDecimal all = Methods.getInstance().subTotal.divide(new BigDecimal(100),2);
+                BigDecimal totalToQuit = Methods.getInstance().disccount.multiply(all);
+                Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(totalToQuit));
                 
                 BigDecimal displayVal = Methods.getInstance().total.setScale(2, RoundingMode.HALF_EVEN);
                 NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);        
@@ -1953,7 +1976,7 @@ public class W_Menu extends javax.swing.JFrame {
         return "";
     }
     
-    private void loadPortCountryData(){
+    public void loadPortCountryData(){
         jListCountryDestination.setModel(SQLiteMethods.getInstance().getCountriesList());
         jListCountryOrigin.setModel(SQLiteMethods.getInstance().getCountriesList());
         jListInputPort.setModel(SQLiteMethods.getInstance().getPortsList());
