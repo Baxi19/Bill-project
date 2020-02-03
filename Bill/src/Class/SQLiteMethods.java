@@ -466,15 +466,15 @@ public class SQLiteMethods {
         String query = "UPDATE Precios SET Activo = 'F' WHERE Precio = " + price + " AND Planta_id = " + plantId;
          try {
             Connection conn = connect();
-            Statement stmt = conn.createStatement();
-            stmt.executeQuery(query);
-            stmt.close();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
             conn.close();
             return true;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return false;
         }
+        catch (SQLException e) {
+            return false;
+        }  
     }
     
     public int getLastID(){

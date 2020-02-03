@@ -115,9 +115,9 @@ public class W_RegisterPrice extends javax.swing.JFrame {
         jLabelTitle.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitle.setText("Registrar nuevo país");
+        jLabelTitle.setText("Registrar nuevo precio");
         getContentPane().add(jLabelTitle);
-        jLabelTitle.setBounds(20, 10, 320, 29);
+        jLabelTitle.setBounds(20, 10, 320, 28);
 
         jLabelPlant.setBackground(new java.awt.Color(255, 255, 255));
         jLabelPlant.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -168,7 +168,7 @@ public class W_RegisterPrice extends javax.swing.JFrame {
         bg.setMinimumSize(new java.awt.Dimension(450, 300));
         bg.setPreferredSize(new java.awt.Dimension(450, 300));
         getContentPane().add(bg);
-        bg.setBounds(0, 0, 450, 220);
+        bg.setBounds(0, 0, 450, 210);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,8 +182,13 @@ public class W_RegisterPrice extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogin3MouseClicked
 
     private void jButtonLogin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin3ActionPerformed
-       double price = Double.parseDouble(jTextFieldPrice.getText());
-       SQLiteMethods.getInstance().addPrice(plantName, this.heigh, price);
+       try{
+           double price = Double.parseDouble(jTextFieldPrice.getText());
+           JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addPrice(this.plantName, this.heigh, price));
+       }
+       catch(NumberFormatException  ex){
+           JOptionPane.showMessageDialog(rootPane, "Digite un valor en formato: #.#");
+       }
     }//GEN-LAST:event_jButtonLogin3ActionPerformed
 
     private void jButtonClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClose1MouseClicked

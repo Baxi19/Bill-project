@@ -120,6 +120,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jButtonConfirmBill1 = new javax.swing.JButton();
         aux = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jPanelAditionalData = new javax.swing.JPanel();
         jButtonClose5 = new javax.swing.JButton();
@@ -735,14 +736,14 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(LabelSubtotal);
-        LabelSubtotal.setBounds(280, 550, 140, 14);
+        LabelSubtotal.setBounds(280, 550, 140, 30);
 
         precioItem.setBackground(new java.awt.Color(255, 255, 255));
         precioItem.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         precioItem.setForeground(new java.awt.Color(255, 255, 255));
         precioItem.setText("0.0");
         jPanelProducts.add(precioItem);
-        precioItem.setBounds(280, 510, 140, 14);
+        precioItem.setBounds(280, 510, 140, 30);
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -796,7 +797,7 @@ public class W_Menu extends javax.swing.JFrame {
         totalWithDisscount.setForeground(new java.awt.Color(255, 255, 255));
         totalWithDisscount.setText("0.0");
         jPanelProducts.add(totalWithDisscount);
-        totalWithDisscount.setBounds(280, 630, 140, 14);
+        totalWithDisscount.setBounds(280, 630, 140, 30);
 
         EntryTotal.setBackground(new java.awt.Color(255, 255, 255));
         EntryTotal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -891,6 +892,15 @@ public class W_Menu extends javax.swing.JFrame {
         aux.setText("jLabel2");
         jPanelProducts.add(aux);
         aux.setBounds(260, 770, 41, 16);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelProducts.add(jButton1);
+        jButton1.setBounds(390, 760, 77, 32);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel11.setAlignmentY(0.0F);
@@ -1493,7 +1503,7 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jButtonConfirmBill3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill3ActionPerformed
         if (!jListDescription.isSelectionEmpty()) {
-            if (Methods.getInstance().delete(jListDescription.getSelectedValue())) {
+            if (Methods.getInstance().delete(jListPriceUnit.getSelectedValue())) {
                 try {
                     String plantName = jListDescription.getSelectedValue();
                     int heigh = Integer.parseInt(jComboBoxSize.getSelectedItem().toString());
@@ -1593,6 +1603,11 @@ public class W_Menu extends javax.swing.JFrame {
 
     }
     private void jButtonConfirmBill6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6MouseClicked
+        
+
+    }//GEN-LAST:event_jButtonConfirmBill6MouseClicked
+
+    private void jButtonConfirmBill6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6ActionPerformed
         if (!jTextFieldBox.getText().isEmpty()) {
             if (!jTextFieldQuantity.getText().isEmpty()) {
                 if (Methods.getInstance().isNumeric(jTextFieldBox.getText())) {
@@ -1640,11 +1655,6 @@ public class W_Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor verifique los datos de la cantidad de cajas");
         }
 
-
-    }//GEN-LAST:event_jButtonConfirmBill6MouseClicked
-
-    private void jButtonConfirmBill6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill6ActionPerformed
-        
     }//GEN-LAST:event_jButtonConfirmBill6ActionPerformed
 
     private void jButtonClose5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClose5MouseClicked
@@ -1902,6 +1912,10 @@ public class W_Menu extends javax.swing.JFrame {
 
        
     }//GEN-LAST:event_jTextFieldQuantityCaretPositionChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        aux.setText(Methods.getInstance().subTotal+"");
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public String calculateDisscount(){
         
@@ -2020,6 +2034,7 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel EntryTotal;
     private javax.swing.JLabel LabelSubtotal;
     private javax.swing.JLabel aux;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonAditionalData;
     private javax.swing.JButton jButtonClose1;
