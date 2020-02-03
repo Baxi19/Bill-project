@@ -5,6 +5,7 @@
  */
 package Windows;
 
+import Class.Client;
 import Class.SQLiteMethods;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
     int format = 1;
     W_Menu wm;
     String clientName;
+    Client client;
 
     /**
      * Creates new form W_RegisterClient
@@ -246,8 +248,8 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText();
-            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addClient(name, export, direction, phone)); 
-            SQLiteMethods.getInstance().addEmail(SQLiteMethods.getInstance().getLastID(), email);
+            client = new Client(name,export,direction, phone, email);
+
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
@@ -262,7 +264,12 @@ public class W_RegisterClient extends javax.swing.JFrame {
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText();
             int id = SQLiteMethods.getInstance().getLastID();
-            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, id)); 
+            
+            JOptionPane.showMessageDialog(rootPane,SQLiteMethods.getInstance().addClient(client.client, client.exporte, client.direccion, client.telefono)); 
+            SQLiteMethods.getInstance().addEmail(SQLiteMethods.getInstance().getLastID(), client.email);
+            SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, id); 
+            
+            
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
@@ -270,7 +277,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
             jTextFieldEmail.setText("");
             wm.loadClients();
             this.dispose();
-        } 
+        }
     }//GEN-LAST:event_jButtonLogin3ActionPerformed
 
     private void jButtonClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClose1MouseClicked

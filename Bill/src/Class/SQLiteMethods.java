@@ -6,6 +6,7 @@
 package Class;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,7 +36,7 @@ public class SQLiteMethods {
         DefaultListModel model = new DefaultListModel();
         String query = " SELECT Precio FROM Plantas INNER JOIN Precios " +
                         " on Plantas.ID = Precios.Planta_id " +
-                        " WHERE Plantas.Descripcion = '" + plantName + "' AND Plantas.Altura = " + height;
+                        " WHERE Plantas.Descripcion = '" + plantName + "' AND Plantas.Altura = " + height + " AND Precios.Activo = 'T'";
         try (Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
@@ -430,7 +431,8 @@ public class SQLiteMethods {
     
     public String addPrice(String plantName, int height, double price){
         int plantId = getPlantID(plantName, height);
-        String query = "INSERT INTO Precios(" + price + "," + plantId + ")";
+        String query = "INSERT INTO Precios(Precio, Planta_id, Activo) VALUES "
+                + "(" + price + "," + plantId + ", 'T')";
         try {
             Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(query);
@@ -495,4 +497,20 @@ public class SQLiteMethods {
         } 
 
     }
+    public String addBill(int clientID, String date, BigDecimal subTotal, BigDecimal shipping_cost, BigDecimal discount, BigDecimal total, String bill_identifier, String current_date){
+        String query = "INSERT INTO Facturas(Cliente_id, Fecha, Subtotal, Costo_embarque, Descuento, Total, Numero_de_factura, Fecha_realizacion) VALUES "
+                + "(" + clientID + ", '" + date + "', " + subTotal + ", " + shipping_cost + "," + discount + ", " + total + ",'" + bill_identifier + "', '" + current_date + "')";
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.executeUpdate();         
+            pstmt.close();
+            conn.close();
+            return "Registro de precio realizado con éxito";
+        }
+        catch (SQLException e) {
+            return e.getMessage();
+        }  
+    }
+    
 }

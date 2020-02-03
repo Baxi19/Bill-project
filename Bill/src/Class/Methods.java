@@ -5,14 +5,6 @@
  */
 package Class;
 
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -39,10 +31,10 @@ public class Methods {
     /*BigInteger*/
     /*Bill information*/
     public String currentDateTime;
-    public BigDecimal subTotal = BigDecimal.ZERO;
-    public BigDecimal disccount = BigDecimal.ZERO;
-    public BigDecimal total = BigDecimal.ZERO;
-    public BigDecimal embarque = BigDecimal.ZERO;
+    public BigDecimal subTotal ;
+    public BigDecimal disccount ;
+    public BigDecimal total ;
+    public BigDecimal shippingCost ;
     public int clientId;
     public int idNotify;
     
@@ -139,21 +131,25 @@ public class Methods {
         }
         return model;
     }
-    public String modifyString(String s){
-        int size = s.length();
-        for (int i = size; i < 18; i++) {
-            s+=" ";
-        }
-        return s;
-    }
+    
     public void reset(){
         Methods.getInstance().cart.clear();
         Methods.getInstance().one = false;
         Methods.getInstance().two = false;
     }
     
-    public void getCurrentTime(){
+    public String getCurrentTime(){
         currentDateTime =  java.time.LocalDateTime.now().toString();
+        return currentDateTime;
     }
     
+    public boolean saveBill(){
+        try {
+            SQLiteMethods.getInstance().addBill(clientId, currentDateTime, subTotal, shippingCost, disccount, total, idBill, (getCurrentTime()) );
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
+    }
 }

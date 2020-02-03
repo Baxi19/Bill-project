@@ -42,6 +42,8 @@ public class CreatePDF {
     }
     /*------------------------------------------------------------------------*/
     public void newPDF(){
+        /**/
+        Methods.getInstance().saveBill();
         /*Colores*/
         com.itextpdf.text.Font redFont = FontFactory.getFont("Times New Roman", 10, Font.BOLD, new CMYKColor(0, 255, 0, 0));
         com.itextpdf.text.Font blackFont = FontFactory.getFont("Times New Roman", 14, Font.BOLD, new CMYKColor(255, 255, 255, 0));
@@ -51,6 +53,7 @@ public class CreatePDF {
         com.itextpdf.text.Font lightblack3Font = FontFactory.getFont("Times New Roman", 10, Font.BOLD,new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 10, Font.BOLD , new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font blackLight = FontFactory.getFont("Times New Roman", 10  ,Font.BOLD , new CMYKColor(255, 255, 255, 0));
+        com.itextpdf.text.Font blackNoBold = FontFactory.getFont("Times New Roman", 10,  new CMYKColor(255, 255, 255, 0));
         BaseColor greenFont = new BaseColor(95,158,160); 
         
 
@@ -273,31 +276,31 @@ public class CreatePDF {
             float[] columnWidths4 = {3f,3f,6f,2f,2f,3f,3f};
             tableItems.setWidths(columnWidths4);
             /*Header*/
-            PdfPCell cell_1 = new PdfPCell(new Phrase("Cajones"));
+            PdfPCell cell_1 = new PdfPCell(new Phrase("Cajones", black));
             cell_1.setBackgroundColor(greenFont);
             cell_1.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_2 = new PdfPCell(new Phrase("Unidades"));
+            PdfPCell cell_2 = new PdfPCell(new Phrase("Unidades", black));
             cell_2.setBackgroundColor(greenFont);
             cell_2.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_3 = new PdfPCell(new Phrase("Descripción"));
+            PdfPCell cell_3 = new PdfPCell(new Phrase("Descripción", black));
             cell_3.setBackgroundColor(greenFont);
             cell_3.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_4 = new PdfPCell(new Phrase("Spec"));
+            PdfPCell cell_4 = new PdfPCell(new Phrase("Spec", black));
             cell_4.setBackgroundColor(greenFont);
             cell_4.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_5 = new PdfPCell(new Phrase("Altura"));
+            PdfPCell cell_5 = new PdfPCell(new Phrase("Altura", black));
             cell_5.setBackgroundColor(greenFont);
             cell_5.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_6 = new PdfPCell(new Phrase("PrecioUnit"));
+            PdfPCell cell_6 = new PdfPCell(new Phrase("PrecioUnit", black));
             cell_6.setBackgroundColor(greenFont);
             cell_6.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
-            PdfPCell cell_7 = new PdfPCell(new Phrase("Total"));
+            PdfPCell cell_7 = new PdfPCell(new Phrase("Total", black));
             cell_7.setBackgroundColor(greenFont);
             cell_7.setHorizontalAlignment(Element.ALIGN_CENTER);
             /*--------------------*/
@@ -309,15 +312,38 @@ public class CreatePDF {
             tableItems.addCell(cell_6);
             tableItems.addCell(cell_7);
             /*Body table's information*/
-            System.out.println(Methods.getInstance().cart.size());
+            
+            System.out.println("Items en el carrito: " + Methods.getInstance().cart.size());
             for (Item item : Methods.getInstance().cart) {
-                tableItems.addCell(item.getBox()+"");
-                tableItems.addCell(item.getQuantity()+"");
-                tableItems.addCell(item.getDescription());
-                tableItems.addCell(item.getSpec());
-                tableItems.addCell((item.getSize()+" ″"));
-                tableItems.addCell(item.getPriceUnit()+"");
-                tableItems.addCell(item.getTotal()+"");
+                PdfPCell c1 = new PdfPCell(new Phrase(item.getBox() +"", blackNoBold));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c2 = new PdfPCell(new Phrase(item.getQuantity()+"", blackNoBold));
+                c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c3 = new PdfPCell(new Phrase(item.getDescription(), blackNoBold));
+                c3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c4 = new PdfPCell(new Phrase(item.getSpec(), blackNoBold));
+                c4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c5 = new PdfPCell(new Phrase((item.getSize()+"”"), blackNoBold));
+                c5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c6 = new PdfPCell(new Phrase(item.getPriceUnit()+"", blackNoBold));
+                c6.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*--------------------*/
+                PdfPCell c7 = new PdfPCell(new Phrase(item.getTotal()+"", blackNoBold));
+                c7.setHorizontalAlignment(Element.ALIGN_CENTER);
+                /*---------------------*/
+                tableItems.addCell(c1);
+                tableItems.addCell(c2);
+                tableItems.addCell(c3);
+                tableItems.addCell(c4);
+                tableItems.addCell(c5);
+                tableItems.addCell(c6);
+                tableItems.addCell(c7);
+            
             }
             //tableItems.setHorizontalAlignment(Element.ALIGN_LEFT);
             document.add(tableItems);
@@ -362,12 +388,12 @@ public class CreatePDF {
             cell_15.setHorizontalAlignment(Element.ALIGN_LEFT);
             cell_15.setVerticalAlignment(Element.ALIGN_MIDDLE);
             /*--------------------*/
-            if(Methods.getInstance().embarque == null){
-                Methods.getInstance().embarque = BigDecimal.ZERO;
+            if(Methods.getInstance().shippingCost == null){
+                Methods.getInstance().shippingCost = BigDecimal.ZERO;
             }
             
             /*--------------------*/
-            PdfPCell cell_16 = new PdfPCell(new Phrase(Methods.getInstance().embarque+"", black));
+            PdfPCell cell_16 = new PdfPCell(new Phrase(Methods.getInstance().shippingCost+"", black));
             cell_16.setBorderColor(BaseColor.WHITE);
             cell_16.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell_16.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -446,7 +472,7 @@ public class CreatePDF {
             c0.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineShipment = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().shipment), blackLight);
+            Chunk underlineShipment = new Chunk(Methods.getInstance().shipment, blackLight);
             PdfPCell c1 = new PdfPCell(new Phrase(underlineShipment));
             c1.setBorder(Rectangle.BOTTOM);
             c1.setBorderColor(BaseColor.BLACK);
@@ -461,7 +487,7 @@ public class CreatePDF {
             c2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineLabel = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().label), blackLight);
+            Chunk underlineLabel = new Chunk(Methods.getInstance().label, blackLight);
             PdfPCell c3 = new PdfPCell(new Phrase(underlineLabel));
             c3.setBorder(Rectangle.BOTTOM);
             c3.setBorderColor(BaseColor.BLACK);
@@ -476,7 +502,7 @@ public class CreatePDF {
             c4.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineNetWeight = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().netWeight), blackLight);
+            Chunk underlineNetWeight = new Chunk(Methods.getInstance().netWeight, blackLight);
             PdfPCell c5 = new PdfPCell(new Phrase(underlineNetWeight));
             c5.setBorder(Rectangle.BOTTOM);
             c5.setBorderColor(BaseColor.BLACK);
@@ -491,7 +517,7 @@ public class CreatePDF {
             c6.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineBooking = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().booking), blackLight);
+            Chunk underlineBooking = new Chunk(Methods.getInstance().booking, blackLight);
             PdfPCell c7 = new PdfPCell(new Phrase(underlineBooking));
             c7.setBorder(Rectangle.BOTTOM);
             c7.setBorderColor(BaseColor.BLACK);
@@ -505,7 +531,7 @@ public class CreatePDF {
             c8.setHorizontalAlignment(Element.ALIGN_LEFT);
             c8.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
-            Chunk underlineGrossWeight = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().grossWeight), blackLight);
+            Chunk underlineGrossWeight = new Chunk(Methods.getInstance().grossWeight, blackLight);
             PdfPCell c9 = new PdfPCell(new Phrase(underlineGrossWeight));
             c9.setBorder(Rectangle.BOTTOM);
             c9.setBorderColor(BaseColor.BLACK);
@@ -522,7 +548,7 @@ public class CreatePDF {
             /*--------------------*/
             String outPort = Methods.getInstance().outPort;
             String[] dataOutPort = outPort.split("\\) ");
-            Chunk underlineOutPort = new Chunk(Methods.getInstance().modifyString(dataOutPort[1]), blackLight);
+            Chunk underlineOutPort = new Chunk(dataOutPort[1], blackLight);
             PdfPCell c11 = new PdfPCell(new Phrase(underlineOutPort));
             c11.setBorder(Rectangle.BOTTOM);
             c11.setBorderColor(BaseColor.BLACK);
@@ -537,7 +563,7 @@ public class CreatePDF {
             c12.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineContainer = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().container), blackLight);
+            Chunk underlineContainer = new Chunk(Methods.getInstance().container, blackLight);
             PdfPCell c13 = new PdfPCell(new Phrase(underlineContainer));
             c13.setBorder(Rectangle.BOTTOM);
             c13.setBorderColor(BaseColor.BLACK);
@@ -554,7 +580,7 @@ public class CreatePDF {
             /*--------------------*/
             String inPort = Methods.getInstance().inPort;
             String[] dataInPort = inPort.split("\\) ");
-            Chunk underlineInPort = new Chunk(Methods.getInstance().modifyString(dataInPort[1]), blackLight);
+            Chunk underlineInPort = new Chunk(dataInPort[1], blackLight);
             PdfPCell c15 = new PdfPCell(new Phrase(underlineInPort));
             c15.setBorder(Rectangle.BOTTOM);
             c15.setBorderColor(BaseColor.BLACK);
@@ -569,7 +595,7 @@ public class CreatePDF {
             c16.setVerticalAlignment(Element.ALIGN_MIDDLE);
             
             /*--------------------*/
-            Chunk underlineShip = new Chunk(Methods.getInstance().modifyString(Methods.getInstance().ship), blackLight);
+            Chunk underlineShip = new Chunk(Methods.getInstance().ship, blackLight);
             PdfPCell c17 = new PdfPCell(new Phrase(underlineShip));
             c17.setBorder(Rectangle.BOTTOM);
             c17.setBorderColor(BaseColor.BLACK);
@@ -586,7 +612,7 @@ public class CreatePDF {
             /*--------------------*/
             String originCountry = Methods.getInstance().originCountry;
             String[] dataOriginCountry = originCountry.split("\\) ");
-            Chunk underlineOriginCountry = new Chunk(Methods.getInstance().modifyString(dataOriginCountry[1]), blackLight);
+            Chunk underlineOriginCountry = new Chunk(dataOriginCountry[1], blackLight);
             PdfPCell c19 = new PdfPCell(new Phrase(underlineOriginCountry));
             c19.setBorder(Rectangle.BOTTOM);
             c19.setBorderColor(BaseColor.BLACK);
@@ -602,7 +628,7 @@ public class CreatePDF {
             /*--------------------*/
             String destinationCountry = Methods.getInstance().destinationCountry;
             String[] dataDestinationCountry = destinationCountry.split("\\) ");
-            Chunk underlineDestinationCountry = new Chunk(Methods.getInstance().modifyString(dataDestinationCountry[1]), blackLight);
+            Chunk underlineDestinationCountry = new Chunk(dataDestinationCountry[1], blackLight);
             PdfPCell c21 = new PdfPCell(new Phrase(underlineDestinationCountry));
             c21.setBorder(Rectangle.BOTTOM);
             c21.setBorderColor(BaseColor.BLACK);
@@ -682,11 +708,11 @@ public class CreatePDF {
             
             document.close();
             writer.close();
+            
             } catch (DocumentException | FileNotFoundException e) {
                 System.out.println("Error = " + e);
             }
-        
-        
+  
         /*----------------------------------------------------------------*/
         
     }
