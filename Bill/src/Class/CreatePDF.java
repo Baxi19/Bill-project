@@ -15,6 +15,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfCopy;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -52,16 +53,13 @@ public class CreatePDF {
         com.itextpdf.text.Font blackLight = FontFactory.getFont("Times New Roman", 10  ,Font.BOLD , new CMYKColor(255, 255, 255, 0));
         BaseColor greenFont = new BaseColor(95,158,160); 
         
-        
-        
+
         try {
-            /*Creamos el documento*/
             
             Document document = new Document();
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
+           
             document.open();
-            
-            
             /*--------------------------------------------------------------------*/
             /*Date and bill information*/
             PdfPTable tableBillInformation = new PdfPTable(3); // number of columns.
