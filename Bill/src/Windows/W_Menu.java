@@ -120,8 +120,6 @@ public class W_Menu extends javax.swing.JFrame {
         Entry4 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jButtonConfirmBill1 = new javax.swing.JButton();
-        aux = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jPanelAditionalData = new javax.swing.JPanel();
         jButtonClose5 = new javax.swing.JButton();
@@ -890,19 +888,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelProducts.add(jButtonConfirmBill1);
         jButtonConfirmBill1.setBounds(720, 480, 50, 50);
 
-        aux.setText("jLabel2");
-        jPanelProducts.add(aux);
-        aux.setBounds(260, 770, 41, 16);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanelProducts.add(jButton1);
-        jButton1.setBounds(390, 760, 77, 32);
-
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel11.setAlignmentY(0.0F);
         jLabel11.setMaximumSize(new java.awt.Dimension(800, 800));
@@ -1558,9 +1543,11 @@ public class W_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
     public BigDecimal calculateSubTotal() {
         BigDecimal sum = BigDecimal.ZERO;
+        
         for (int i = 0; i < Methods.getInstance().cart.size(); i++) {
+            BigDecimal value = Methods.getInstance().cart.get(i).getTotal();
             
-            sum.add(Methods.getInstance().cart.get(i).getTotal());
+            sum = sum.add(value);
             System.out.println("*********************************");
             System.out.println("Precio Item = "+Methods.getInstance().cart.get(i).getTotal().toString());
         }
@@ -1577,6 +1564,7 @@ public class W_Menu extends javax.swing.JFrame {
         return sum;
     }
 
+    
     public BigDecimal calculatePriceItem() {
         BigDecimal total = new BigDecimal(0);
         if (!jListPriceUnit.isSelectionEmpty()) {
@@ -1916,10 +1904,6 @@ public class W_Menu extends javax.swing.JFrame {
 
        
     }//GEN-LAST:event_jTextFieldQuantityCaretPositionChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        aux.setText(Methods.getInstance().subTotal+"");
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     public String calculateDisscount(){
         
@@ -2037,8 +2021,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel EntrySettings1;
     private javax.swing.JLabel EntryTotal;
     private javax.swing.JLabel LabelSubtotal;
-    private javax.swing.JLabel aux;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonAditionalData;
     private javax.swing.JButton jButtonClose1;
