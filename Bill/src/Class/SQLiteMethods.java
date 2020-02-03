@@ -153,7 +153,7 @@ public class SQLiteMethods {
         }
     }
     
-    public void getClient(int idBuscado){
+    public String getClient(int idBuscado){
         String query = "SELECT * FROM Clientes WHERE ID = " + idBuscado;
         try (          
             Connection conn = this.connect();
@@ -172,28 +172,28 @@ public class SQLiteMethods {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return "";
     }
     
-    public void getNotifyTo(int idNotify){
-        String query = "SELECT * FROM Notificar_a WHERE Notifica_a = " + idNotify;
+    public String getNotifyTo(int idNotify){
+        String query = "SELECT * FROM Notificar_a WHERE Notifica_a = " + idNotify + " AND Activo = 'T'";
         try (
             Connection conn = this.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(query)){
-            while (rs.next()) {
-                Methods.getInstance().clientNotify.setClient(rs.getString("Nombre"));
-                Methods.getInstance().clientNotify.setExporte("");
-                Methods.getInstance().clientNotify.setDireccion(rs.getString("Direccion"));
-                Methods.getInstance().clientNotify.setEmail(rs.getString("Email"));
-                Methods.getInstance().clientNotify.setTelefono(rs.getString("Telefono"));
-            }
+            rs.next();
+            Client client = new Client(rs.getString("Nombre"),"",rs.getString("Direccion"),rs.getString("Email"),rs.getString("Telefono"));
+            
             rs.close();
             stmt.close();
             conn.close();
-    
+            System.out.println(client.toString());
+            Methods.getInstance().clientNotify = client;
+            return "";
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage());        
         }
+        return "";
     }
     
     public DefaultListModel getNotificationList(int client){

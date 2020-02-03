@@ -15,7 +15,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.CMYKColor;
-import com.itextpdf.text.pdf.PdfCopy;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -152,7 +151,8 @@ public class CreatePDF {
             tableClientsInformation.setWidths(columnWidths3);
             /*--------------------*/
             SQLiteMethods.getInstance().getClient(Methods.getInstance().clientId);
-            SQLiteMethods.getInstance().getNotifyTo(Methods.getInstance().idNotify);
+            SQLiteMethods.getInstance().getNotifyTo(Methods.getInstance().clientId);
+            
             /*--------------------*/
             PdfPCell cell9 = new PdfPCell(new Paragraph("Cliente :", lightblack3Font));
             cell9.setBorderColor(BaseColor.WHITE);

@@ -19,12 +19,13 @@ public class Client {
     public Client() {
     }
     
-    public Client(String client, String exporte, String direccion) {
+    public Client(String client, String exporte, String direccion, String telefono, String email) {
         this.client = client;
         this.exporte = exporte;
         this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
     }
-
     public String getClient() {
         return client;
     }
@@ -64,5 +65,14 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" + "client=" + client + ", exporte=" + exporte + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + '}';
+    }
+    
+    
+    
+    
     
 }

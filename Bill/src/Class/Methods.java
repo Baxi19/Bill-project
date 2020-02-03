@@ -35,6 +35,7 @@ public class Methods {
     public String dateNewBill;
     public String idBill;
     
+    /*BigInteger*/
     /*Bill information*/
     public String currentDateTime;
     public Double subTotal;
