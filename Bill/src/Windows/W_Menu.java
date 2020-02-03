@@ -12,6 +12,10 @@ import Class.SQLiteMethods;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -62,8 +66,6 @@ public class W_Menu extends javax.swing.JFrame {
         jListClients = new javax.swing.JList<>();
         jLabelSelect = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jRadioButtonClient = new javax.swing.JRadioButton();
-        jRadioButtonNotify = new javax.swing.JRadioButton();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jButtonConfirmBill4 = new javax.swing.JButton();
@@ -370,34 +372,6 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelBill.add(jLabel21);
         jLabel21.setBounds(460, 340, 170, 17);
 
-        jRadioButtonClient.setText("Cliente");
-        jRadioButtonClient.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonClientMouseClicked(evt);
-            }
-        });
-        jRadioButtonClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonClientActionPerformed(evt);
-            }
-        });
-        jPanelBill.add(jRadioButtonClient);
-        jRadioButtonClient.setBounds(460, 370, 80, 28);
-
-        jRadioButtonNotify.setText("Notificado");
-        jRadioButtonNotify.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonNotifyMouseClicked(evt);
-            }
-        });
-        jRadioButtonNotify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonNotifyActionPerformed(evt);
-            }
-        });
-        jPanelBill.add(jRadioButtonNotify);
-        jRadioButtonNotify.setBounds(540, 370, 90, 28);
-
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
@@ -574,10 +548,10 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextFieldQuantity.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldQuantityCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanelProducts.add(jTextFieldQuantity);
@@ -746,11 +720,11 @@ public class W_Menu extends javax.swing.JFrame {
         subtotal.setForeground(new java.awt.Color(255, 255, 255));
         subtotal.setText("0.0");
         subtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                subtotalInputMethodTextChanged(evt);
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 subtotalCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                subtotalInputMethodTextChanged(evt);
             }
         });
         subtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -1521,80 +1495,68 @@ public class W_Menu extends javax.swing.JFrame {
 
     private void jButtonConfirmBill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill4ActionPerformed
         try {
-            if (jRadioButtonClient.isSelected()) {
-                if (jListClients.getSelectedValue() == null) {
-                    JOptionPane.showMessageDialog(rootPane, "Seleccione un cliente a eliminar");
-                } else {
+            if (!jListClients.isSelectionEmpty()) {
+                String name = jListClients.getSelectedValue();
+                String[] dataClient = name.split("\\) ");
+                String clientName = dataClient[1];
+                
+                if(Methods.getInstance().delete(clientName)){
                     SQLiteMethods.getInstance().deleteClient(Methods.getInstance().clientId);
                     JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
                     loadClients();
-                }
-            }
-            else{
-                if (jListClients.getSelectedValue() == null) {
-                    JOptionPane.showMessageDialog(rootPane, "Seleccione un notificar a eliminar");
-                } else {
-                    SQLiteMethods.getInstance().deleteNotifyTo(Methods.getInstance().clientId);
-                    JOptionPane.showMessageDialog(rootPane, "Notificar eliminado con éxito");
-                    loadClients();
-                    jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
-                }
-            }
-
+                } 
+            } 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.toString());
+            
         }
         
     }//GEN-LAST:event_jButtonConfirmBill4ActionPerformed
-    public boolean checkFirtsRadioB(){
-        if( jRadioButtonClient.isSelected() || jRadioButtonNotify.isSelected()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    
     private void jButtonConfirmBill5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5MouseClicked
         
         
     }//GEN-LAST:event_jButtonConfirmBill5MouseClicked
 
     private void jButtonConfirmBill5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmBill5ActionPerformed
-        if(jRadioButtonClient.isSelected()){
-            W_RegisterClient wr = new W_RegisterClient(1, this);
-            wr.show();
-        }
-        else if(jRadioButtonNotify.isSelected()){
-            W_RegisterClient wr = new W_RegisterClient(2, this);
-            wr.show();
-        }
-        else{
-            JOptionPane.showMessageDialog(rootPane, "Seleccione un una opción a registrar");
-        }
+        W_RegisterClient wr = new W_RegisterClient(this);
+        wr.show();
        
         
     }//GEN-LAST:event_jButtonConfirmBill5ActionPerformed
-    public double calculateSubTotal(){
-        double sum = 0;
-        
+    public BigDecimal calculateSubTotal(){
+        BigDecimal sum = BigDecimal.ZERO;
         for (Item item : Methods.getInstance().cart) {
-            sum += item.getTotal();
+            sum.add(item.getTotal());
+        }
+        try {
+            sum = sum.setScale(2, RoundingMode.HALF_EVEN);
+            NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);        
+            System.out.println(usdFormat.format(sum.doubleValue()));
+
+        } catch (Exception e) {
         }
         
-        String price = Methods.getInstance().df2.format(sum);
-        Methods.getInstance().subTotal = Double.parseDouble(price);
-        return Double.parseDouble(price);
+        return sum;
     }
     
-    public double calculatePriceItem(){
-        double total = 0;
+    public BigDecimal  calculatePriceItem(){
+        BigDecimal  total = BigDecimal.ZERO;
         if(!jListPriceUnit.isSelectionEmpty()){
-            double price = (Double.parseDouble(jListPriceUnit.getSelectedValue().toString()));
-            double quant = Double.parseDouble(jTextFieldQuantity.getText().toString());
-            total = (price) * (quant);
+            BigDecimal bigIntegerPrice=new BigDecimal(jListPriceUnit.getSelectedValue().toString());
+            BigDecimal bigIntegerQuant=new BigDecimal(jTextFieldQuantity.getText());
+            total = bigIntegerPrice.multiply(bigIntegerQuant);
             System.out.println("Total de item calculado = "+total);
         }
-        String price = Methods.getInstance().df2.format(total);
-        return Double.parseDouble(price);
+        try {
+            total = total.setScale(2, RoundingMode.HALF_EVEN);
+            NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);        
+            System.out.println(usdFormat.format(total.doubleValue()));
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se puede trabajar con un número muy grande");
+        }
+        
+        return total;
     }
     public void cleanSpaces(){
         jTextFieldBox.setText("");
@@ -1807,26 +1769,6 @@ public class W_Menu extends javax.swing.JFrame {
         loadToUpdateData(1);
     }//GEN-LAST:event_jRadioCountryActionPerformed
 
-    private void jRadioButtonClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonClientMouseClicked
-        if(jRadioButtonNotify.isSelected()){
-            jRadioButtonNotify.setSelected(false);
-            jRadioButtonClient.setSelected(true);
-            jListClients.setModel(SQLiteMethods.getInstance().getClientList());
-            jLabelSelect.setText("Seleccione el cliente");
-
-        }
-    }//GEN-LAST:event_jRadioButtonClientMouseClicked
-
-    private void jRadioButtonNotifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonNotifyMouseClicked
-        if(jRadioButtonClient.isSelected()){     
-            jRadioButtonClient.setSelected(false);
-            jRadioButtonNotify.setSelected(true);
-            jListClients.setModel(SQLiteMethods.getInstance().getNotifyToList());
-            jLabelSelect.setText("Notificado a modificar");
-            
-        }
-    }//GEN-LAST:event_jRadioButtonNotifyMouseClicked
-
     private void jListPriceUnitValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPriceUnitValueChanged
         
         if(!jTextFieldQuantity.getText().isEmpty()){
@@ -1836,9 +1778,22 @@ public class W_Menu extends javax.swing.JFrame {
                 precioItem.setText(calculatePriceItem()+"");
                 if(Methods.getInstance().isNumeric(jTextFieldDisscount.getText())){
                    if(Integer.parseInt(jTextFieldDisscount.getText()) > 0){
-                       Methods.getInstance().disccount = Double.parseDouble(jTextFieldDisscount.getText());
-                       totalWithDisscount.setText((calculateSubTotal()-Methods.getInstance().disccount)+"");
+                       
+                       NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);        
+                       Methods.getInstance().disccount =new BigDecimal(jTextFieldDisscount.getText());
+                       BigDecimal totalWithDisccount = calculateSubTotal().subtract(Methods.getInstance().disccount);
+                       try {
+                            totalWithDisccount = totalWithDisccount.setScale(2, RoundingMode.HALF_EVEN);
+                            
+                            System.out.println(usdFormat.format(totalWithDisccount.doubleValue()));
+
+                       } catch (Exception e) {
+                       }
+                       
+                       
+                       totalWithDisscount.setText(usdFormat.format(totalWithDisccount.doubleValue()));
                        calculateDisscount();
+                       
                    } 
                 }
 
@@ -1903,14 +1858,6 @@ public class W_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jListClientsMouseClicked
 
-    private void jRadioButtonClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonClientActionPerformed
-
-    private void jRadioButtonNotifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNotifyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonNotifyActionPerformed
-
     private void jRadioPortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioPortActionPerformed
         unableChecbox();
         jRadioPort.setSelected(true);
@@ -1920,9 +1867,6 @@ public class W_Menu extends javax.swing.JFrame {
     private void jTextFieldQuantityCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextFieldQuantityCaretPositionChanged
         if(Methods.getInstance().isNumeric(jTextFieldQuantity.getText())){
             if(!jListPriceUnit.isSelectionEmpty()){
-                //subtotal.setText(calculateSubTotal()+"");
-                //precioItem.setText(calculatePriceItem()+"");
-                //totalWithDisscount.setText((calculateSubTotal()-Methods.getInstance().disccount)+"");
                 calculateDisscount();
             }
         }else{
@@ -1938,11 +1882,15 @@ public class W_Menu extends javax.swing.JFrame {
         if(Methods.getInstance().isNumeric(jTextFieldDisscount.getText())){
             if(!jTextFieldDisscount.getText().equals("0")){
                 Methods.getInstance().subTotal = calculateSubTotal();
-                Methods.getInstance().disccount = (Double.parseDouble(jTextFieldDisscount.getText()));
-                Methods.getInstance().total = (Methods.getInstance().subTotal-Methods.getInstance().disccount);
+                Methods.getInstance().disccount =new BigDecimal(jTextFieldDisscount.getText());
+                Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(Methods.getInstance().disccount));
                 
-                String price = Methods.getInstance().df2.format(Methods.getInstance().total);
-                Methods.getInstance().total = Double.parseDouble(price);
+                
+                BigDecimal displayVal = Methods.getInstance().total.setScale(2, RoundingMode.HALF_EVEN);
+                NumberFormat usdFormat = NumberFormat.getCurrencyInstance(Locale.US);        
+                System.out.println(usdFormat.format(displayVal.doubleValue()));
+                
+                
                 
                 System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
                 System.out.println("Descuento ="  + Methods.getInstance().disccount);
@@ -1951,13 +1899,10 @@ public class W_Menu extends javax.swing.JFrame {
                 subtotal.setText(Methods.getInstance().subTotal+"");
                 totalWithDisscount.setText(Methods.getInstance().total+"");
             }else{
-                double discount = 0;
+                BigDecimal discount = BigDecimal.ZERO;
                 Methods.getInstance().subTotal = calculateSubTotal();
                 Methods.getInstance().disccount = discount;
-                Methods.getInstance().total = (Methods.getInstance().subTotal-discount);
-                
-                String price = Methods.getInstance().df2.format(Methods.getInstance().total);
-                Methods.getInstance().total = Double.parseDouble(price);
+                Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(discount));
                 
                 System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
                 System.out.println("Descuento ="  + Methods.getInstance().disccount);
@@ -1968,13 +1913,13 @@ public class W_Menu extends javax.swing.JFrame {
             }
             
         }else{
-                double discount = 0;
+                BigDecimal discount = BigDecimal.ZERO;
                 Methods.getInstance().subTotal = calculateSubTotal();
                 Methods.getInstance().disccount = discount;
-                Methods.getInstance().total = (Methods.getInstance().subTotal-discount);
+                Methods.getInstance().total = (Methods.getInstance().subTotal.subtract(discount));
                 
-                String price = Methods.getInstance().df2.format(Methods.getInstance().total);
-                Methods.getInstance().total = Double.parseDouble(price);
+                //String price = Methods.getInstance().df2.format(Methods.getInstance().total);
+                //Methods.getInstance().total = Double.parseDouble(price);
                 
                 System.out.println("Subtotal ="  + Methods.getInstance().subTotal);
                 System.out.println("Descuento ="  + Methods.getInstance().disccount);
@@ -2132,8 +2077,6 @@ public class W_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBill;
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelProducts;
-    private javax.swing.JRadioButton jRadioButtonClient;
-    private javax.swing.JRadioButton jRadioButtonNotify;
     private javax.swing.JRadioButton jRadioCountry;
     private javax.swing.JRadioButton jRadioPort;
     private javax.swing.JScrollPane jScrollCart;

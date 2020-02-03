@@ -5,6 +5,8 @@
  */
 package Class;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Baxi
@@ -16,12 +18,12 @@ public class Item {
     public String spec;
     public int size;
     public String priceUnit;
-    public double total;
+    public BigDecimal total;
 
     public Item() {
     }
 
-    public Item(int box, int quantity, String description, String spec, int size, String priceUnit, double total) {
+    public Item(int box, int quantity, String description, String spec, int size, String priceUnit, BigDecimal  total) {
         this.box = box;
         this.quantity = quantity;
         this.description = description;
@@ -79,11 +81,11 @@ public class Item {
         this.priceUnit = priceUnit;
     }
 
-    public double getTotal() {
+    public BigDecimal  getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal  total) {
         this.total = total;
     }
 

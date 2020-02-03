@@ -14,26 +14,20 @@ import javax.swing.JOptionPane;
  */
 public class W_RegisterClient extends javax.swing.JFrame {
     int clientId;
-    int format;
+    int format = 1;
     W_Menu wm;
+    String clientName;
 
     /**
      * Creates new form W_RegisterClient
      */
-    public W_RegisterClient(int format, W_Menu wm) {
+    public W_RegisterClient(W_Menu wm) {
         initComponents();
         this.setSize(450,300);
         setLocationRelativeTo(null);
         this.wm = wm;
-        this.format = format;
-        if(format==1){
-            loadRegisterClient();
-        }
-        else{
-            loadRegisterNotify();
-        }
-
-    }
+        loadRegisterClient(); 
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +41,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButtonClose1 = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
+        jLabelClientNotify = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -57,8 +52,6 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelExport = new javax.swing.JLabel();
         jTextFieldExport = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListClients = new javax.swing.JList<>();
         jLabel21 = new javax.swing.JLabel();
         jButtonLogin3 = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
@@ -98,6 +91,13 @@ public class W_RegisterClient extends javax.swing.JFrame {
         jLabelTitle.setText("Registrar nuevo cliente");
         getContentPane().add(jLabelTitle);
         jLabelTitle.setBounds(20, 10, 320, 29);
+
+        jLabelClientNotify.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelClientNotify.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabelClientNotify.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelClientNotify.setText(".");
+        getContentPane().add(jLabelClientNotify);
+        jLabelClientNotify.setBounds(110, 220, 230, 30);
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -174,21 +174,6 @@ public class W_RegisterClient extends javax.swing.JFrame {
         getContentPane().add(jTextFieldExport);
         jTextFieldExport.setBounds(110, 220, 230, 24);
 
-        jListClients.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jListClients.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListClientsValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jListClients);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 220, 230, 60);
-
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,6 +241,7 @@ public class W_RegisterClient extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(format == 1){
             String name = jTextFieldName.getText();
+            clientName = name;
             String export = jTextFieldExport.getText();
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
@@ -267,21 +253,22 @@ public class W_RegisterClient extends javax.swing.JFrame {
             jTextFieldDirection.setText("");
             jTextFieldTelephone.setText("");
             jTextFieldEmail.setText("");
-            wm.loadClients();
-            this.dispose();
+            loadRegisterNotify();
+            format = 2;
         }
         else{
             String name = jTextFieldName.getText();
             String direction = jTextFieldDirection.getText();
             String phone = jTextFieldTelephone.getText();
             String email = jTextFieldEmail.getText();
-            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, clientId)); 
+            int id = SQLiteMethods.getInstance().getLastID();
+            JOptionPane.showMessageDialog(rootPane, SQLiteMethods.getInstance().addNotifyTo(name, direction, phone, email, id)); 
             jTextFieldName.setText("");
             jTextFieldExport.setText("");
             jTextFieldDirection.setText("");
             jTextFieldTelephone.setText("");
             jTextFieldEmail.setText("");
-            wm.loadNotifyTo();
+            wm.loadClients();
             this.dispose();
         } 
     }//GEN-LAST:event_jButtonLogin3ActionPerformed
@@ -294,26 +281,16 @@ public class W_RegisterClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonClose1ActionPerformed
 
-    private void jListClientsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListClientsValueChanged
-        // TODO add your handling code here:
-         String client = jListClients.getSelectedValue();
-         String[] dataClient = client.split("\\) ");
-         this.clientId = Integer.parseInt(dataClient[0]);
-    }//GEN-LAST:event_jListClientsValueChanged
-
 
     public void loadRegisterNotify(){
         jTextFieldExport.setVisible(false);
-        jScrollPane1.setVisible(true);
-        jListClients.setVisible(true);
         jLabelExport.setText("Cliente:");
         jLabelTitle.setText("Registrar nuevo notificado");
-        jListClients.setModel(SQLiteMethods.getInstance().getClientList());
+       jLabelClientNotify.setText(clientName);
     }
     
     public void loadRegisterClient(){
-        jScrollPane1.setVisible(false);
-        jListClients.setVisible(false);
+
         jTextFieldExport.setVisible(true);
         jLabelExport.setText("Exporte:");
         jLabelTitle.setText("Registrar nuevo cliente");
@@ -329,10 +306,9 @@ public class W_RegisterClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabelClientNotify;
     private javax.swing.JLabel jLabelExport;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JList<String> jListClients;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldDirection;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldExport;

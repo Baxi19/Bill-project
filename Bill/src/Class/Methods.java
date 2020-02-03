@@ -13,6 +13,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -38,10 +39,10 @@ public class Methods {
     /*BigInteger*/
     /*Bill information*/
     public String currentDateTime;
-    public Double subTotal;
-    public Double disccount;
-    public Double total;
-    public Double embarque;
+    public BigDecimal subTotal = BigDecimal.ZERO;
+    public BigDecimal disccount = BigDecimal.ZERO;
+    public BigDecimal total = BigDecimal.ZERO;
+    public BigDecimal embarque = BigDecimal.ZERO;
     public int clientId;
     public int idNotify;
     
@@ -108,7 +109,7 @@ public class Methods {
     public boolean delete(String item) {
         int dialoButton = JOptionPane.YES_NO_OPTION;
         int result = JOptionPane.showConfirmDialog(null,
-                "Desea eliminar ¿" + item+" ?" , "Eliminar", dialoButton);
+                "¿Desea eliminar a " + item+" ?" , "Eliminar", dialoButton);
         if (result == 0) {
             return true;
             
@@ -117,36 +118,7 @@ public class Methods {
         }
     }
     /*------------------------------------------------------------------------*/
-    public Document generatePDF(){
-        Document document = new Document();
-        try {
-            /*Nombre del documento*/
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura" + idBill+".pdf"));
-            /*Abrimos el documento*/
-            document.open();
-            
-            /*Se agregan los parrafos que van a la derecha*/
-            Paragraph p1 = new Paragraph("Factura #:                          ");
-            p1.setAlignment(Element.ALIGN_RIGHT);
-            document.add(p1);
-            
-            Paragraph p2 = new Paragraph(Methods.getInstance().dateNewBill);
-            p2.setAlignment(Element.ALIGN_RIGHT);
-            document.add(p2);
-            
-            /*Se cierra el documento*/
-            document.close();
-            
-            writer.close();
-            
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        return document;
-    }
+    
     /*------------------------------------------------------------------------*/
     public DefaultListModel getCartInfo(){
         totalBox = 0;

@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 
 
 
@@ -362,8 +363,9 @@ public class CreatePDF {
             cell_15.setVerticalAlignment(Element.ALIGN_MIDDLE);
             /*--------------------*/
             if(Methods.getInstance().embarque == null){
-                Methods.getInstance().embarque = 0.0;
+                Methods.getInstance().embarque = BigDecimal.ZERO;
             }
+            
             /*--------------------*/
             PdfPCell cell_16 = new PdfPCell(new Phrase(Methods.getInstance().embarque+"", black));
             cell_16.setBorderColor(BaseColor.WHITE);
