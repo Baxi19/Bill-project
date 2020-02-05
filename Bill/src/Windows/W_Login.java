@@ -7,7 +7,7 @@ package Windows;
 
 import Class.Methods;
 import java.awt.Color;
-import javax.swing.ImageIcon;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -20,10 +20,9 @@ public class W_Login extends javax.swing.JFrame {
      * Creates new form W_Main
      */
     public W_Login() {
-        this.setIconImage(new ImageIcon(getClass().getResource("..\\Images\\logo.jpg")).getImage());
         initComponents();
         
-        this.setSize(1200,800);
+        this.setSize(1200,750);
         setLocationRelativeTo(null);
         jPanelLogin.setBackground(new Color(0, 0, 0 , 240));
         jButtonLogin.setBackground(new Color(0, 0, 0 , 240));
@@ -69,7 +68,7 @@ public class W_Login extends javax.swing.JFrame {
         jLabel3.setText("Plantas Hermanos Araya");
         jLabel3.setToolTipText("");
         jPanelLogin.add(jLabel3);
-        jLabel3.setBounds(50, 40, 390, 43);
+        jLabel3.setBounds(50, 40, 390, 42);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.jpg"))); // NOI18N
         jLabel6.setToolTipText("");

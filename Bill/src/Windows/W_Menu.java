@@ -31,7 +31,7 @@ public class W_Menu extends javax.swing.JFrame {
     public W_Menu() {
         initComponents();
         
-        this.setSize(1200,800);
+        this.setSize(1200,750);
         setLocationRelativeTo(null);
         loadClients();
         jListDescription.setModel(SQLiteMethods.getInstance().getPlantsList());
@@ -178,10 +178,10 @@ public class W_Menu extends javax.swing.JFrame {
         jPanelMenu.setToolTipText("");
         jPanelMenu.setAlignmentX(0.0F);
         jPanelMenu.setAlignmentY(0.0F);
-        jPanelMenu.setMaximumSize(new java.awt.Dimension(400, 800));
-        jPanelMenu.setMinimumSize(new java.awt.Dimension(400, 800));
+        jPanelMenu.setMaximumSize(new java.awt.Dimension(400, 750));
+        jPanelMenu.setMinimumSize(new java.awt.Dimension(400, 750));
         jPanelMenu.setName("panelLogin"); // NOI18N
-        jPanelMenu.setPreferredSize(new java.awt.Dimension(400, 800));
+        jPanelMenu.setPreferredSize(new java.awt.Dimension(400, 750));
         jPanelMenu.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -284,7 +284,7 @@ public class W_Menu extends javax.swing.JFrame {
         jButtonAditionalData.setBounds(320, 390, 50, 50);
 
         getContentPane().add(jPanelMenu);
-        jPanelMenu.setBounds(0, 0, 400, 800);
+        jPanelMenu.setBounds(0, 0, 400, 750);
 
         jPanelBill.setBackground(new java.awt.Color(102, 102, 102));
         jPanelBill.setAlignmentX(0.0F);
@@ -444,7 +444,7 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Siguiente");
         jPanelBill.add(jLabel37);
-        jLabel37.setBounds(590, 750, 110, 28);
+        jLabel37.setBounds(580, 650, 110, 28);
 
         jButtonConfirmBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/entrar.png"))); // NOI18N
         jButtonConfirmBill.setBorder(null);
@@ -466,7 +466,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelBill.add(jButtonConfirmBill);
-        jButtonConfirmBill.setBounds(700, 740, 50, 50);
+        jButtonConfirmBill.setBounds(710, 640, 50, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel8.setAlignmentY(0.0F);
@@ -478,13 +478,14 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel8.setBounds(0, 0, 800, 800);
 
         getContentPane().add(jPanelBill);
-        jPanelBill.setBounds(400, 0, 800, 800);
+        jPanelBill.setBounds(400, 0, 800, 750);
 
         jPanelProducts.setBackground(new java.awt.Color(102, 102, 102));
         jPanelProducts.setAlignmentX(0.0F);
         jPanelProducts.setAlignmentY(0.0F);
-        jPanelProducts.setMaximumSize(new java.awt.Dimension(800, 800));
-        jPanelProducts.setMinimumSize(new java.awt.Dimension(800, 800));
+        jPanelProducts.setMaximumSize(new java.awt.Dimension(800, 750));
+        jPanelProducts.setMinimumSize(new java.awt.Dimension(800, 750));
+        jPanelProducts.setPreferredSize(new java.awt.Dimension(800, 750));
         jPanelProducts.setLayout(null);
 
         jButtonClose4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close1.png"))); // NOI18N
@@ -549,10 +550,10 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextFieldQuantity.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldQuantityCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanelProducts.add(jTextFieldQuantity);
@@ -721,11 +722,11 @@ public class W_Menu extends javax.swing.JFrame {
         LabelSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         LabelSubtotal.setText("0.0");
         LabelSubtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                LabelSubtotalCaretPositionChanged(evt);
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 LabelSubtotalInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                LabelSubtotalCaretPositionChanged(evt);
             }
         });
         LabelSubtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -776,10 +777,10 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jTextFieldDisscount.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldDisscountCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextFieldDisscount.addActionListener(new java.awt.event.ActionListener() {
@@ -892,25 +893,25 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelProducts.add(jButtonConfirmBill1);
-        jButtonConfirmBill1.setBounds(720, 740, 50, 50);
+        jButtonConfirmBill1.setBounds(720, 680, 50, 50);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel11.setAlignmentY(0.0F);
-        jLabel11.setMaximumSize(new java.awt.Dimension(800, 800));
-        jLabel11.setMinimumSize(new java.awt.Dimension(800, 800));
+        jLabel11.setMaximumSize(new java.awt.Dimension(800, 750));
+        jLabel11.setMinimumSize(new java.awt.Dimension(800, 750));
         jLabel11.setName(""); // NOI18N
-        jLabel11.setPreferredSize(new java.awt.Dimension(800, 800));
+        jLabel11.setPreferredSize(new java.awt.Dimension(800, 750));
         jPanelProducts.add(jLabel11);
-        jLabel11.setBounds(0, 0, 800, 800);
+        jLabel11.setBounds(0, 0, 800, 750);
 
         getContentPane().add(jPanelProducts);
-        jPanelProducts.setBounds(400, 0, 800, 800);
+        jPanelProducts.setBounds(400, 0, 800, 750);
 
         jPanelAditionalData.setBackground(new java.awt.Color(102, 102, 102));
         jPanelAditionalData.setAlignmentX(0.0F);
         jPanelAditionalData.setAlignmentY(0.0F);
-        jPanelAditionalData.setMaximumSize(new java.awt.Dimension(800, 800));
-        jPanelAditionalData.setMinimumSize(new java.awt.Dimension(800, 800));
+        jPanelAditionalData.setMaximumSize(new java.awt.Dimension(800, 750));
+        jPanelAditionalData.setMinimumSize(new java.awt.Dimension(800, 750));
         jPanelAditionalData.setLayout(null);
 
         jButtonClose5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close1.png"))); // NOI18N
@@ -1261,7 +1262,7 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jPanelAditionalData.add(jButtonConfirmBill10);
-        jButtonConfirmBill10.setBounds(710, 740, 50, 50);
+        jButtonConfirmBill10.setBounds(720, 680, 50, 50);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoPanel.png"))); // NOI18N
         jLabel13.setAlignmentY(0.0F);
@@ -1273,7 +1274,8 @@ public class W_Menu extends javax.swing.JFrame {
         jLabel13.setBounds(0, 0, 800, 800);
 
         getContentPane().add(jPanelAditionalData);
-        jPanelAditionalData.setBounds(400, 0, 800, 800);
+        jPanelAditionalData.setBounds(400, 0, 800, 750);
+        jPanelAditionalData.getAccessibleContext().setAccessibleDescription("");
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1306,11 +1308,11 @@ public class W_Menu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg.jpg"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
-        jLabel1.setMaximumSize(new java.awt.Dimension(1200, 800));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1200, 800));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1200, 800));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1200, 750));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1200, 750));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1200, 750));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1200, 800);
+        jLabel1.setBounds(0, 0, 1200, 750);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
