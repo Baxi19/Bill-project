@@ -9,6 +9,7 @@ import Class.CreatePDF;
 import Class.Item;
 import Class.Methods;
 import Class.SQLiteMethods;
+import com.itextpdf.text.BadElementException;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -550,10 +553,10 @@ public class W_Menu extends javax.swing.JFrame {
         jTextFieldQuantity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jTextFieldQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextFieldQuantity.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldQuantityCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanelProducts.add(jTextFieldQuantity);
@@ -722,11 +725,11 @@ public class W_Menu extends javax.swing.JFrame {
         LabelSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         LabelSubtotal.setText("0.0");
         LabelSubtotal.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                LabelSubtotalInputMethodTextChanged(evt);
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 LabelSubtotalCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                LabelSubtotalInputMethodTextChanged(evt);
             }
         });
         LabelSubtotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -777,10 +780,10 @@ public class W_Menu extends javax.swing.JFrame {
             }
         });
         jTextFieldDisscount.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldDisscountCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextFieldDisscount.addActionListener(new java.awt.event.ActionListener() {
@@ -1618,7 +1621,7 @@ public class W_Menu extends javax.swing.JFrame {
                                 if (!jListPriceUnit.isSelectionEmpty()) {
                                     Item i = new Item();
                                     /*Agregar y guardar los datos*/
-                                    i.setBox(Integer.parseInt(jTextFieldBox.getText()));
+                                    i.setBox(Double.parseDouble(jTextFieldBox.getText()));
                                     i.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
                                     i.setDescription(jListDescription.getSelectedValue());
                                     i.setSpec(jTextFieldSpec.getText());
@@ -1772,11 +1775,14 @@ public class W_Menu extends javax.swing.JFrame {
                         Methods.getInstance().destinationCountry = jListCountryDestination.getSelectedValue();
                         Methods.getInstance().getCurrentTime();
                         closePanels();
-                        CreatePDF.getInstance().newPDF();
+                        
                         try {
+                            CreatePDF.getInstance().newPDF();
                             checkLocalization();
                         } catch (IOException ex) {
-                            
+                            System.out.println("Exepcion = " + ex);
+                        } catch (BadElementException ex) {
+                            Logger.getLogger(W_Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         
                     }else{
@@ -2005,7 +2011,7 @@ public class W_Menu extends javax.swing.JFrame {
 
         if (Desktop.isDesktopSupported()) {
             try {
-                File myFile = new File(file.getCanonicalPath() + "\\Factura" + Methods.getInstance().idBill + ".pdf");
+                File myFile = new File(file.getCanonicalPath() + "\\Factura_" + Methods.getInstance().idBill + ".pdf");
                 Desktop.getDesktop().open(myFile);
             } catch (IOException ex) {
                 // no application registered for PDFs

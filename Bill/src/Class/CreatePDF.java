@@ -5,12 +5,14 @@
  */
 package Class;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
@@ -19,9 +21,12 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Font;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
+import javax.swing.JFileChooser;
 
 
 
@@ -45,7 +50,7 @@ public class CreatePDF {
         return base.multiply(pct).divide(ONE_HUNDRED);
     }
     /*------------------------------------------------------------------------*/
-    public void newPDF(){
+    public boolean newPDF() throws BadElementException, IOException{
         /**/
         Methods.getInstance().saveBill();
         /*Colores*/
@@ -55,18 +60,30 @@ public class CreatePDF {
         com.itextpdf.text.Font black2Font = FontFactory.getFont("Times New Roman", 11, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack2Font = FontFactory.getFont("Times New Roman", 10, new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font lightblack3Font = FontFactory.getFont("Times New Roman", 10, Font.BOLD,new CMYKColor(255, 255, 255, 0));
-        com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 10, Font.BOLD , new CMYKColor(255, 255, 255, 0));
+        com.itextpdf.text.Font black = FontFactory.getFont("Times New Roman", 9, Font.BOLD , new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font blackLight = FontFactory.getFont("Times New Roman", 10  ,Font.BOLD , new CMYKColor(255, 255, 255, 0));
         com.itextpdf.text.Font blackNoBold = FontFactory.getFont("Times New Roman", 10,  new CMYKColor(255, 255, 255, 0));
         BaseColor greenFont = new BaseColor(95,158,160); 
+        /*
+        JFileChooser chooser = new JFileChooser();
+        //chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Guardar PDF");
+        chooser.setApproveButtonText("Guardar");
+        //disables the all filesoptioning here
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
+        chooser.setAcceptAllFileFilterUsed(true);
+        */
         
-
         try {
+            //Image logo = Image.getInstance(chooser.getSelectedFile()+"\\src\\Images\\logo.jpg");
             
             Document document = new Document();
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura"+Methods.getInstance().idBill+".pdf"));
-           
+           // PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(new File(chooser.getSelectedFile(), "Factura_"+Methods.getInstance().idBill+".pdf")));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Factura_"+Methods.getInstance().idBill+".pdf"));
+            
             document.open();
+            //document.add(logo);
             /*--------------------------------------------------------------------*/
             /*Date and bill information*/
             PdfPTable tableBillInformation = new PdfPTable(3); // number of columns.
@@ -283,7 +300,7 @@ public class CreatePDF {
             tableItems.setSpacingBefore(7f); //Space before table
             tableItems.setSpacingAfter(7f); //Space after table
             //Set Column widths
-            float[] columnWidths4 = {3f,3f,6f,2f,2f,3f,3f};
+            float[] columnWidths4 = {3f,3.5f,5f,1.5f,2f,3f,5f};
             tableItems.setWidths(columnWidths4);
             /*Header*/
             PdfPCell cell_1 = new PdfPCell(new Phrase("Cajones", black));
@@ -326,25 +343,25 @@ public class CreatePDF {
             System.out.println("Items en el carrito: " + Methods.getInstance().cart.size());
             for (Item item : Methods.getInstance().cart) {
                 PdfPCell c1 = new PdfPCell(new Phrase(item.getBox() +"", blackNoBold));
-                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c1.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 /*--------------------*/
                 PdfPCell c2 = new PdfPCell(new Phrase(item.getQuantity()+"", blackNoBold));
-                c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c2.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 /*--------------------*/
                 PdfPCell c3 = new PdfPCell(new Phrase(item.getDescription(), blackNoBold));
-                c3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c3.setHorizontalAlignment(Element.ALIGN_LEFT);
                 /*--------------------*/
                 PdfPCell c4 = new PdfPCell(new Phrase(item.getSpec(), blackNoBold));
-                c4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c4.setHorizontalAlignment(Element.ALIGN_LEFT);
                 /*--------------------*/
                 PdfPCell c5 = new PdfPCell(new Phrase((item.getSize()+"”"), blackNoBold));
-                c5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c5.setHorizontalAlignment(Element.ALIGN_LEFT);
                 /*--------------------*/
                 PdfPCell c6 = new PdfPCell(new Phrase(item.getPriceUnit()+"", blackNoBold));
-                c6.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c6.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 /*--------------------*/
                 PdfPCell c7 = new PdfPCell(new Phrase(item.getTotal()+"", blackNoBold));
-                c7.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c7.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 /*---------------------*/
                 tableItems.addCell(c1);
                 tableItems.addCell(c2);
@@ -361,11 +378,11 @@ public class CreatePDF {
             /*Sum of items*/
             PdfPTable tableCalculateSum = new PdfPTable(7); // number of columns.
             tableCalculateSum.setWidthPercentage(86); //Width %
-            tableCalculateSum.setSpacingBefore(7f); //Space before table
-            tableCalculateSum.setSpacingAfter(7f); //Space after table
+            tableCalculateSum.setSpacingBefore(2f); //Space before table
+            tableCalculateSum.setSpacingAfter(2f); //Space after table
             //Set Column widths
            
-            float[] columnWidths5 = {3f,3f,8f,0f,5f,1.6f,3f};
+            float[] columnWidths5 = {3f,2.9f,7f,0f,5f,1.6f,4f};
             tableCalculateSum.setWidths(columnWidths5);
             /*--------------------*/
             PdfPCell cell_10 = new PdfPCell(new Phrase(Methods.getInstance().totalBox+"", black));
@@ -725,14 +742,18 @@ public class CreatePDF {
             document.addTitle("Factura"+Methods.getInstance().idBill);
             document.addSubject("Email: arca56@hotmail.com 1km Oeste de la Guardia Rural La Tigra, San Carlos");
             
-            document.close();
+            
             writer.close();
+            document.close();
+            
             
             } catch (DocumentException | FileNotFoundException e) {
                 System.out.println("Error = " + e);
+                return false;
             }
   
         /*----------------------------------------------------------------*/
-        
-    }
+        return true;
+        }
+    
 }

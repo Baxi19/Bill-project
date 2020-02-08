@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * @author Baxi
  */
 public class Item {
-    public int box;
+    public double box;
     public int quantity;
     public String description;
     public String spec;
@@ -23,7 +23,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(int box, int quantity, String description, String spec, int size, String priceUnit, BigDecimal  total) {
+    public Item(double box, int quantity, String description, String spec, int size, String priceUnit, BigDecimal  total) {
         this.box = box;
         this.quantity = quantity;
         this.description = description;
@@ -33,11 +33,11 @@ public class Item {
         this.total = total;
     }
 
-    public int getBox() {
+    public double getBox() {
         return box;
     }
 
-    public void setBox(int box) {
+    public void setBox(double box) {
         this.box = box;
     }
 
